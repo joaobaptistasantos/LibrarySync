@@ -8,6 +8,7 @@
     <string name="enviarEmail">Enviar E-mail de Confirmação</string>
     <string name="password">Password</string>
     <string name="digitarPassword">Insira password...</string>
+    <string name="confirmaPassword">Confirma Password</string>
     <string name="registarNovo">Registar novo utilizador</string>
     <string name="consultarHorarios">Consultar Horários Disponíveis</string>
 </resources>
