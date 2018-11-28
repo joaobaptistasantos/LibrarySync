@@ -83,7 +83,7 @@
 
         <LinearLayout
             android:id="@+id/loginDadosMenu"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="10dp"
@@ -95,18 +95,21 @@
                 android:layout_height="wrap_content"
                 android:text="@string/email"
                 android:textColor="@color/black"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/emailInput_MenuInicial"
-                android:inputType="textEmailAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/digitarEmail"
+                android:autofillHints="@string/email"
                 android:background="@android:color/transparent"
+                android:fontFamily="sans-serif"
+                android:hint="@string/digitarEmail"
+                android:inputType="textEmailAddress"
                 android:paddingStart="10dp"
-                android:textSize="12sp"
-                android:autofillHints="@string/email"/>
+                android:singleLine="true"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textPassword_MenuInicial"
@@ -114,35 +117,38 @@
                 android:layout_height="wrap_content"
                 android:text="@string/password"
                 android:textColor="@color/black"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <android.support.constraint.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/passwordInput_MenuInicial"
-                    android:inputType="textPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:autofillHints="@string/password"
                     android:background="@android:color/transparent"
+                    android:fontFamily="sans-serif"
                     android:hint="@string/digitarPassword"
+                    android:inputType="textPassword"
                     android:paddingStart="10dp"
-                    android:textSize="12sp"
-                    android:autofillHints="@string/password"/>
+                    android:singleLine="true"
+                    android:textAllCaps="true"
+                    android:textSize="12sp" />
 
                 <ImageButton
                     android:id="@+id/botaoEsqueceuPasswordIcon"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:layout_marginStart="8dp"
                     android:background="@android:color/transparent"
+                    android:contentDescription="@null"
+                    android:onClick="esqueceuPassword"
                     android:scaleType="fitXY"
                     android:src="@drawable/esqueceu_password"
-                    app:layout_constraintStart_toEndOf="@+id/passwordInput_MenuInicial"
-                    android:contentDescription="@null"
-                    android:onClick="esqueceuPassword"/>
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
             </android.support.constraint.ConstraintLayout>
 
