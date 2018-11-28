@@ -27,4 +27,11 @@
 
     <string name="sobre">Sobre</string>
     <string name="stats">Estatísticas</string>
+
+    <string name="ok">OK</string>
+    <string name="sobreText">
+        Esta aplicação é um projeto realizado no âmbito da cadeira de Gestão de Projeto e Software, lecionada no curso de Engenharia Informática do Instituto Superior de Engenharia de Coimbra. Tem como objetivo a inovação na gestão das reservas dos gabinetes da biblioteca do instituto.
+    </string>
+    <string name="docente">Docente Responsável: José Cunha</string>
+    <string name="alunos">Alunos: Amadeus Alves, Gustavo Garcia, João Monteiro, João Santos, Miguel Pires</string>
 </resources>
