@@ -11,6 +11,7 @@ import android.widget.EditText;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.Serializable;
 import java.security.InvalidParameterException;
 
 public class MenuInicial extends Activity {
@@ -55,6 +56,9 @@ public class MenuInicial extends Activity {
 
     public void esqueceuPassword(View v){
         Intent intent = new Intent(this, MenuEsqueceuPassword.class);
+        if(utilizadores!=null){
+            intent.putExtra("utilizadores",(Serializable) utilizadores.getUtilizadores());
+        }
         startActivity(intent);
     }
 
