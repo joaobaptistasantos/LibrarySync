@@ -11,4 +11,10 @@
     <string name="confirmaPassword">Confirma Password</string>
     <string name="registarNovo">Registar novo utilizador</string>
     <string name="consultarHorarios">Consultar Horários Disponíveis</string>
+
+    <string name="menuPrincipal">Menu Principal</string>
+    <string name="reservar">Reservar Gabinete</string>
+    <string name="gerir">Gerir Reservas</string>
+    <string name="definicoes">Definições de Conta</string>
+    <string name="sair">Sair</string>
 </resources>
