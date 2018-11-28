@@ -95,7 +95,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/email"
                 android:textColor="@color/black"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/emailInput_MenuRegistar"
@@ -115,7 +116,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/password"
                 android:textColor="@color/black"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/passwordInput_MenuRegistar"
@@ -135,7 +137,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/confirmaPassword"
                 android:textColor="@color/black"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/confirmPasswordInput"
