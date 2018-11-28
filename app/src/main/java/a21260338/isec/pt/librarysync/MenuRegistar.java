@@ -3,6 +3,7 @@ package a21260338.isec.pt.librarysync;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -16,6 +17,8 @@ public class MenuRegistar extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_registar);
+
+        utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
     }
 
     public void onLogin(View v){
@@ -35,8 +38,10 @@ public class MenuRegistar extends Activity {
 
         utilizadores.addUtilizador(email, password, passwordConfirmacao);
 
-        Intent intent = new Intent(this, MenuInicial.class);
+        Intent intent = new Intent();
         intent.putExtra("utilizadores", utilizadores);
-        startActivity(intent);
+        setResult(1, intent);
+
+        finish();
     }
 }
