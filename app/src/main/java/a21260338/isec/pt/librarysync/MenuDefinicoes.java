@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
 
 public class MenuDefinicoes extends Activity {
 
@@ -34,7 +33,7 @@ public class MenuDefinicoes extends Activity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent intent = new Intent(getApplicationContext(), MenuInical.class);
+                Intent intent = new Intent(getApplicationContext(), MenuInicial.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

@@ -19,6 +19,7 @@ public class MenuEsqueceuPassword extends Activity {
     }
 
     public void onLogin(View v){
-        finish();
+        Intent intent = new Intent(this, MenuInicial.class);
+        startActivity(intent);
     }
 }

@@ -1,6 +1,7 @@
 package a21260338.isec.pt.librarysync;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,6 +14,7 @@ public class MenuRegistar extends Activity {
     }
 
     public void onLogin(View v){
-        finish();
+        Intent intent = new Intent(this, MenuInicial.class);
+        startActivity(intent);
     }
 }
