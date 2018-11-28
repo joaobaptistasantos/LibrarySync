@@ -18,4 +18,9 @@ public class MenuInical extends Activity {
         Intent intent = new Intent(this, MenuRegistar.class);
         startActivity(intent);
     }
+
+    public void esqueceuPassword(View v){
+        Intent intent = new Intent(this, MenuEsqueceuPassword.class);
+        startActivity(intent);
+    }
 }

@@ -12,7 +12,7 @@ public class MenuRegistar extends Activity {
         setContentView(R.layout.activity_menu_registar);
     }
 
-    public void toLogin(View v){
+    public void onLogin(View v){
         finish();
     }
 }

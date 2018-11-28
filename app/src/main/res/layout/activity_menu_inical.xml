@@ -130,7 +130,8 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/esqueceu_password"
                     app:layout_constraintStart_toEndOf="@+id/editText"
-                    android:contentDescription="@null"/>
+                    android:contentDescription="@null"
+                    android:onClick="esqueceuPassword"/>
 
             </android.support.constraint.ConstraintLayout>
 
