@@ -17,6 +17,7 @@ import java.security.InvalidParameterException;
 public class MenuInicial extends Activity {
 
     Utilizadores utilizadores;
+    EditText et;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,11 @@ public class MenuInicial extends Activity {
         if(requestCode == 1){
             utilizadores = (Utilizadores) data.getSerializableExtra("utilizadores");
         }
+        et = (EditText)findViewById(R.id.emailInput_MenuInicial);
+        et.setText("");
+
+        et = (EditText)findViewById(R.id.passwordInput_MenuInicial);
+        et.setText("");
     }
 
     public void esqueceuPassword(View v){
@@ -70,7 +76,7 @@ public class MenuInicial extends Activity {
     }
 
     public void login(View v){
-        EditText et = (EditText)findViewById(R.id.emailInput_MenuInicial);
+        et = (EditText)findViewById(R.id.emailInput_MenuInicial);
         String email = et.getText().toString();
 
         et = (EditText)findViewById(R.id.passwordInput_MenuInicial);
@@ -80,7 +86,9 @@ public class MenuInicial extends Activity {
             utilizadores.autentica(email, password);
 
             Intent intent = new Intent(this, MenuPrincipal.class);
-            startActivity(intent);
+            intent.putExtra("utilizadores",(Serializable) utilizadores);
+            intent.putExtra("userOnline", email);
+            startActivityForResult(intent, 1);
 
         } catch(InvalidParameterException e){
             Log.d("Useres", "Falhou login");
