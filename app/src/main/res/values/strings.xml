@@ -22,4 +22,6 @@
     <string name="mudarPass">Mudar Password</string>
     <string name="cancelarConta">Cancelar Conta</string>
     <string name="sobreApp">Sobre a Aplicação</string>
+
+    <string name="esqueciPassword">Esqueci a password</string>
 </resources>
