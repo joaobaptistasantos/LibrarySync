@@ -2,8 +2,10 @@ package a21260338.isec.pt.librarysync;
 
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InvalidObjectException;
 import java.io.Serializable;
@@ -16,16 +18,8 @@ public class Utilizadores implements Serializable {
 
     List<Utilizador> utilizadores;
 
-    public Utilizadores(File listaUtilizadores) throws FileNotFoundException {
-        Scanner sc = new Scanner(listaUtilizadores);
-        String[] dados;
-
+    public Utilizadores() {
         utilizadores = new ArrayList<Utilizador>();
-
-        while (sc.hasNext()){
-            dados = sc.next().split(" ");
-            utilizadores.add(new Utilizador(dados[0], dados[1]));
-        }
     }
 
     public List<Utilizador> getUtilizadores() {

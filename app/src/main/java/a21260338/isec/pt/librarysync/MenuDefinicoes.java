@@ -25,30 +25,6 @@ public class MenuDefinicoes extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_definicoes);
 
-        FileOutputStream outputStream;
-        try {
-            outputStream = openFileOutput("ListaUtilizadores", Context.MODE_PRIVATE);
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        File listaUtilizadores = new File(this.getFilesDir(), "ListaUtilizadores");
-
-        try {
-            utilizadores = new Utilizadores(listaUtilizadores);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try{
-            utilizadores.addUtilizador("jocatoca3@gmail.com", "aa", "aa");
-            utilizadores.addUtilizador("joca_toca@hotmail.com", "bb", "bb");
-            ativo = utilizadores.getUtilizador("jocatoca3@gmail.com");
-        }catch (Exception e)
-        {
-
-        }
     }
 
     public void back(View v){

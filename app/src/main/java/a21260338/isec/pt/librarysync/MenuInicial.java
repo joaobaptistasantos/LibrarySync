@@ -8,11 +8,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.InvalidObjectException;
 import java.io.Serializable;
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MenuInicial extends Activity {
 
@@ -23,27 +31,41 @@ public class MenuInicial extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inical);
 
-        FileOutputStream outputStream;
-        try {
-            outputStream = openFileOutput("ListaUtilizadores", Context.MODE_PRIVATE);
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        FileInputStream fIn = null;
 
-        File listaUtilizadores = new File(this.getFilesDir(), "ListaUtilizadores");
-
-        try {
-            utilizadores = new Utilizadores(listaUtilizadores);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        utilizadores = new Utilizadores();
 
         try{
-            utilizadores.addUtilizador("jocatoca3@gmail.com", "aa", "aa");
-        }catch (Exception e)
-        {
+            fIn = openFileInput("logs11.txt");
+            InputStreamReader isr = new InputStreamReader(fIn);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String text;
+            String[] dados = null;
 
+            while((text = br.readLine()) != null){
+                sb.append(text).append("\n");
+                dados = sb.toString().split(" ");
+            }
+
+            for(int i = 0; i < dados.length - 1; i+=2){
+                Log.d("Useres", "Email: " + dados[i]);
+                Log.d("Useres", "Password: " + dados[i+1]);
+                utilizadores.addUtilizador(dados[i], dados[i+1], dados[i+1]);
+            }
+
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
+        }finally {
+            if(fIn != null){
+                try{
+                    fIn.close();
+                } catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
         }
 
     }
