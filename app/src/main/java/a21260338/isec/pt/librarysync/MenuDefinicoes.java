@@ -3,6 +3,7 @@ package a21260338.isec.pt.librarysync;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,11 @@ public class MenuDefinicoes extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_definicoes);
+    }
+
+    public void back(View v){
+        Intent intent = new Intent(this, MenuPrincipal.class);
+        startActivity(intent);
     }
 
     public void cancelarConta(View v){

@@ -22,7 +22,8 @@
             app:layout_constraintStart_toStartOf="parent"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            android:contentDescription="@null"/>
+            android:contentDescription="@null"
+            android:onClick="back"/>
 
         <TextView
             android:id="@+id/textView"
