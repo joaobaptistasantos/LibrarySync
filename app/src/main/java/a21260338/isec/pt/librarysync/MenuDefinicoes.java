@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -12,15 +13,24 @@ public class MenuDefinicoes extends Activity {
 
     private AlertDialog sobre;
     private AlertDialog aviso;
+    Utilizadores utilizadores;
+    String userOnline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_definicoes);
+
+        utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
+        userOnline = getIntent().getStringExtra("userOnline");
     }
 
     public void back(View v){
         finish();
+    }
+
+    public void mudarPassword(View v){
+
     }
 
     public void cancelarConta(View v){
@@ -33,6 +43,11 @@ public class MenuDefinicoes extends Activity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
+                for (Utilizador u:utilizadores.getUtilizadores()) {
+                    if(u.getEmail().equals(userOnline)){
+                        utilizadores.getUtilizadores().remove(u);
+                    }
+                }
                 Intent intent = new Intent(getApplicationContext(), MenuInicial.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
