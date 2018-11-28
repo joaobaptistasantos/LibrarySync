@@ -70,7 +70,8 @@
                 android:background="@android:color/transparent"
                 android:text="@string/registar"
                 android:textColor="@color/colorApp"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:onClick="onRegistar"/>
 
         </LinearLayout>
 
@@ -158,7 +159,8 @@
                 android:background="@android:color/transparent"
                 android:textColor="#0000FF"
                 android:layout_gravity="center"
-                android:textSize="12sp"/>
+                android:textSize="12sp"
+                android:onClick="onRegistar"/>
 
             <Button
                 android:layout_width="wrap_content"

@@ -14,7 +14,7 @@ public class MenuInical extends Activity {
 
     }
 
-    public void registo(View v){
+    public void onRegistar(View v){
         Intent intent = new Intent(this, MenuRegistar.class);
         startActivity(intent);
     }
