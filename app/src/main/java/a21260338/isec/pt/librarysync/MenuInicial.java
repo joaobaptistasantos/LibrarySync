@@ -11,6 +11,7 @@ import android.widget.EditText;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.Serializable;
 import java.security.InvalidParameterException;
 
 public class MenuInicial extends Activity {
@@ -49,12 +50,22 @@ public class MenuInicial extends Activity {
 
     public void onRegistar(View v){
         Intent intent = new Intent(this, MenuRegistar.class);
-        intent.putExtra("utilizadores", utilizadores);
-        startActivity(intent);
+        intent.putExtra("utilizadores",(Serializable) utilizadores);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            utilizadores = (Utilizadores) data.getSerializableExtra("utilizadores");
+        }
     }
 
     public void esqueceuPassword(View v){
         Intent intent = new Intent(this, MenuEsqueceuPassword.class);
+        intent.putExtra("utilizadores",(Serializable) utilizadores.getUtilizadores());
+
         startActivity(intent);
     }
 
