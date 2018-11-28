@@ -21,8 +21,7 @@ public class MenuDefinicoes extends Activity {
     }
 
     public void back(View v){
-        Intent intent = new Intent(this, MenuPrincipal.class);
-        startActivity(intent);
+        finish();
     }
 
     public void cancelarConta(View v){
@@ -43,7 +42,7 @@ public class MenuDefinicoes extends Activity {
         //define um botão como negativo.
         builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                // para implementar
+                // nao faz acao nenhuma
             }
         });
 
