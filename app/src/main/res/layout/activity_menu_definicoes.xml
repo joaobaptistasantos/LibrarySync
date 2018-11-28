@@ -9,56 +9,69 @@
     android:background="@drawable/app_wallpaper">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/barraSuperior_MenuDefinicoes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/backArrow_MenuDefinicoes"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:padding="8dp"
-            android:src="@drawable/back_arrow"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
             android:contentDescription="@null"
-            android:onClick="back"/>
+            android:onClick="back"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/titulo_MenuDefinicoes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
             android:text="@string/menuDefinicoes"
             android:textColor="@color/colorApp"
             android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity=""
+            android:id="@+id/logoApp_MenuDefinicoes"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_marginEnd="8dp"
+            android:contentDescription="@null"
             android:src="@drawable/app_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="@null"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/definicoes_MenuDefinicoes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/barraSuperior_MenuDefinicoes">
 
         <LinearLayout
+            android:id="@+id/grupoDefinicoes_MenuDefinicoes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
@@ -69,7 +82,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/linearLayout5"
+                android:id="@+id/definicaoMudarPassword_MenuDefinicoes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -79,13 +92,13 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+                app:layout_constraintBottom_toTopOf="@+id/definicaoCancelarConta_MenuDefinicoes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/botaoMudarPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -97,6 +110,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
+                    android:id="@+id/setaMudarPassword"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="8dp"
@@ -114,7 +128,7 @@
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/linearLayout4"
+                android:id="@+id/definicaoCancelarConta_MenuDefinicoes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -124,13 +138,13 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+                app:layout_constraintBottom_toTopOf="@+id/definicaoSobreApp_MenuDefinicoes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+                app:layout_constraintTop_toBottomOf="@+id/definicaoMudarPassword_MenuDefinicoes">
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/botaoCancelarConta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -143,6 +157,7 @@
                     android:onClick="cancelarConta"/>
 
                 <ImageButton
+                    android:id="@+id/setaCancelarConta"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="8dp"
@@ -160,7 +175,7 @@
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/linearLayout6"
+                android:id="@+id/definicaoSobreApp_MenuDefinicoes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -172,10 +187,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+                app:layout_constraintTop_toBottomOf="@+id/definicaoCancelarConta_MenuDefinicoes">
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/botaoSobreApp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -188,6 +203,7 @@
                     android:onClick="sobre"/>
 
                 <ImageButton
+                    android:id="@+id/setaSobreApp"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginStart="8dp"
@@ -200,7 +216,7 @@
                     android:src="@drawable/next_arrow"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/button4"
+                    app:layout_constraintStart_toEndOf="@+id/botaoSobreApp"
                     app:layout_constraintTop_toTopOf="parent"
                     android:contentDescription="@null"/>
 

@@ -9,20 +9,21 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/barraSuperior_MenuInicial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/logoApp_MenuInicial"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:src="@drawable/app_logo"
             android:contentDescription="@null"/>
 
         <TextView
+            android:id="@+id/nameApp_MenuInicial"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
@@ -33,22 +34,25 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/loginMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/barraInferior_Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/barraSuperior_MenuInicial"
         android:background="@color/backgroundAlphaWhite"
         android:orientation="vertical"
         android:padding="10dp">
 
         <LinearLayout
+            android:id="@+id/titulo_registarAndLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
             <Button
+                android:id="@+id/botaoMenuLogin_MenuInicial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login"
@@ -58,6 +62,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/textoBarra_MenuInicial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/barra"
@@ -65,6 +70,7 @@
                 android:textColor="@color/colorApp"/>
 
             <Button
+                android:id="@+id/botaoMenuRegistar_MenuInicial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -76,6 +82,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/loginDadosMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -83,6 +90,7 @@
             android:paddingBottom="15dp">
 
             <TextView
+                android:id="@+id/textEmail_MenuInicial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/email"
@@ -90,6 +98,7 @@
                 android:textSize="14sp"/>
 
             <EditText
+                android:id="@+id/emailInput_MenuInicial"
                 android:inputType="textEmailAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -100,6 +109,7 @@
                 android:autofillHints="@string/email"/>
 
             <TextView
+                android:id="@+id/textPassword_MenuInicial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/password"
@@ -112,8 +122,8 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/passwordInput_MenuInicial"
                     android:inputType="textPassword"
-                    android:id="@+id/editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -123,13 +133,14 @@
                     android:autofillHints="@string/password"/>
 
                 <ImageButton
+                    android:id="@+id/botaoEsqueceuPasswordIcon"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginStart="8dp"
                     android:background="@android:color/transparent"
                     android:scaleType="fitXY"
                     android:src="@drawable/esqueceu_password"
-                    app:layout_constraintStart_toEndOf="@+id/editText"
+                    app:layout_constraintStart_toEndOf="@+id/passwordInput_MenuInicial"
                     android:contentDescription="@null"
                     android:onClick="esqueceuPassword"/>
 
@@ -138,6 +149,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/botaoLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login"
@@ -148,6 +160,7 @@
             android:onClick="login"/>
 
         <LinearLayout
+            android:id="@+id/barraLigacoesRegistarConsultar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -155,6 +168,7 @@
             android:gravity="center_horizontal">
 
             <Button
+                android:id="@+id/botaoRegistarNovo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/registarNovo"
@@ -165,6 +179,7 @@
                 android:onClick="onRegistar"/>
 
             <Button
+                android:id="@+id/botaoConsultar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/consultarHorarios"
@@ -178,7 +193,7 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/barraInferior_Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -187,6 +202,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
+            android:id="@+id/logoISEC_MenuInicial"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:src="@drawable/isec_logo"

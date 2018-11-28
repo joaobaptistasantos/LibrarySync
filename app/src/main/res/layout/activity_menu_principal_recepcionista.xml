@@ -9,54 +9,63 @@
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/barraSuperior_MenuPrincipalRecepcionista"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/titulo_MenuPrincipalRecepcionista"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
             android:text="@string/menuPrincipal"
             android:textColor="@color/colorApp"
             android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/logoApp_MenuPrincipalRecepcionista"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="8dp"
+            android:contentDescription="@null"
             android:src="@drawable/app_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="@null"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/barraOpcoes_MenuPrincipalRecepcionista"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintBottom_toTopOf="@+id/barraSair_MenuPrincipalRecepcionista"
+        app:layout_constraintTop_toBottomOf="@+id/barraSuperior_MenuPrincipalRecepcionista">
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/opcaoGerirRecepcionista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toStartOf="@+id/opcaoSobre_MenuPrincipalRecepcionista"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageButton
+                android:id="@+id/botaoGerirRecepcionista"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@android:color/transparent"
@@ -67,6 +76,7 @@
                 android:contentDescription="@null"/>
 
             <TextView
+                android:id="@+id/textoGerirRecepcionista"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -78,16 +88,17 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/constraintLayout"
+            android:id="@+id/opcaoSobre_MenuPrincipalRecepcionista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout3">
+            app:layout_constraintStart_toEndOf="@+id/opcaoGerirRecepcionista">
 
             <ImageButton
+                android:id="@+id/botaoSobre_MenuPrincipalRecepcionista"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@android:color/transparent"
@@ -98,6 +109,7 @@
                 android:src="@drawable/info_icon" />
 
             <TextView
+                android:id="@+id/textoSobre_MenuPrincipalRecepcionista"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -111,7 +123,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/barraSair_MenuPrincipalRecepcionista"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -120,6 +132,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:id="@+id/opcaoSair_MenuPrincipalRecepcionista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -128,6 +141,7 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <ImageButton
+                android:id="@+id/botaoSair_MenuPrincipalRecepcionista"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:background="@android:color/transparent"
@@ -137,6 +151,7 @@
                 android:src="@drawable/exit_icon" />
 
             <TextView
+                android:id="@+id/textoSair_MenuPrincipalRecepcionista"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sair"
