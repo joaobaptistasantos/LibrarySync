@@ -17,4 +17,9 @@
     <string name="gerir">Gerir Reservas</string>
     <string name="definicoes">Definições de Conta</string>
     <string name="sair">Sair</string>
+
+    <string name="menuDefinicoes">Definições de Conta</string>
+    <string name="mudarPass">Mudar Password</string>
+    <string name="cancelarConta">Cancelar Conta</string>
+    <string name="sobreApp">Sobre a Aplicação</string>
 </resources>
