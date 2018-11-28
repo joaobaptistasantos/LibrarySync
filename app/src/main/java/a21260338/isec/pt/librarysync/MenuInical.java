@@ -25,7 +25,7 @@ public class MenuInical extends Activity {
     }
 
     public void login(View v){
-        Intent intent = new Intent(this, MenuPrincipalRecepcionista.class);
+        Intent intent = new Intent(this, MenuPrincipal.class);
         startActivity(intent);
     }
 }
