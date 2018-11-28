@@ -50,17 +50,42 @@ public class Utilizadores implements Serializable {
             Log.d("Useres", "Email: " + u.getEmail() + " Password: " + u.getPassword());
     }
 
-    public void validaDados(String email, String password, String password2){
+    public boolean emailExiste(String email)
+    {
+        for(Utilizador u : utilizadores)
+            if(u.getEmail().equals(email))
+                return true;
+
+        return false;
+    }
+
+    public void validaDados(String email){
         if(!email.contains("@"))
             throw new InvalidParameterException("Email Inválido");
+    }
+
+    public void validaDados(String email, String passsword){
+        validaDados(email);
+
+        // falta validar passwords e emails em termos de string inserida
+    }
+
+    public void validaDados(String email, String password, String password2){
+        validaDados(email);
 
         if(!password.equals(password2))
             throw new InvalidParameterException("Passwords têm que ser iguais!");
 
-        for(Utilizador u : utilizadores)
-            if(u.getEmail().equals(email))
-                throw new InvalidParameterException("Email já existe");
-
         // falta validar passwords e emails em termos de string inserida
+    }
+
+    public void autentica(String email, String password) throws InvalidParameterException{
+        validaDados(email, password);
+
+        for(Utilizador u : utilizadores)
+            if(u.autentica(email, password))
+                return;
+
+        throw new InvalidParameterException("Autenticacao falhou!");
     }
 }

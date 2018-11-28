@@ -11,6 +11,7 @@ import android.widget.EditText;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.security.InvalidParameterException;
 
 public class MenuInicial extends Activity {
 
@@ -37,7 +38,13 @@ public class MenuInicial extends Activity {
             e.printStackTrace();
         }
 
-        Log.d("Useres", "Tamanho: "+String.valueOf(utilizadores.utilizadores.size()));
+        try{
+            utilizadores.addUtilizador("jocatoca3@gmail.com", "aa", "aa");
+        }catch (Exception e)
+        {
+
+        }
+
     }
 
     public void onRegistar(View v){
@@ -52,33 +59,20 @@ public class MenuInicial extends Activity {
     }
 
     public void login(View v){
-        String[]dados = {"", ""};
-
         EditText et = (EditText)findViewById(R.id.emailInput_MenuInicial);
-        dados[0] = et.getText().toString();
+        String email = et.getText().toString();
 
         et = (EditText)findViewById(R.id.passwordInput_MenuInicial);
-        dados[1] = et.getText().toString();
+        String password = et.getText().toString();
 
-        if(verificaLogin(dados)==true){
+        try{
+            utilizadores.autentica(email, password);
+
             Intent intent = new Intent(this, MenuPrincipal.class);
-            intent.putExtra("utilizadores", utilizadores);
             startActivity(intent);
+
+        } catch(InvalidParameterException e){
+            Log.d("Useres", "Falhou login");
         }
-
-        Intent intent = new Intent(this, MenuPrincipal.class);
-        startActivity(intent);
-    }
-
-    public boolean verificaLogin(String[] dados){
-        for (Utilizador u: utilizadores.getUtilizadores()) {
-            if(u.getEmail().equals(dados[0]) == true){
-                if(u.getPassword().equals(dados[1]) == true){
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 }
