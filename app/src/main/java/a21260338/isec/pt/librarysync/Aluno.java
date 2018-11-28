@@ -1,3 +1,5 @@
+package a21260338.isec.pt.librarysync;
+
 public class Aluno extends Utilizador {
 
     int nrAluno;
