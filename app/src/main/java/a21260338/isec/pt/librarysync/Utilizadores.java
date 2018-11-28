@@ -32,6 +32,14 @@ public class Utilizadores implements Serializable {
         return utilizadores;
     }
 
+    public Utilizador getUtilizador(String email) {
+        for(Utilizador e : utilizadores)
+            if(e.getEmail().equals(email))
+                return e;
+
+        return null;
+    }
+
     public boolean addUtilizador(String email, String password, String password2) throws IOException, InvalidObjectException {
 
         try{
@@ -45,9 +53,15 @@ public class Utilizadores implements Serializable {
         return true;
     }
 
-    public void logUtilizadores(){
-        for(Utilizador u : utilizadores)
-            Log.d("Useres", "Email: " + u.getEmail() + " Password: " + u.getPassword());
+    public boolean removeUtilizador(Utilizador user){
+        try{
+            utilizadores.remove(user);
+
+            return true;
+        } catch(NullPointerException e){
+            Log.d("Useres", "Falhou eliminar utilizador");
+            return false;
+        }
     }
 
     public boolean emailExiste(String email)
@@ -87,5 +101,10 @@ public class Utilizadores implements Serializable {
                 return;
 
         throw new InvalidParameterException("Autenticacao falhou!");
+    }
+
+    public void logUtilizadores(){
+        for(Utilizador u : utilizadores)
+            Log.d("Useres", "Email: " + u.getEmail() + " Password: " + u.getPassword());
     }
 }
