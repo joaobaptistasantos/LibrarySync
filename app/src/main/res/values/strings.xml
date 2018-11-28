@@ -24,4 +24,7 @@
     <string name="sobreApp">Sobre a Aplicação</string>
 
     <string name="esqueciPassword">Esqueci a password</string>
+
+    <string name="sobre">Sobre</string>
+    <string name="stats">Estatísticas</string>
 </resources>
