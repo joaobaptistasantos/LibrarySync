@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import java.security.InvalidParameterException;
+import java.util.List;
+
 public class MenuEsqueceuPassword extends Activity {
 
-    Utilizadores utilizadores;
+    //Utilizadores utilizadores;
+    List<Utilizador> users;
     private EditText et;
 
     @Override
@@ -17,7 +22,7 @@ public class MenuEsqueceuPassword extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_esqueceu_password);
 
-        utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
+        users = (List<Utilizador>) getIntent().getSerializableExtra("utilizadores");
 
         et = findViewById(R.id.emailInput_MenuEsqueceu);
     }
@@ -33,22 +38,26 @@ public class MenuEsqueceuPassword extends Activity {
     }
 
     public void enviarEmail(View v){
+        try {
+            String subject = "Recupera password LibrarySync";
 
-        String subject = "Recupera password LibrarySync";
+            for (Utilizador u: users) {
+                if(et.getText().toString().equals(u.getEmail())){
+                    String[] enviarPara = {et.getText().toString()};
+                    String password = u.getPassword();
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setData(Uri.parse("mailto:"));
+                    intent.putExtra(Intent.EXTRA_EMAIL, enviarPara);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                    intent.putExtra(Intent.EXTRA_TEXT, password);
 
-        for (Utilizador u: utilizadores.getUtilizadores()) {
-            if(et.getText().toString().equals(u.getEmail())){
-                String[] enviarPara = {et.getText().toString()};
-                String password = u.getPassword();
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setData(Uri.parse("mailto:"));
-                intent.putExtra(Intent.EXTRA_EMAIL, enviarPara);
-                intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-                intent.putExtra(Intent.EXTRA_TEXT, password);
-
-                intent.setType("message/rfc822");
-                startActivity(Intent.createChooser(intent, "Escolher cliente"));
+                    intent.setType("message/rfc822");
+                    startActivity(Intent.createChooser(intent, "Escolher cliente"));
+                }
             }
+        }catch (InvalidParameterException e){
+            Log.d("Useres", "Sem utilizadores registados");
         }
+
     }
 }
