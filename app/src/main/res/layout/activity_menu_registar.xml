@@ -54,7 +54,8 @@
                 android:background="@android:color/transparent"
                 android:text="@string/login"
                 android:textColor="@color/colorApp"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:onClick="toLogin"/>
 
             <TextView
                 android:layout_width="wrap_content"
