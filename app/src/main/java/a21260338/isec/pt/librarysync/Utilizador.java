@@ -28,24 +28,11 @@ public class Utilizador {
         this.email = email;
     }
 
-    public boolean passwordValido(String Password){
-        if(Password == password){
-            return true;
-        }else{
-            return false;
-        }
+    public boolean passwordValido(String password){
+        return this.password.equals(password);
     }
 
-    public void editaInformacao(String Email, String Password){
-        email = Email;
-        password = Password;
-    }
-
-    public boolean autentica(String Email, String Password){
-        if(email == Email && password == Password){
-            return true;
-        }else{
-            return false;
-        }
+    public boolean autentica(String email, String password){
+        return this.email.equals(email) && this.password.equals(password);
     }
 }

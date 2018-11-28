@@ -1,9 +1,13 @@
 package a21260338.isec.pt.librarysync;
 
+import android.util.Log;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InvalidObjectException;
 import java.io.Serializable;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,18 +32,35 @@ public class Utilizadores implements Serializable {
         return utilizadores;
     }
 
-    public boolean addUtilizador(String[] dados, File diretorio) throws IOException {
+    public boolean addUtilizador(String email, String password, String password2) throws IOException, InvalidObjectException {
 
-        if(utilizadores != null){
-            for (Utilizador u: utilizadores) {
-                if(u.getEmail()==dados[0]){
-                    return false;
-                }
-            }
+        try{
+            validaDados(email, password, password2);
+
+            utilizadores.add(new Utilizador(email, password));
+        } catch (InvalidParameterException e){
+            Log.d("Useres", e.toString());
         }
 
-        utilizadores.add(new Utilizador(dados[0], dados[1]));
-
         return true;
+    }
+
+    public void logUtilizadores(){
+        for(Utilizador u : utilizadores)
+            Log.d("Useres", "Email: " + u.getEmail() + " Password: " + u.getPassword());
+    }
+
+    public void validaDados(String email, String password, String password2){
+        if(!email.contains("@"))
+            throw new InvalidParameterException("Email Inválido");
+
+        if(!password.equals(password2))
+            throw new InvalidParameterException("Passwords têm que ser iguais!");
+
+        for(Utilizador u : utilizadores)
+            if(u.getEmail().equals(email))
+                throw new InvalidParameterException("Email já existe");
+
+        // falta validar passwords e emails em termos de string inserida
     }
 }

@@ -16,8 +16,6 @@ public class MenuRegistar extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_registar);
-
-        utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
     }
 
     public void onLogin(View v){
@@ -26,28 +24,19 @@ public class MenuRegistar extends Activity {
     }
 
     public void registar(View v) throws IOException {
-        String[]dados = {"", ""};
-
         EditText et = (EditText)findViewById(R.id.emailInput_MenuRegistar);
-        dados[0] = et.getText().toString();
+        String email = et.getText().toString();
 
         et = (EditText)findViewById(R.id.passwordInput_MenuRegistar);
-        dados[1] = et.getText().toString();
+        String password = et.getText().toString();
 
         et = (EditText)findViewById(R.id.confirmPasswordInput);
         String passwordConfirmacao = et.getText().toString();
 
-        if(dados[0]=="" || dados[1]==""){
-            return;
-        }
-
-        if(passwordConfirmacao.equals(dados[1]) == false){
-            return;
-        }
-
-        utilizadores.addUtilizador(dados, this.getFilesDir());
+        utilizadores.addUtilizador(email, password, passwordConfirmacao);
 
         Intent intent = new Intent(this, MenuInicial.class);
+        intent.putExtra("utilizadores", utilizadores);
         startActivity(intent);
     }
 }
