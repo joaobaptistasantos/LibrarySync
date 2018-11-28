@@ -16,6 +16,10 @@ public class MenuPrincipalDocente extends Activity {
         setContentView(R.layout.activity_menu_principal_docente);
     }
 
+    public void exit(View v) {
+        finish();
+    }
+
     public void sobre(View v){
         // LayoutInflater é utilizado para inflar o layout numa view
         // Pegamos nessa instancia da classe
