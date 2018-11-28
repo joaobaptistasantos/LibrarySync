@@ -39,6 +39,7 @@
             android:name=".MenuPrincipalDocente"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity android:name=".MenuPrincipalRecepcionista"></activity>
     </application>
 
 </manifest>
