@@ -14,7 +14,9 @@ public class MenuPrincipal extends Activity {
     }
 
     public void exit(View v) {
-        finish();
+        Intent intent = new Intent(getApplicationContext(), MenuInical.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     public void definicoes(View v){

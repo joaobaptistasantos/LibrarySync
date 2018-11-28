@@ -35,7 +35,9 @@ public class MenuDefinicoes extends Activity {
         //define um botão como positivo
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                // para implementar
+                Intent intent = new Intent(getApplicationContext(), MenuInical.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
         //define um botão como negativo.

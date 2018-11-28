@@ -2,6 +2,7 @@ package a21260338.isec.pt.librarysync;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,9 @@ public class MenuPrincipalRecepcionista extends Activity {
     }
 
     public void exit(View v) {
-        finish();
+        Intent intent = new Intent(getApplicationContext(), MenuInical.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     public void sobre(View v){
