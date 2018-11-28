@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barraSuperior_MenuRegistar"
-        android:background="@color/backgroundAlphaWhite"
+        android:background="@drawable/round_corner"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -83,7 +83,7 @@
 
         <LinearLayout
             android:id="@+id/registarDadosMenu"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="10dp"
@@ -99,14 +99,15 @@
 
             <EditText
                 android:id="@+id/emailInput_MenuRegistar"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/digitarEmail"
-                android:background="@android:color/transparent"
-                android:paddingLeft="10dp"
-                android:textSize="12sp"
                 android:autofillHints="@string/email"
-                android:inputType="textEmailAddress"/>
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif"
+                android:hint="@string/digitarEmail"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textPassword_MenuRegistar"
@@ -118,14 +119,15 @@
 
             <EditText
                 android:id="@+id/passwordInput_MenuRegistar"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/digitarPassword"
-                android:background="@android:color/transparent"
-                android:paddingLeft="10dp"
-                android:textSize="12sp"
                 android:autofillHints="@string/password"
-                android:inputType="textPassword"/>
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif"
+                android:hint="@string/digitarPassword"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textConfirmPassword"
@@ -137,14 +139,15 @@
 
             <EditText
                 android:id="@+id/confirmPasswordInput"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/digitarPassword"
-                android:background="@android:color/transparent"
-                android:paddingLeft="10dp"
-                android:textSize="12sp"
                 android:autofillHints="@string/password"
-                android:inputType="textPassword"/>
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif"
+                android:hint="@string/digitarPassword"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <Button

@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barraSuperior_MenuInicial"
-        android:background="@color/backgroundAlphaWhite"
+        android:background="@drawable/round_corner"
         android:orientation="vertical"
         android:padding="10dp">
 
