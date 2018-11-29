@@ -47,9 +47,15 @@ public class Utilizadores implements Serializable {
         return true;
     }
 
-    public boolean removeUtilizador(Utilizador user){
+    public boolean removeUtilizador(String user){
         try{
-            utilizadores.remove(user);
+            Utilizador remover = null;
+
+            for(Utilizador u : utilizadores)
+                if(u.getEmail().equals(user))
+                    remover = u;
+
+            utilizadores.remove(remover);
 
             return true;
         } catch(NullPointerException e){

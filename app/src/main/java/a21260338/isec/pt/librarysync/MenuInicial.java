@@ -36,7 +36,7 @@ public class MenuInicial extends Activity {
         utilizadores = new Utilizadores();
 
         try{
-            fIn = openFileInput("logs11.txt");
+            fIn = openFileInput("logs28.txt");
             InputStreamReader isr = new InputStreamReader(fIn);
             BufferedReader br = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
@@ -102,6 +102,7 @@ public class MenuInicial extends Activity {
             utilizadores.autentica(email, password);
 
             Intent intent = new Intent(this, MenuPrincipal.class);
+            intent.putExtra("utilizadores", utilizadores);
             startActivity(intent);
 
         } catch(InvalidParameterException e){

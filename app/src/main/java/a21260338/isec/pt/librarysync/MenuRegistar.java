@@ -47,10 +47,9 @@ public class MenuRegistar extends Activity {
         String result = email + " " + password + " ";
 
         FileOutputStream fOut = null;
-        OutputStreamWriter myOutWriter = null;
 
         try {
-            fOut = openFileOutput("logs11.txt", MODE_APPEND);
+            fOut = openFileOutput("logs28.txt", MODE_APPEND);
             fOut.write(result.getBytes());
             fOut.flush();
         }

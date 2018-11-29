@@ -6,25 +6,29 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class MenuDefinicoes extends Activity {
 
     private AlertDialog sobre;
     private AlertDialog aviso;
     Utilizadores utilizadores;
-    Utilizador ativo;
+    //Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_definicoes);
 
+        utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
     }
 
     public void back(View v){
@@ -39,11 +43,32 @@ public class MenuDefinicoes extends Activity {
                 .setMessage("Tem a certeza que pretende cancelar a sua conta?")
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        utilizadores.logUtilizadores();
+                        utilizadores.removeUtilizador("jocatoca3@gmail.com");
 
-                        utilizadores.removeUtilizador(ativo);
+                        FileOutputStream fOut = null;
 
-                        utilizadores.logUtilizadores();
+                        try {
+                            fOut = openFileOutput("logs28.txt", MODE_PRIVATE);
+
+                            for(Utilizador u : utilizadores.getUtilizadores()){
+                                String result = u.getEmail() + " " + u.getPassword() + " ";
+                                fOut.write(result.getBytes());
+                                fOut.flush();
+                            }
+
+                        }
+                        catch (IOException e) {
+                            Log.e("Exception", "File write failed: " + e.toString());
+                        }
+                        finally {
+                            if(fOut != null){
+                                try{
+                                    fOut.close();
+                                } catch(IOException e){
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
 
                         Intent intent = new Intent(getApplicationContext(), MenuInicial.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

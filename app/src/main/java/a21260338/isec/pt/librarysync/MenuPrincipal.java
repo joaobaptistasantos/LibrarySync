@@ -7,10 +7,14 @@ import android.view.View;
 
 public class MenuPrincipal extends Activity {
 
+    Utilizadores utilizadores;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+
+        utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
     }
 
     public void exit(View v) {
@@ -21,6 +25,7 @@ public class MenuPrincipal extends Activity {
 
     public void definicoes(View v){
         Intent intent = new Intent(this, MenuDefinicoes.class);
+        intent.putExtra("utilizadores", utilizadores);
         startActivity(intent);
     }
 }
