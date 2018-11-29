@@ -63,7 +63,7 @@ public class MenuRegistar extends Activity {
         FileOutputStream fOut = null;
 
         try {
-            fOut = openFileOutput("logs51.txt", MODE_APPEND);
+            fOut = openFileOutput("logs52.txt", MODE_APPEND);
             fOut.write(result.getBytes());
             fOut.flush();
         }

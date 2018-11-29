@@ -28,15 +28,15 @@ public class MenuInicial extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inicial);
 
+        msgErro = (TextView) findViewById(R.id.erroMenuInicial);
+
         utilizadores = new Utilizadores();
         ativo = null;
-
-        msgErro = (TextView) findViewById(R.id.erroMenuInicial);
 
         FileInputStream fIn = null;
 
         try{
-            fIn = openFileInput("logs51.txt");
+            fIn = openFileInput("logs52.txt");
             InputStreamReader isr = new InputStreamReader(fIn);
             BufferedReader br = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
@@ -49,9 +49,6 @@ public class MenuInicial extends Activity {
             }
 
             for(int i = 0; i < dados.length - 1; i+=2){
-                Log.d("Useres", "Email: " + dados[i]);
-                Log.d("Useres", "Password: " + dados[i+1]);
-
                 try {
                     utilizadores.addUtilizador(dados[i], dados[i + 1], dados[i + 1]);
                 } catch(InvalidEmailException e){
@@ -84,6 +81,7 @@ public class MenuInicial extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
+
         if(requestCode == 1){
             utilizadores = (Utilizadores) data.getSerializableExtra("utilizadores");
         }
@@ -92,7 +90,6 @@ public class MenuInicial extends Activity {
     public void esqueceuPassword(View v){
         Intent intent = new Intent(this, MenuEsqueceuPassword.class);
         intent.putExtra("utilizadores",(Serializable) utilizadores.getUtilizadores());
-
         startActivity(intent);
     }
 
@@ -104,12 +101,7 @@ public class MenuInicial extends Activity {
         String password = et.getText().toString();
 
         try{
-            try {
-                ativo = utilizadores.autentica(email, password);
-            } catch(InvalidEmailException e){
-                msgErro.setText(e.getMessage());
-                msgErro.setVisibility(View.VISIBLE);
-            }
+            ativo = utilizadores.autentica(email, password);
 
             Intent intent = null;
 
@@ -124,11 +116,12 @@ public class MenuInicial extends Activity {
             intent.putExtra("ativo", ativo);
             startActivity(intent);
 
-        } catch(InvalidParameterException e){
-            msgErro.setText("Falhou Login!");
+        } catch(InvalidEmailException e){
+            msgErro.setText(e.getMessage());
             msgErro.setVisibility(View.VISIBLE);
-
-            Log.d("Useres", "Falhou login");
+        } catch(InvalidAuthenticationException e){
+            msgErro.setText(e.getMessage());
+            msgErro.setVisibility(View.VISIBLE);
         }
     }
 }

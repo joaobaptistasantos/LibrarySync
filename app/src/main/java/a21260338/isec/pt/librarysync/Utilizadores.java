@@ -95,14 +95,14 @@ public class Utilizadores implements Serializable {
         // falta validar passwords e emails em termos de string inserida
     }
 
-    public Utilizador autentica(String email, String password) throws InvalidParameterException, InvalidEmailException{
+    public Utilizador autentica(String email, String password) throws InvalidEmailException, InvalidAuthenticationException{
         validaDados(email, password);
 
         for(Utilizador u : utilizadores)
             if(u.autentica(email, password))
                 return u;
 
-        throw new InvalidParameterException("Autenticacao falhou!");
+        throw new InvalidAuthenticationException("Dados inválidos!");
     }
 
     public void addSpecialUsers(){
