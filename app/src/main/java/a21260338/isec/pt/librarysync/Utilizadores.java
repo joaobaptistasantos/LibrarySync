@@ -36,7 +36,7 @@ public class Utilizadores implements Serializable {
         return null;
     }
 
-    public boolean addUtilizador(String email, String password, String password2) throws IOException, InvalidObjectException {
+    public boolean addUtilizador(String email, String password, String password2) throws InvalidEmailException, InvalidDifferentPasswordsException {
 
         try{
             validaDados(email, password, password2);
@@ -75,27 +75,27 @@ public class Utilizadores implements Serializable {
         return false;
     }
 
-    public void validaDados(String email){
+    public void validaDados(String email) throws InvalidEmailException {
         if(!email.contains("@"))
-            throw new InvalidParameterException("Email Inválido");
+            throw new InvalidEmailException("Email Inválido");
     }
 
-    public void validaDados(String email, String passsword){
+    public void validaDados(String email, String passsword) throws InvalidEmailException {
         validaDados(email);
 
         // falta validar passwords e emails em termos de string inserida
     }
 
-    public void validaDados(String email, String password, String password2){
+    public void validaDados(String email, String password, String password2) throws InvalidEmailException, InvalidDifferentPasswordsException {
         validaDados(email);
 
         if(!password.equals(password2))
-            throw new InvalidParameterException("Passwords têm que ser iguais!");
+            throw new InvalidDifferentPasswordsException("Passwords têm que ser iguais!");
 
         // falta validar passwords e emails em termos de string inserida
     }
 
-    public Utilizador autentica(String email, String password) throws InvalidParameterException{
+    public Utilizador autentica(String email, String password) throws InvalidParameterException, InvalidEmailException{
         validaDados(email, password);
 
         for(Utilizador u : utilizadores)

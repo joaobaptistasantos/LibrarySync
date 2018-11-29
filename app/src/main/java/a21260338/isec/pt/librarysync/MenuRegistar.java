@@ -46,16 +46,24 @@ public class MenuRegistar extends Activity {
         et = (EditText)findViewById(R.id.confirmPasswordInput);
         String passwordConfirmacao = et.getText().toString();
 
-        utilizadores.addUtilizador(email, password, passwordConfirmacao);
-
-        msgErro.setVisibility(View.VISIBLE);
+        try {
+            utilizadores.addUtilizador(email, password, passwordConfirmacao);
+        } catch(InvalidEmailException e){
+            msgErro.setText(e.getMessage());
+            msgErro.setVisibility(View.VISIBLE);
+            return;
+        } catch(InvalidDifferentPasswordsException e){
+            msgErro.setText(e.getMessage());
+            msgErro.setVisibility(View.VISIBLE);
+            return;
+        }
 
         String result = email + " " + password + " ";
 
         FileOutputStream fOut = null;
 
         try {
-            fOut = openFileOutput("logs50.txt", MODE_APPEND);
+            fOut = openFileOutput("logs51.txt", MODE_APPEND);
             fOut.write(result.getBytes());
             fOut.flush();
         }

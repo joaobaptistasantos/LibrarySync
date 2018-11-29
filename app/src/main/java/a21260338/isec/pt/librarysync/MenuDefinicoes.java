@@ -49,7 +49,7 @@ public class MenuDefinicoes extends Activity {
                         FileOutputStream fOut = null;
 
                         try {
-                            fOut = openFileOutput("logs50.txt", MODE_PRIVATE);
+                            fOut = openFileOutput("logs51.txt", MODE_PRIVATE);
 
                             for (Utilizador u : utilizadores.getUtilizadores()) {
                                 String result = u.getEmail() + " " + u.getPassword() + " ";
