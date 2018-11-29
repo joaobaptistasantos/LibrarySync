@@ -1,5 +1,7 @@
 package a21260338.isec.pt.librarysync;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -98,6 +100,29 @@ public class Utilizadores implements Serializable {
                 return u;
 
         throw new InvalidAuthenticationException("Dados inválidos!");
+    }
+
+    public Intent recuperarConta(String email) throws InvalidEmailException, InvalidAccountRecover {
+        validaDados(email);
+
+        String subject = "Recupera password LibrarySync";
+
+        for (Utilizador u: utilizadores) {
+            if(email.equals(u.getEmail())) {
+                String password = u.getPassword();
+
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL, email);
+                intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                intent.putExtra(Intent.EXTRA_TEXT, password);
+                intent.setType("message/rfc822");
+
+                return intent;
+            }
+        }
+
+        throw new InvalidAccountRecover("Conta impossível de recuperar!");
     }
 
     public void addSpecialUsers(){

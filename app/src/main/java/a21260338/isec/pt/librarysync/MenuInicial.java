@@ -89,7 +89,7 @@ public class MenuInicial extends Activity {
 
     public void esqueceuPassword(View v){
         Intent intent = new Intent(this, MenuEsqueceuPassword.class);
-        intent.putExtra("utilizadores",(Serializable) utilizadores.getUtilizadores());
+        intent.putExtra("utilizadores",(Serializable) utilizadores);
         startActivity(intent);
     }
 
