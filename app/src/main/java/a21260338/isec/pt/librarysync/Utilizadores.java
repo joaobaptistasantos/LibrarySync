@@ -36,17 +36,12 @@ public class Utilizadores implements Serializable {
         return null;
     }
 
-    public boolean addUtilizador(String email, String password, String password2) throws InvalidEmailException, InvalidDifferentPasswordsException {
+    public Utilizador addUtilizador(String email, String password, String password2) throws InvalidEmailException, InvalidDifferentPasswordsException {
+        validaDados(email, password, password2);
 
-        try{
-            validaDados(email, password, password2);
-
-            utilizadores.add(new Aluno(email, password));
-        } catch (InvalidParameterException e){
-            Log.d("Useres", e.toString());
-        }
-
-        return true;
+        Utilizador novo = new Aluno(email, password);
+        utilizadores.add(novo);
+        return novo;
     }
 
     public boolean removeUtilizador(Utilizador user){

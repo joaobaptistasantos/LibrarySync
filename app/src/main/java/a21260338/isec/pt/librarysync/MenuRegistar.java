@@ -19,6 +19,7 @@ import java.util.Scanner;
 public class MenuRegistar extends Activity {
 
     Utilizadores utilizadores;
+    Utilizador ativo;
     TextView msgErro;
 
     @Override
@@ -29,6 +30,7 @@ public class MenuRegistar extends Activity {
         msgErro = (TextView) findViewById(R.id.erroMenuRegistar);
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
+        ativo = null;
     }
 
     public void onLogin(View v){
@@ -47,7 +49,7 @@ public class MenuRegistar extends Activity {
         String passwordConfirmacao = et.getText().toString();
 
         try {
-            utilizadores.addUtilizador(email, password, passwordConfirmacao);
+            ativo = utilizadores.addUtilizador(email, password, passwordConfirmacao);
         } catch(InvalidEmailException e){
             msgErro.setText(e.getMessage());
             msgErro.setVisibility(View.VISIBLE);
@@ -59,7 +61,6 @@ public class MenuRegistar extends Activity {
         }
 
         String result = email + " " + password + " ";
-
         FileOutputStream fOut = null;
 
         try {
@@ -80,10 +81,9 @@ public class MenuRegistar extends Activity {
             }
         }
 
-        Intent intent = new Intent();
+        Intent intent = new Intent(this, MenuPrincipal.class);
         intent.putExtra("utilizadores", utilizadores);
-        setResult(1, intent);
-
-        finish();
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
     }
 }
