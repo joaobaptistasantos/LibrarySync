@@ -2,8 +2,10 @@ package a21260338.isec.pt.librarysync;
 
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InvalidObjectException;
 import java.io.Serializable;
@@ -16,20 +18,22 @@ public class Utilizadores implements Serializable {
 
     List<Utilizador> utilizadores;
 
-    public Utilizadores(File listaUtilizadores) throws FileNotFoundException {
-        Scanner sc = new Scanner(listaUtilizadores);
-        String[] dados;
+    public Utilizadores() {
+        utilizadores = new ArrayList<>();
 
-        utilizadores = new ArrayList<Utilizador>();
-
-        while (sc.hasNext()){
-            dados = sc.next().split(" ");
-            utilizadores.add(new Utilizador(dados[0], dados[1]));
-        }
+        addSpecialUsers();
     }
 
     public List<Utilizador> getUtilizadores() {
         return utilizadores;
+    }
+
+    public Utilizador getUtilizador(String email) {
+        for(Utilizador e : utilizadores)
+            if(e.getEmail().equals(email))
+                return e;
+
+        return null;
     }
 
     public boolean addUtilizador(String email, String password, String password2) throws IOException, InvalidObjectException {
@@ -37,7 +41,7 @@ public class Utilizadores implements Serializable {
         try{
             validaDados(email, password, password2);
 
-            utilizadores.add(new Utilizador(email, password));
+            utilizadores.add(new Aluno(email, password));
         } catch (InvalidParameterException e){
             Log.d("Useres", e.toString());
         }
@@ -45,9 +49,21 @@ public class Utilizadores implements Serializable {
         return true;
     }
 
-    public void logUtilizadores(){
-        for(Utilizador u : utilizadores)
-            Log.d("Useres", "Email: " + u.getEmail() + " Password: " + u.getPassword());
+    public boolean removeUtilizador(Utilizador user){
+        try{
+            Utilizador remover = null;
+
+            for(Utilizador u : utilizadores)
+                if(u.getEmail().equals(user.email))
+                    remover = u;
+
+            utilizadores.remove(remover);
+
+            return utilizadores.remove(remover);
+        } catch(NullPointerException e){
+            Log.d("Useres", "Falhou eliminar utilizador");
+            return false;
+        }
     }
 
     public boolean emailExiste(String email)
@@ -79,13 +95,18 @@ public class Utilizadores implements Serializable {
         // falta validar passwords e emails em termos de string inserida
     }
 
-    public void autentica(String email, String password) throws InvalidParameterException{
+    public Utilizador autentica(String email, String password) throws InvalidParameterException{
         validaDados(email, password);
 
         for(Utilizador u : utilizadores)
             if(u.autentica(email, password))
-                return;
+                return u;
 
         throw new InvalidParameterException("Autenticacao falhou!");
+    }
+
+    public void addSpecialUsers(){
+        utilizadores.add(new Docente("docente@isec.pt", "docente"));
+        utilizadores.add(new Recepcionista("recepcionista@isec.pt", "recepcionista"));
     }
 }

@@ -1,6 +1,8 @@
 package a21260338.isec.pt.librarysync;
 
-public class Utilizador {
+import java.io.Serializable;
+
+public class Utilizador implements Serializable {
     String password;
     String email;
 

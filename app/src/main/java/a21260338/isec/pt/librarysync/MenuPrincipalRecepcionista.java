@@ -4,17 +4,25 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
 public class MenuPrincipalRecepcionista extends Activity {
 
     private AlertDialog sobre;
+    Utilizadores utilizadores;
+    Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal_recepcionista);
+
+        utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
+        ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
+
+        Log.d("Useres", "Ativo: " + ativo.getEmail());
     }
 
     public void exit(View v) {
