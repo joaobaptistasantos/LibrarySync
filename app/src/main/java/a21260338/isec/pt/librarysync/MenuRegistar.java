@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -18,11 +19,14 @@ import java.util.Scanner;
 public class MenuRegistar extends Activity {
 
     Utilizadores utilizadores;
+    TextView msgErro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_registar);
+
+        msgErro = (TextView) findViewById(R.id.erroMenuRegistar);
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
     }
@@ -43,6 +47,8 @@ public class MenuRegistar extends Activity {
         String passwordConfirmacao = et.getText().toString();
 
         utilizadores.addUtilizador(email, password, passwordConfirmacao);
+
+        msgErro.setVisibility(View.VISIBLE);
 
         String result = email + " " + password + " ";
 
