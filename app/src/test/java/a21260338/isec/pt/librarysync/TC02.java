@@ -15,13 +15,12 @@ public class TC02 {
         String input1 = "      ";
         String input2 = "1234";
         boolean output = false;
+        Utilizador teste = null;
 
-        FileOutputStream out = new FileOutputStream("ListaUtilizadores");
+        Utilizadores util = new Utilizadores();
+        teste = util.autentica(input1, input2);
 
-        File listaUtilizadores = new File("ListaUtilizadores");
-
-        Utilizadores util = new Utilizadores(listaUtilizadores);
-        util.autentica(input1, input2);
+        output = teste == null ? false : true;
 
         assertFalse(output);
 
