@@ -1,41 +1,39 @@
 package a21260338.isec.pt.librarysync;
 
 import android.app.Activity;
-import android.content.Context;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.InvalidObjectException;
 import java.io.Serializable;
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class MenuInicial extends Activity {
 
     Utilizadores utilizadores;
     Utilizador ativo;
+    TextView msgErro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_inical);
+        setContentView(R.layout.activity_menu_inicial);
 
         FileInputStream fIn = null;
 
         utilizadores = new Utilizadores();
         ativo = null;
+
+        msgErro = (TextView) findViewById(R.id.erroMenuInicial);
 
         try{
             fIn = openFileInput("logs50.txt");
@@ -117,6 +115,9 @@ public class MenuInicial extends Activity {
             startActivity(intent);
 
         } catch(InvalidParameterException e){
+            msgErro.setText("Falhou Login!");
+            msgErro.setVisibility(View.VISIBLE);
+
             Log.d("Useres", "Falhou login");
         }
     }
