@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.security.InvalidParameterException;
 
 import static org.junit.Assert.*;
 
@@ -13,17 +14,16 @@ public class TC01 {
     @Test
     public void validaDados() throws FileNotFoundException {
         String input = "algo@algo.pt";
-        boolean output;
+        boolean output = true;
 
-        FileOutputStream out = new FileOutputStream("ListaUtilizadores");
-
-        File listaUtilizadores = new File("ListaUtilizadores");
-
-        Utilizadores util = new Utilizadores(listaUtilizadores);
+        Utilizadores util = new Utilizadores();
         // validadeDados não é boolean
-        output = util.validaDados(input);
+        try {
+            util.validaDados(input);
+        } catch(InvalidParameterException e){
+            output = false;
+        }
 
         assertTrue(output);
-
     }
 }

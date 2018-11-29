@@ -16,11 +16,7 @@ public class TC03 {
         boolean output;
         //double delta = 0.1;
 
-        FileOutputStream out = new FileOutputStream("ListaUtilizadores");
-
-        File listaUtilizadores = new File("ListaUtilizadores");
-
-        Utilizadores util = new Utilizadores(listaUtilizadores);
+        Utilizadores util = new Utilizadores();
         output = util.emailExiste(input);
 
         assertFalse(output);

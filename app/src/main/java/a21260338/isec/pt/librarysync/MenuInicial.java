@@ -28,12 +28,12 @@ public class MenuInicial extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inicial);
 
-        FileInputStream fIn = null;
-
         utilizadores = new Utilizadores();
         ativo = null;
 
         msgErro = (TextView) findViewById(R.id.erroMenuInicial);
+
+        FileInputStream fIn = null;
 
         try{
             fIn = openFileInput("logs50.txt");
