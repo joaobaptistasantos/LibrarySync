@@ -19,7 +19,7 @@ public class Utilizadores implements Serializable {
     List<Utilizador> utilizadores;
 
     public Utilizadores() {
-        utilizadores = new ArrayList<Utilizador>();
+        utilizadores = new ArrayList<>();
     }
 
     public List<Utilizador> getUtilizadores() {
@@ -47,17 +47,17 @@ public class Utilizadores implements Serializable {
         return true;
     }
 
-    public boolean removeUtilizador(String user){
+    public boolean removeUtilizador(Utilizador user){
         try{
             Utilizador remover = null;
 
             for(Utilizador u : utilizadores)
-                if(u.getEmail().equals(user))
+                if(u.getEmail().equals(user.email))
                     remover = u;
 
             utilizadores.remove(remover);
 
-            return true;
+            return utilizadores.remove(remover);
         } catch(NullPointerException e){
             Log.d("Useres", "Falhou eliminar utilizador");
             return false;
@@ -93,18 +93,13 @@ public class Utilizadores implements Serializable {
         // falta validar passwords e emails em termos de string inserida
     }
 
-    public void autentica(String email, String password) throws InvalidParameterException{
+    public Utilizador autentica(String email, String password) throws InvalidParameterException{
         validaDados(email, password);
 
         for(Utilizador u : utilizadores)
             if(u.autentica(email, password))
-                return;
+                return u;
 
         throw new InvalidParameterException("Autenticacao falhou!");
-    }
-
-    public void logUtilizadores(){
-        for(Utilizador u : utilizadores)
-            Log.d("Useres", "Email: " + u.getEmail() + " Password: " + u.getPassword());
     }
 }

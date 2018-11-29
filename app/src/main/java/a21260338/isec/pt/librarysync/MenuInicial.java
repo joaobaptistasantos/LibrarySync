@@ -25,6 +25,7 @@ import java.util.Scanner;
 public class MenuInicial extends Activity {
 
     Utilizadores utilizadores;
+    Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +35,10 @@ public class MenuInicial extends Activity {
         FileInputStream fIn = null;
 
         utilizadores = new Utilizadores();
+        ativo = null;
 
         try{
-            fIn = openFileInput("logs28.txt");
+            fIn = openFileInput("logs50.txt");
             InputStreamReader isr = new InputStreamReader(fIn);
             BufferedReader br = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
@@ -99,10 +101,11 @@ public class MenuInicial extends Activity {
         String password = et.getText().toString();
 
         try{
-            utilizadores.autentica(email, password);
+            ativo = utilizadores.autentica(email, password);
 
             Intent intent = new Intent(this, MenuPrincipal.class);
             intent.putExtra("utilizadores", utilizadores);
+            intent.putExtra("ativo", ativo);
             startActivity(intent);
 
         } catch(InvalidParameterException e){

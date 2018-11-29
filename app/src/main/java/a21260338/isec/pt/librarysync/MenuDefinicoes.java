@@ -21,7 +21,7 @@ public class MenuDefinicoes extends Activity {
     private AlertDialog sobre;
     private AlertDialog aviso;
     Utilizadores utilizadores;
-    //Utilizador ativo;
+    Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class MenuDefinicoes extends Activity {
         setContentView(R.layout.activity_menu_definicoes);
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
+        ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
     }
 
     public void back(View v){
@@ -43,16 +44,22 @@ public class MenuDefinicoes extends Activity {
                 .setMessage("Tem a certeza que pretende cancelar a sua conta?")
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        utilizadores.removeUtilizador("jocatoca3@gmail.com");
+                        utilizadores.removeUtilizador(ativo);
 
                         FileOutputStream fOut = null;
 
                         try {
-                            fOut = openFileOutput("logs28.txt", MODE_PRIVATE);
+                            fOut = openFileOutput("logs50.txt", MODE_PRIVATE);
 
-                            for(Utilizador u : utilizadores.getUtilizadores()){
-                                String result = u.getEmail() + " " + u.getPassword() + " ";
-                                fOut.write(result.getBytes());
+                            if(utilizadores.getUtilizadores().size() != 0) {
+                                for (Utilizador u : utilizadores.getUtilizadores()) {
+                                    String result = u.getEmail() + " " + u.getPassword() + " ";
+                                    fOut.write(result.getBytes());
+                                    fOut.flush();
+                                }
+                            }
+                            else{
+                                fOut.write((" a ").getBytes());
                                 fOut.flush();
                             }
 
