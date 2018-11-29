@@ -51,18 +51,11 @@ public class MenuDefinicoes extends Activity {
                         try {
                             fOut = openFileOutput("logs50.txt", MODE_PRIVATE);
 
-                            if(utilizadores.getUtilizadores().size() != 0) {
-                                for (Utilizador u : utilizadores.getUtilizadores()) {
-                                    String result = u.getEmail() + " " + u.getPassword() + " ";
-                                    fOut.write(result.getBytes());
-                                    fOut.flush();
-                                }
-                            }
-                            else{
-                                fOut.write((" a ").getBytes());
+                            for (Utilizador u : utilizadores.getUtilizadores()) {
+                                String result = u.getEmail() + " " + u.getPassword() + " ";
+                                fOut.write(result.getBytes());
                                 fOut.flush();
                             }
-
                         }
                         catch (IOException e) {
                             Log.e("Exception", "File write failed: " + e.toString());

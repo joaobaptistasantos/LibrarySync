@@ -20,6 +20,8 @@ public class Utilizadores implements Serializable {
 
     public Utilizadores() {
         utilizadores = new ArrayList<>();
+
+        addSpecialUsers();
     }
 
     public List<Utilizador> getUtilizadores() {
@@ -39,7 +41,7 @@ public class Utilizadores implements Serializable {
         try{
             validaDados(email, password, password2);
 
-            utilizadores.add(new Utilizador(email, password));
+            utilizadores.add(new Aluno(email, password));
         } catch (InvalidParameterException e){
             Log.d("Useres", e.toString());
         }
@@ -101,5 +103,10 @@ public class Utilizadores implements Serializable {
                 return u;
 
         throw new InvalidParameterException("Autenticacao falhou!");
+    }
+
+    public void addSpecialUsers(){
+        utilizadores.add(new Docente("docente@isec.pt", "docente"));
+        utilizadores.add(new Recepcionista("recepcionista@isec.pt", "recepcionista"));
     }
 }

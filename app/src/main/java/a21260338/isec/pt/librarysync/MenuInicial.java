@@ -103,7 +103,15 @@ public class MenuInicial extends Activity {
         try{
             ativo = utilizadores.autentica(email, password);
 
-            Intent intent = new Intent(this, MenuPrincipal.class);
+            Intent intent = null;
+
+            if(ativo.getClass() == Aluno.class)
+                intent = new Intent(this, MenuPrincipal.class);
+            else if(ativo.getClass() == Docente.class)
+                intent = new Intent(this, MenuPrincipalDocente.class);
+            else if(ativo.getClass() == Recepcionista.class)
+                intent = new Intent(this, MenuPrincipalRecepcionista.class);
+
             intent.putExtra("utilizadores", utilizadores);
             intent.putExtra("ativo", ativo);
             startActivity(intent);
