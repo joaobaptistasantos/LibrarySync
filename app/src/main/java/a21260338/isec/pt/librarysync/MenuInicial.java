@@ -36,7 +36,7 @@ public class MenuInicial extends Activity {
         FileInputStream fIn = null;
 
         try{
-            fIn = openFileInput("logs52.txt");
+            fIn = openFileInput("logs54.txt");
             InputStreamReader isr = new InputStreamReader(fIn);
             BufferedReader br = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
@@ -50,6 +50,8 @@ public class MenuInicial extends Activity {
 
             for(int i = 0; i < dados.length - 1; i+=2){
                 try {
+                    Log.d("TestPass", "Username: " + dados[i]);
+                    Log.d("TestPass", "Password: " + dados[i+1]);
                     utilizadores.addUtilizador(dados[i], dados[i + 1], dados[i + 1]);
                 } catch(InvalidEmailException e){
                 } catch(InvalidDifferentPasswordsException e){

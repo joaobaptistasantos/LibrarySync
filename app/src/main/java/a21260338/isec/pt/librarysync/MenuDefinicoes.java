@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,8 +22,9 @@ import java.io.OutputStreamWriter;
 
 public class MenuDefinicoes extends Activity {
 
-    private AlertDialog sobre;
-    private AlertDialog aviso;
+    private AlertDialog dialog;
+    private EditText input;
+    TextView msgErro;
     Utilizadores utilizadores;
     Utilizador ativo;
 
@@ -36,6 +41,13 @@ public class MenuDefinicoes extends Activity {
         finish();
     }
 
+    public void mudarPassword(View b){
+        Intent intent = new Intent(this, MenuAlterarPassword.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
+    }
+
     public void cancelarConta(View v){
         // Cria o gerador do AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -49,7 +61,7 @@ public class MenuDefinicoes extends Activity {
                         FileOutputStream fOut = null;
 
                         try {
-                            fOut = openFileOutput("logs52.txt", MODE_PRIVATE);
+                            fOut = openFileOutput("logs54.txt", MODE_PRIVATE);
 
                             for (Utilizador u : utilizadores.getUtilizadores()) {
                                 String result = u.getEmail() + " " + u.getPassword() + " ";
@@ -82,9 +94,9 @@ public class MenuDefinicoes extends Activity {
                 });
 
         //cria o AlertDialog
-        aviso = builder.create();
+        dialog = builder.create();
         //Exibe
-        aviso.show();
+        dialog.show();
     }
 
     public void sobre(View v){
@@ -98,7 +110,7 @@ public class MenuDefinicoes extends Activity {
         view.findViewById(R.id.bt).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 // Desfaz o alerta
-                sobre.dismiss();
+                dialog.dismiss();
             }
         });
 
@@ -106,7 +118,7 @@ public class MenuDefinicoes extends Activity {
         builder.setTitle("Sobre")
                 .setView(view);
 
-        sobre = builder.create();
-        sobre.show();
+        dialog = builder.create();
+        dialog.show();
     }
 }

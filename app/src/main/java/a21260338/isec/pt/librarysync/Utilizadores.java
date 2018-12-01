@@ -129,4 +129,20 @@ public class Utilizadores implements Serializable {
         utilizadores.add(new Docente("docente@isec.pt", "docente"));
         utilizadores.add(new Recepcionista("recepcionista@isec.pt", "recepcionista"));
     }
+
+    public void mudarPassord(Utilizador user, String passwordAntiga, String passwordNova, String passwordNova2) throws InvalidDifferentPasswordsException {
+        //validaPassword();
+
+        if(!(user.getPassword().equals(passwordAntiga)))
+            throw new InvalidDifferentPasswordsException("Password atual errada!");
+
+        if(!passwordNova.equals(passwordNova2))
+            throw new InvalidDifferentPasswordsException("Passwords têm que ser iguais!");
+
+        for(Utilizador u : utilizadores)
+            if(u.getEmail().equals(user.email))
+                u.setPassword(passwordNova);
+
+        user.setPassword(passwordNova);
+    }
 }

@@ -8,7 +8,7 @@
     <string name="enviarEmail">Enviar E-mail de Confirmação</string>
     <string name="password">Password</string>
     <string name="digitarPassword">Insira password...</string>
-    <string name="confirmaPassword">Confirma Password</string>
+    <string name="confirmaPassword">Confirmar Password</string>
     <string name="registarNovo">Registar novo utilizador</string>
     <string name="consultarHorarios">Consultar Horários Disponíveis</string>
 
@@ -34,4 +34,11 @@
     </string>
     <string name="docente">Docente Responsável: José Cunha</string>
     <string name="alunos">Alunos: Amadeus Alves, Gustavo Garcia, João Monteiro, João Santos, Miguel Pires</string>
+
+    <string name="menuAlterarPassword">Alterar Password</string>
+    <string name="passAntigaTitle">Password Antiga</string>
+    <string name="passAntigaPlaceholder">Inserir password atual...</string>
+    <string name="passNovaTitle">Password Nova</string>
+    <string name="passNovaPlaceholder">Inserir nova password...</string>
+    <string name="alterar">Alterar</string>
 </resources>
