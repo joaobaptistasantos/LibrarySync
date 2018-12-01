@@ -31,6 +31,13 @@ public class MenuPrincipal extends Activity {
         startActivity(intent);
     }
 
+    public void gerirReservas(View v){
+        Intent intent = new Intent(this, MenuGerirReservas.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
+    }
+
     public void exit(View v) {
         Intent intent = new Intent(getApplicationContext(), MenuInicial.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

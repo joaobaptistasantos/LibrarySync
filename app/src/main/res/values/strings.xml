@@ -47,4 +47,7 @@
     <string name="adicionarAluno">Adicionar Aluno</string>
     <string name="adicionarMaterial">Adicionar Material</string>
     <string name="concluido">Concluido</string>
+
+    <string name="menuGerirReservas">Gerir Reservas</string>
+
 </resources>

@@ -102,10 +102,11 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@android:color/transparent"
+                android:contentDescription="@null"
+                android:onClick="gerirReservas"
                 android:paddingBottom="10dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/gerir_icon"
-                android:contentDescription="@null"/>
+                android:src="@drawable/gerir_icon" />
 
             <TextView
                 android:id="@+id/textoGerirReservas"
