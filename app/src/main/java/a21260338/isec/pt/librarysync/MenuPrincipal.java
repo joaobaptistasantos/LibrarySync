@@ -5,11 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 public class MenuPrincipal extends Activity {
 
-    Utilizadores utilizadores;
-    Utilizador ativo;
+    private Utilizadores utilizadores;
+    private Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +20,8 @@ public class MenuPrincipal extends Activity {
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
         ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
 
-        Log.d("Useres", "Ativo: " + ativo.getEmail());
+        TextView tvEmailUser = (TextView) findViewById(R.id.emailUser_MenuPrincipal);
+        tvEmailUser.setText(ativo.getEmail());
     }
 
     public void exit(View v) {

@@ -161,8 +161,38 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
         android:paddingRight="15dp"
+        android:paddingLeft="15dp"
         android:paddingBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/zonaUser_MenuPrincipal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/iconeUser_MenuPrincipal"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_user"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:id="@+id/emailUser_MenuPrincipal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="12sp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/opcaoSair_MenuPrincipal"

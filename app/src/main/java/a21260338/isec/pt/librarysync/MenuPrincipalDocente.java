@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 public class MenuPrincipalDocente extends Activity {
 
     private AlertDialog sobre;
-    Utilizadores utilizadores;
-    Utilizador ativo;
+    private Utilizadores utilizadores;
+    private Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,8 @@ public class MenuPrincipalDocente extends Activity {
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
         ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
 
-        Log.d("Useres", "Ativo: " + ativo.getEmail());
+        TextView tvEmailUser = (TextView) findViewById(R.id.emailUser_MenuPrincipalDocente);
+        tvEmailUser.setText(ativo.getEmail());
     }
 
     public void exit(View v) {
