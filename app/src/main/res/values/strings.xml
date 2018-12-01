@@ -41,4 +41,10 @@
     <string name="passNovaTitle">Password Nova</string>
     <string name="passNovaPlaceholder">Inserir nova password...</string>
     <string name="alterar">Alterar</string>
+
+    <string name="menuReservarGabinete">Reservar Gabinete</string>
+    <string name="dataTitle">Data:</string>
+    <string name="adicionarAluno">Adicionar Aluno</string>
+    <string name="adicionarMaterial">Adicionar Material</string>
+    <string name="concluido">Concluido</string>
 </resources>

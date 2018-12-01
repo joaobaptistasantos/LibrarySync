@@ -24,6 +24,13 @@ public class MenuPrincipal extends Activity {
         tvEmailUser.setText(ativo.getEmail());
     }
 
+    public void reservarGabinete(View v){
+        Intent intent = new Intent(this, MenuReservarGabinete.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
+    }
+
     public void exit(View v) {
         Intent intent = new Intent(getApplicationContext(), MenuInicial.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
