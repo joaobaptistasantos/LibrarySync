@@ -17,18 +17,17 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.security.InvalidParameterException;
 
+import static a21260338.isec.pt.librarysync.Globals.filename;
+
 public class MenuInicial extends Activity {
 
-    Utilizadores utilizadores;
-    Utilizador ativo;
-    TextView msgErro;
+    private Utilizadores utilizadores;
+    private Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inicial);
-
-        msgErro = (TextView) findViewById(R.id.erroMenuInicial);
 
         utilizadores = new Utilizadores();
         ativo = null;
@@ -36,7 +35,7 @@ public class MenuInicial extends Activity {
         FileInputStream fIn = null;
 
         try{
-            fIn = openFileInput("logs54.txt");
+            fIn = openFileInput(filename);
             InputStreamReader isr = new InputStreamReader(fIn);
             BufferedReader br = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
@@ -53,8 +52,9 @@ public class MenuInicial extends Activity {
                     Log.d("TestPass", "Username: " + dados[i]);
                     Log.d("TestPass", "Password: " + dados[i+1]);
                     utilizadores.addUtilizador(dados[i], dados[i + 1], dados[i + 1]);
-                } catch(InvalidEmailException e){
-                } catch(InvalidDifferentPasswordsException e){
+                } catch(InvalidEmailException | InvalidDifferentPasswordsException | InvalidPasswordException | AccountAlreadyExistsException e){
+                } catch(Exception e){
+                    e.printStackTrace();
                 }
             }
 
@@ -71,7 +71,6 @@ public class MenuInicial extends Activity {
                 }
             }
         }
-
     }
 
     public void onRegistar(View v){
@@ -97,7 +96,7 @@ public class MenuInicial extends Activity {
 
     public void login(View v){
         EditText et = (EditText)findViewById(R.id.emailInput_MenuInicial);
-        String email = et.getText().toString();
+        String email = et.getText().toString().trim();
 
         et = (EditText)findViewById(R.id.passwordInput_MenuInicial);
         String password = et.getText().toString();
@@ -118,12 +117,12 @@ public class MenuInicial extends Activity {
             intent.putExtra("ativo", ativo);
             startActivity(intent);
 
-        } catch(InvalidEmailException e){
+        } catch(InvalidEmailException | InvalidAuthenticationException | InvalidPasswordException e){
+            TextView msgErro = (TextView) findViewById(R.id.erroMenuInicial);
             msgErro.setText(e.getMessage());
             msgErro.setVisibility(View.VISIBLE);
-        } catch(InvalidAuthenticationException e){
-            msgErro.setText(e.getMessage());
-            msgErro.setVisibility(View.VISIBLE);
+        } catch(Exception e){
+            e.printStackTrace();
         }
     }
 }

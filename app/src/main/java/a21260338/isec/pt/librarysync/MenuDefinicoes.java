@@ -20,13 +20,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
+import static a21260338.isec.pt.librarysync.Globals.filename;
+
 public class MenuDefinicoes extends Activity {
 
     private AlertDialog dialog;
-    private EditText input;
-    TextView msgErro;
-    Utilizadores utilizadores;
-    Utilizador ativo;
+    private Utilizadores utilizadores;
+    private Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class MenuDefinicoes extends Activity {
                         FileOutputStream fOut = null;
 
                         try {
-                            fOut = openFileOutput("logs54.txt", MODE_PRIVATE);
+                            fOut = openFileOutput(filename, MODE_PRIVATE);
 
                             for (Utilizador u : utilizadores.getUtilizadores()) {
                                 String result = u.getEmail() + " " + u.getPassword() + " ";

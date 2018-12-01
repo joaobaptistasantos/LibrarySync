@@ -38,8 +38,13 @@ public class Utilizadores implements Serializable {
         return null;
     }
 
-    public Utilizador addUtilizador(String email, String password, String password2) throws InvalidEmailException, InvalidDifferentPasswordsException {
-        validaDados(email, password, password2);
+    public Utilizador addUtilizador(String email, String password, String password2) throws InvalidEmailException, InvalidDifferentPasswordsException, InvalidPasswordException, AccountAlreadyExistsException {
+        emailExiste(email);
+        validaEmail(email);
+        validaPassword(password);
+
+        if(!password.equals(password2))
+            throw new InvalidDifferentPasswordsException("Passwords têm que ser iguais!");
 
         Utilizador novo = new Aluno(email, password);
         utilizadores.add(novo);
@@ -58,52 +63,42 @@ public class Utilizadores implements Serializable {
 
             return utilizadores.remove(remover);
         } catch(NullPointerException e){
-            Log.d("Useres", "Falhou eliminar utilizador");
             return false;
         }
     }
 
-    public boolean emailExiste(String email)
-    {
+    public void emailExiste(String email) throws AccountAlreadyExistsException {
         for(Utilizador u : utilizadores)
             if(u.getEmail().equals(email))
-                return true;
-
-        return false;
+                throw new AccountAlreadyExistsException("Conta já existente!");
     }
 
-    public void validaDados(String email) throws InvalidEmailException {
-        if(!email.contains("@"))
+    public void validaEmail(String email) throws InvalidEmailException {
+        if(!email.contains("@") || !Character.isAlphabetic(email.charAt(email.length()-1)) || !Character.isAlphabetic(email.charAt(0)))
             throw new InvalidEmailException("Email Inválido");
     }
 
-    public void validaDados(String email, String passsword) throws InvalidEmailException {
-        validaDados(email);
+    public void validaPassword(String password) throws InvalidPasswordException {
+        if(password.isEmpty())
+            throw new InvalidPasswordException("Password por preencher!");
 
-        // falta validar passwords e emails em termos de string inserida
+        if(!password.matches("[a-zA-Z0-9]*"))
+            throw new InvalidPasswordException("Password deve conter apenas letras e números!");
     }
 
-    public void validaDados(String email, String password, String password2) throws InvalidEmailException, InvalidDifferentPasswordsException {
-        validaDados(email);
-
-        if(!password.equals(password2))
-            throw new InvalidDifferentPasswordsException("Passwords têm que ser iguais!");
-
-        // falta validar passwords e emails em termos de string inserida
-    }
-
-    public Utilizador autentica(String email, String password) throws InvalidEmailException, InvalidAuthenticationException{
-        validaDados(email, password);
+    public Utilizador autentica(String email, String password) throws InvalidEmailException, InvalidPasswordException, InvalidAuthenticationException{
+        validaEmail(email);
+        validaPassword(password);
 
         for(Utilizador u : utilizadores)
             if(u.autentica(email, password))
                 return u;
 
-        throw new InvalidAuthenticationException("Dados inválidos!");
+        throw new InvalidAuthenticationException("Conta não existe!");
     }
 
     public Intent recuperarConta(String email) throws InvalidEmailException, InvalidAccountRecover {
-        validaDados(email);
+        validaEmail(email);
 
         String subject = "Recupera password LibrarySync";
 
@@ -125,24 +120,24 @@ public class Utilizadores implements Serializable {
         throw new InvalidAccountRecover("Conta impossível de recuperar!");
     }
 
-    public void addSpecialUsers(){
-        utilizadores.add(new Docente("docente@isec.pt", "docente"));
-        utilizadores.add(new Recepcionista("recepcionista@isec.pt", "recepcionista"));
-    }
-
-    public void mudarPassord(Utilizador user, String passwordAntiga, String passwordNova, String passwordNova2) throws InvalidDifferentPasswordsException {
-        //validaPassword();
-
+    public void mudarPassord(Utilizador user, String passwordAntiga, String passwordNova, String passwordNova2) throws InvalidDifferentPasswordsException, InvalidPasswordException {
         if(!(user.getPassword().equals(passwordAntiga)))
             throw new InvalidDifferentPasswordsException("Password atual errada!");
 
         if(!passwordNova.equals(passwordNova2))
             throw new InvalidDifferentPasswordsException("Passwords têm que ser iguais!");
 
+        validaPassword(passwordNova);
+
         for(Utilizador u : utilizadores)
             if(u.getEmail().equals(user.email))
                 u.setPassword(passwordNova);
 
         user.setPassword(passwordNova);
+    }
+
+    public void addSpecialUsers(){
+        utilizadores.add(new Docente("docente@isec.pt", "docente"));
+        utilizadores.add(new Recepcionista("recepcionista@isec.pt", "recepcionista"));
     }
 }

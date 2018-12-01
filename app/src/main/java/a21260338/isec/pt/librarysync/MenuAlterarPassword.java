@@ -10,11 +10,12 @@ import android.widget.TextView;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import static a21260338.isec.pt.librarysync.Globals.filename;
+
 public class MenuAlterarPassword extends Activity {
 
-    TextView msgErro;
-    Utilizadores utilizadores;
-    Utilizador ativo;
+    private Utilizadores utilizadores;
+    private Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +38,21 @@ public class MenuAlterarPassword extends Activity {
         input = (EditText) findViewById(R.id.confirmPassInput_MenuAlterarPassword);
         String passNova2 = input.getText().toString();
 
-        msgErro = (TextView) findViewById(R.id.erroMudarPass);
-
         try{
             utilizadores.mudarPassord(ativo, passAtual, passNova, passNova2);
-        } catch(InvalidDifferentPasswordsException e) {
+        } catch(InvalidDifferentPasswordsException | InvalidPasswordException e) {
+            TextView msgErro = (TextView) findViewById(R.id.erroMudarPass);
             msgErro.setText(e.getMessage());
             msgErro.setVisibility(View.VISIBLE);
             return;
+        } catch(Exception e){
+            e.printStackTrace();
         }
 
         FileOutputStream fOut = null;
 
         try {
-            fOut = openFileOutput("logs54.txt", MODE_PRIVATE);
+            fOut = openFileOutput(filename, MODE_PRIVATE);
 
             for (Utilizador u : utilizadores.getUtilizadores()) {
                 String result = u.getEmail() + " " + u.getPassword() + " ";
@@ -70,5 +72,7 @@ public class MenuAlterarPassword extends Activity {
                 }
             }
         }
+
+        finish();
     }
 }

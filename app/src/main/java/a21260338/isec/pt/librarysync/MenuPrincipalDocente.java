@@ -12,9 +12,8 @@ import android.widget.TextView;
 public class MenuPrincipalDocente extends Activity {
 
     private AlertDialog sobre;
-    Utilizadores utilizadores;
-    Utilizador ativo;
-    TextView tvEmailUser;
+    private Utilizadores utilizadores;
+    private Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,8 @@ public class MenuPrincipalDocente extends Activity {
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
         ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
-        tvEmailUser = (TextView) findViewById(R.id.emailUser_MenuPrincipalDocente);
+
+        TextView tvEmailUser = (TextView) findViewById(R.id.emailUser_MenuPrincipalDocente);
         tvEmailUser.setText(ativo.getEmail());
     }
 

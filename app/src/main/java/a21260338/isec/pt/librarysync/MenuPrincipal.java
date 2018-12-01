@@ -9,9 +9,8 @@ import android.widget.TextView;
 
 public class MenuPrincipal extends Activity {
 
-    Utilizadores utilizadores;
-    Utilizador ativo;
-    TextView tvEmailUser;
+    private Utilizadores utilizadores;
+    private Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +19,8 @@ public class MenuPrincipal extends Activity {
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
         ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
-        tvEmailUser = (TextView) findViewById(R.id.emailUser_MenuPrincipal);
+
+        TextView tvEmailUser = (TextView) findViewById(R.id.emailUser_MenuPrincipal);
         tvEmailUser.setText(ativo.getEmail());
     }
 

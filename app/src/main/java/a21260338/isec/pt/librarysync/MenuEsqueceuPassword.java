@@ -15,18 +15,12 @@ import java.util.List;
 
 public class MenuEsqueceuPassword extends Activity {
 
-    Utilizadores utilizadores;
-    List<Utilizador> users;
-    private EditText et;
-    TextView msgErro;
+    private Utilizadores utilizadores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_esqueceu_password);
-
-        msgErro = (TextView) findViewById(R.id.erroMenuEsqueceuPassword);
-        et = findViewById(R.id.emailInput_MenuEsqueceu);
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
     }
@@ -43,18 +37,18 @@ public class MenuEsqueceuPassword extends Activity {
 
     public void enviarEmail(View v){
         try {
-            String emailTo = et.getText().toString();
+            EditText et = findViewById(R.id.emailInput_MenuEsqueceu);
+            String emailTo = et.getText().toString().trim();
             Intent intent = utilizadores.recuperarConta(emailTo);
 
             startActivity(Intent.createChooser(intent, "Escolher cliente"));
-        }catch (InvalidEmailException e){
+        }catch (InvalidEmailException | InvalidAccountRecover e){
+            TextView msgErro = (TextView) findViewById(R.id.erroMenuEsqueceuPassword);
             msgErro.setText(e.getMessage());
             msgErro.setVisibility(View.VISIBLE);
             return;
-        } catch(InvalidAccountRecover e){
-            msgErro.setText(e.getMessage());
-            msgErro.setVisibility(View.VISIBLE);
-            return;
+        } catch(Exception e){
+            e.printStackTrace();
         }
 
         onLogin(v);
