@@ -56,4 +56,8 @@
     <string name="estadoReserva">Estado:</string>
     <string name="alunosReserva">Alunos:</string>
     <string name="materialReserva">Material:</string>
+
+    <string name="menuGerirOcupantes">Gerir Ocupantes</string>
+
+    <string name="menuGerirMaterial">Gerir Material</string>
 </resources>
