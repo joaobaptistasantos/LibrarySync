@@ -50,4 +50,10 @@
 
     <string name="menuGerirReservas">Gerir Reservas</string>
 
+    <string name="menuReserva">Reserva</string>
+    <string name="dataReserva">Data:</string>
+    <string name="horarioReserva">Horário:</string>
+    <string name="estadoReserva">Estado:</string>
+    <string name="alunosReserva">Alunos:</string>
+    <string name="materialReserva">Material:</string>
 </resources>
