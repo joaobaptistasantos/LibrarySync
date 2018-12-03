@@ -26,9 +26,10 @@ public class MenuEsqueceuPassword extends Activity {
     }
 
     public void onRegistar(View v){
-        Intent intent = new Intent(this, MenuRegistar.class);
-        intent.putExtra("utilizadores",(Serializable) utilizadores);
-        startActivity(intent);
+        Intent intent = new Intent();
+        intent.putExtra("utilizadores", utilizadores);
+        setResult(1, intent);
+        finish();
     }
 
     public void onLogin(View v){

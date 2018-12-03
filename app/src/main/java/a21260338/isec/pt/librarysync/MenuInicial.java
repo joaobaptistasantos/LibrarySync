@@ -83,15 +83,24 @@ public class MenuInicial extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 1){
+        if(requestCode == 1 && resultCode == 1){
             utilizadores = (Utilizadores) data.getSerializableExtra("utilizadores");
+        }else
+
+        if(requestCode == 1 && resultCode == 0){
+        }else
+
+        if(requestCode == 2 && resultCode == 1){
+            Intent intent = new Intent(this, MenuRegistar.class);
+            intent.putExtra("utilizadores",(Serializable) utilizadores);
+            startActivityForResult(intent, 2);
         }
     }
 
     public void esqueceuPassword(View v){
         Intent intent = new Intent(this, MenuEsqueceuPassword.class);
         intent.putExtra("utilizadores",(Serializable) utilizadores);
-        startActivity(intent);
+        startActivityForResult(intent, 2);
     }
 
     public void consultarHorariosDisponiveis(View v){
