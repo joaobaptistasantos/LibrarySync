@@ -35,6 +35,8 @@ public class MenuRegistar extends Activity {
     public void onLogin(View v){
         Intent intent = new Intent(this, MenuInicial.class);
         startActivity(intent);
+
+        //finish();
     }
 
     public void registar(View v) throws IOException {
