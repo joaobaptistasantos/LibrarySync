@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -33,8 +34,10 @@ public class MenuRegistar extends Activity {
     }
 
     public void onLogin(View v){
-        Intent intent = new Intent(this, MenuInicial.class);
-        startActivity(intent);
+        Intent intent = new Intent();
+        intent.putExtra("utilizadores", utilizadores);
+        setResult(1, intent);
+        finish();
     }
 
     public void registar(View v) throws IOException {
@@ -84,5 +87,14 @@ public class MenuRegistar extends Activity {
         intent.putExtra("utilizadores", utilizadores);
         intent.putExtra("ativo", ativo);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+
+        Intent intent = new Intent();
+        setResult(0, intent);
+        finish();
     }
 }
