@@ -59,8 +59,14 @@
             android:name=".MenuReserva"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
-        <activity android:name=".MenuGerirOcupantes" />
-        <activity android:name=".MenuGerirMaterial"></activity>
+        <activity
+            android:name=".MenuGerirOcupantes"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".MenuGerirMaterial"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
     </application>
 
 </manifest>

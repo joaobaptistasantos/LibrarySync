@@ -58,6 +58,18 @@
     <string name="materialReserva">Material:</string>
 
     <string name="menuGerirOcupantes">Gerir Ocupantes</string>
+    <string name="adicionarOcupanteTitle">Adicionar Aluno:</string>
+    <string name="adicionarOcupantePlaceholder">Inserir email aluno...</string>
+    <string name="adicionarOcupanteButton">Adicionar</string>
+    <string name="removerOcupanteTitle">Remover Aluno:</string>
+    <string name="removerOcupantePlaceholder">Inserir email aluno...</string>
+    <string name="removerOcupanteButton">Remover</string>
+    <string name="ocupantesTitle">Ocupantes:</string>
 
     <string name="menuGerirMaterial">Gerir Material</string>
+    <string name="canetas">Canetas para Quadro:</string>
+    <string name="apagador">Apagador</string>
+    <string name="extensao">Extensão</string>
+    <string name="minCanetas">0</string>
+    <string name="maxCanetas">3</string>
 </resources>

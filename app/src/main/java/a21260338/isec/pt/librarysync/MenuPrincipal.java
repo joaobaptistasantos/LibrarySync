@@ -32,7 +32,9 @@ public class MenuPrincipal extends Activity {
     }
 
     public void gerirReservas(View v){
-        Intent intent = new Intent(this, MenuGerirReservas.class);
+        // meter o codigo abaixo quando a tabela for feita
+        // Intent intent = new Intent(this, MenuGerirReservas.class);
+        Intent intent = new Intent(this, MenuReserva.class);
         intent.putExtra("utilizadores", utilizadores);
         intent.putExtra("ativo", ativo);
         startActivity(intent);

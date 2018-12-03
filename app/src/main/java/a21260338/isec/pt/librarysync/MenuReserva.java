@@ -1,6 +1,7 @@
 package a21260338.isec.pt.librarysync;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -20,5 +21,19 @@ public class MenuReserva extends Activity {
 
     public void back(View v){
         finish();
+    }
+
+    public void gerirOcupantes(View v){
+        Intent intent = new Intent(this, MenuGerirOcupantes.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
+    }
+
+    public void gerirMaterial(View v){
+        Intent intent = new Intent(this, MenuGerirMaterial.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
     }
 }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,5 +61,23 @@ public class MenuReservarGabinete extends Activity {
             }
         });
         builder.show();
+    }
+
+    public void gerirOcupantes(View v){
+        Intent intent = new Intent(this, MenuGerirOcupantes.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
+    }
+
+    public void gerirMaterial(View v){
+        Intent intent = new Intent(this, MenuGerirMaterial.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
+    }
+
+    public void concluido(View v){
+        finish();
     }
 }

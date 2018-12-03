@@ -21,4 +21,8 @@ public class MenuGerirMaterial extends Activity {
     public void back(View v){
         finish();
     }
+
+    public void concluido(View v){
+        finish();
+    }
 }
