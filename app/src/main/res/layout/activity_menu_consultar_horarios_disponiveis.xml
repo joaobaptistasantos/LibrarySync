@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuReservarGabinete"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MenuConsultarHorariosDisponiveis"
     android:background="@drawable/app_wallpaper"
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/barraSuperior_MenuReservarGabinete"
+        android:id="@+id/barraSuperior_MenuConsultarHorariosDisponiveis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/backArrow_MenuReservarGabinete"
+            android:id="@+id/backArrow_MenuConsultarHorariosDisponiveis"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
@@ -32,7 +32,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/titulo_MenuReservarGabinete"
+            android:id="@+id/titulo_MenuConsultarHorariosDisponiveis"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
@@ -40,7 +40,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
-            android:text="@string/menuReservarGabinete"
+            android:text="@string/menuConsultarHorariosDisponiveis"
             android:textColor="@color/colorApp"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -49,7 +49,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/logoApp_MenuReservarGabinete"
+            android:id="@+id/logoApp_MenuConsultarHorariosDisponiveis"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginEnd="8dp"
@@ -62,7 +62,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <ImageButton
-        android:id="@+id/gabineteAnterior_MenuReservarGabinete"
+        android:id="@+id/gabineteAnterior_MenuConsultarHorariosDisponiveis"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/transparent"
@@ -70,27 +70,27 @@
         android:padding="8dp"
         android:scaleType="fitCenter"
         android:src="@drawable/gabinete_anterior"
-        app:layout_constraintTop_toBottomOf="@id/barraSuperior_MenuReservarGabinete"
-        app:layout_constraintBottom_toTopOf="@id/barraInferior_MenuReservarGabinete"
+        app:layout_constraintTop_toBottomOf="@id/barraSuperior_MenuConsultarHorariosDisponiveis"
+        app:layout_constraintBottom_toTopOf="@id/barraInferior_MenuConsultarHorariosDisponiveis"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/primeiroGabinete_MenuReservarGabinete"/>
+        app:layout_constraintRight_toLeftOf="@id/primeiroGabinete_MenuConsultarHorariosDisponiveis"/>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/primeiroGabinete_MenuReservarGabinete"
+        android:id="@+id/primeiroGabinete_MenuConsultarHorariosDisponiveis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/round_corner"
-        app:layout_constraintTop_toBottomOf="@id/barraSuperior_MenuReservarGabinete"
-        app:layout_constraintBottom_toTopOf="@id/barraInferior_MenuReservarGabinete"
+        app:layout_constraintTop_toBottomOf="@id/barraSuperior_MenuConsultarHorariosDisponiveis"
+        app:layout_constraintBottom_toTopOf="@id/barraInferior_MenuConsultarHorariosDisponiveis"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:paddingTop="12dp"
         android:paddingBottom="15dp"
-        app:layout_constraintLeft_toRightOf="@id/gabineteAnterior_MenuReservarGabinete"
-        app:layout_constraintRight_toLeftOf="@id/segundoGabinete_MenuReservarGabinete">
+        app:layout_constraintLeft_toRightOf="@id/gabineteAnterior_MenuConsultarHorariosDisponiveis"
+        app:layout_constraintRight_toLeftOf="@id/segundoGabinete_MenuConsultarHorariosDisponiveis">
 
         <ImageView
-            android:id="@+id/iconeGabinete_MenuReservarGabinete"
+            android:id="@+id/iconeGabinete_MenuConsultarHorariosDisponiveis"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="centerCrop"
@@ -100,25 +100,26 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/gabineteNumero_MenuReservarGabinete"
+            android:id="@+id/gabineteNumero_MenuConsultarHorariosDisponiveis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gabinete nº1"
             android:textStyle="bold"
             android:textSize="14sp"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/iconeGabinete_MenuReservarGabinete"
+            app:layout_constraintTop_toBottomOf="@id/iconeGabinete_MenuConsultarHorariosDisponiveis"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="5dp"/>
 
-        <Button
-            android:id="@+id/primeiroTurno_MenuReservarGabinete"
+        <TextView
+            android:id="@+id/primeiroTurno_MenuConsultarHorariosDisponiveis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/primeiroHorario"
+            android:textColor="@color/black"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@id/gabineteNumero_MenuReservarGabinete"
+            app:layout_constraintTop_toBottomOf="@id/gabineteNumero_MenuConsultarHorariosDisponiveis"
             android:layout_marginTop="10dp"
             android:background="@drawable/round_corner_horario"
             android:paddingTop="3dp"
@@ -126,13 +127,14 @@
             android:paddingRight="10dp"
             android:paddingLeft="10dp"/>
 
-        <Button
-            android:id="@+id/segundoTurno_MenuReservarGabinete"
+        <TextView
+            android:id="@+id/segundoTurno_MenuConsultarHorariosDisponiveis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/segundoHorario"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@id/primeiroTurno_MenuReservarGabinete"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/primeiroTurno_MenuConsultarHorariosDisponiveis"
             android:layout_marginTop="10dp"
             android:background="@drawable/round_corner_horario"
             android:paddingTop="3dp"
@@ -140,13 +142,14 @@
             android:paddingRight="10dp"
             android:paddingLeft="10dp"/>
 
-        <Button
-            android:id="@+id/terceiroTurno_MenuReservarGabinete"
+        <TextView
+            android:id="@+id/terceiroTurno_MenuConsultarHorariosDisponiveis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/terceiroHorario"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@id/segundoTurno_MenuReservarGabinete"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/segundoTurno_MenuConsultarHorariosDisponiveis"
             android:layout_marginTop="10dp"
             android:background="@drawable/round_corner_horario"
             android:paddingTop="3dp"
@@ -154,13 +157,14 @@
             android:paddingRight="10dp"
             android:paddingLeft="10dp"/>
 
-        <Button
-            android:id="@+id/quartoTurno_MenuReservarGabinete"
+        <TextView
+            android:id="@+id/quartoTurno_MenuConsultarHorariosDisponiveis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quartoHorario"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@id/terceiroTurno_MenuReservarGabinete"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/terceiroTurno_MenuConsultarHorariosDisponiveis"
             android:layout_marginTop="10dp"
             android:background="@drawable/round_corner_horario"
             android:paddingTop="3dp"
@@ -171,21 +175,21 @@
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/segundoGabinete_MenuReservarGabinete"
+        android:id="@+id/segundoGabinete_MenuConsultarHorariosDisponiveis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/round_corner"
-        app:layout_constraintTop_toBottomOf="@id/barraSuperior_MenuReservarGabinete"
-        app:layout_constraintBottom_toTopOf="@id/barraInferior_MenuReservarGabinete"
+        app:layout_constraintTop_toBottomOf="@id/barraSuperior_MenuConsultarHorariosDisponiveis"
+        app:layout_constraintBottom_toTopOf="@id/barraInferior_MenuConsultarHorariosDisponiveis"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:paddingTop="12dp"
         android:paddingBottom="15dp"
-        app:layout_constraintLeft_toRightOf="@id/primeiroGabinete_MenuReservarGabinete"
-        app:layout_constraintRight_toLeftOf="@id/gabineteSeguinte_MenuReservarGabinete">
+        app:layout_constraintLeft_toRightOf="@id/primeiroGabinete_MenuConsultarHorariosDisponiveis"
+        app:layout_constraintRight_toLeftOf="@id/gabineteSeguinte_MenuConsultarHorariosDisponiveis">
 
         <ImageView
-            android:id="@+id/iconeGabinete2_MenuReservarGabinete"
+            android:id="@+id/iconeGabinete2_MenuConsultarHorariosDisponiveis"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="centerCrop"
@@ -195,25 +199,26 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/gabineteNumero2_MenuReservarGabinete"
+            android:id="@+id/gabineteNumero2_MenuConsultarHorariosDisponiveis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gabinete nº2"
             android:textStyle="bold"
             android:textSize="14sp"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/iconeGabinete2_MenuReservarGabinete"
+            app:layout_constraintTop_toBottomOf="@id/iconeGabinete2_MenuConsultarHorariosDisponiveis"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="5dp"/>
 
-        <Button
-            android:id="@+id/primeiroTurno2_MenuReservarGabinete"
+        <TextView
+            android:id="@+id/primeiroTurno2_MenuConsultarHorariosDisponiveis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/primeiroHorario"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@id/gabineteNumero2_MenuReservarGabinete"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/gabineteNumero2_MenuConsultarHorariosDisponiveis"
             android:layout_marginTop="10dp"
             android:background="@drawable/round_corner_horario"
             android:paddingTop="3dp"
@@ -221,13 +226,14 @@
             android:paddingRight="10dp"
             android:paddingLeft="10dp"/>
 
-        <Button
-            android:id="@+id/segundoTurno2_MenuReservarGabinete"
+        <TextView
+            android:id="@+id/segundoTurno2_MenuConsultarHorariosDisponiveis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/segundoHorario"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@id/primeiroTurno2_MenuReservarGabinete"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/primeiroTurno2_MenuConsultarHorariosDisponiveis"
             android:layout_marginTop="10dp"
             android:background="@drawable/round_corner_horario"
             android:paddingTop="3dp"
@@ -235,13 +241,14 @@
             android:paddingRight="10dp"
             android:paddingLeft="10dp"/>
 
-        <Button
-            android:id="@+id/terceiroTurno2_MenuReservarGabinete"
+        <TextView
+            android:id="@+id/terceiroTurno2_MenuConsultarHorariosDisponiveis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/terceiroHorario"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@id/segundoTurno2_MenuReservarGabinete"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/segundoTurno2_MenuConsultarHorariosDisponiveis"
             android:layout_marginTop="10dp"
             android:background="@drawable/round_corner_horario"
             android:paddingTop="3dp"
@@ -249,13 +256,14 @@
             android:paddingRight="10dp"
             android:paddingLeft="10dp"/>
 
-        <Button
-            android:id="@+id/quartoTurno2_MenuReservarGabinete"
+        <TextView
+            android:id="@+id/quartoTurno2_MenuConsultarHorariosDisponiveis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quartoHorario"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@id/terceiroTurno2_MenuReservarGabinete"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/terceiroTurno2_MenuConsultarHorariosDisponiveis"
             android:layout_marginTop="10dp"
             android:background="@drawable/round_corner_horario"
             android:paddingTop="3dp"
@@ -266,7 +274,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <ImageButton
-        android:id="@+id/gabineteSeguinte_MenuReservarGabinete"
+        android:id="@+id/gabineteSeguinte_MenuConsultarHorariosDisponiveis"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/transparent"
@@ -274,31 +282,22 @@
         android:padding="8dp"
         android:scaleType="fitCenter"
         android:src="@drawable/gabinete_seguinte"
-        app:layout_constraintTop_toBottomOf="@id/barraSuperior_MenuReservarGabinete"
-        app:layout_constraintBottom_toTopOf="@id/barraInferior_MenuReservarGabinete"
+        app:layout_constraintTop_toBottomOf="@id/barraSuperior_MenuConsultarHorariosDisponiveis"
+        app:layout_constraintBottom_toTopOf="@id/barraInferior_MenuConsultarHorariosDisponiveis"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/segundoGabinete_MenuReservarGabinete"/>
+        app:layout_constraintLeft_toRightOf="@id/segundoGabinete_MenuConsultarHorariosDisponiveis"/>
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/barraInferior_MenuReservarGabinete"
+
+    <LinearLayout
+        android:id="@+id/barraInferior_MenuConsultarHorariosDisponiveis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp">
-
-        <LinearLayout
-            android:id="@+id/menuData_MenuReservarGabinete"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/botaoAddAlunos_MenuReservarGabinete"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginBottom="8dp"
+        android:gravity="center">
 
             <TextView
-                android:id="@+id/dataTitle_MenuReservarGabinete"
+                android:id="@+id/dataTitle_MenuConsultarHorariosDisponiveis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dataTitle"
@@ -307,18 +306,18 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/dataText_MenuReservarGabinete"
+                android:id="@+id/dataText_MenuConsultarHorariosDisponiveis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11/11/1111"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/dataTitle_MenuReservarGabinete"
+                app:layout_constraintStart_toEndOf="@id/dataTitle_MenuConsultarHorariosDisponiveis"
                 android:layout_marginLeft="5dp"/>
 
             <ImageButton
-                android:id="@+id/botaoData_MenuReservarGabinete"
+                android:id="@+id/botaoData_MenuConsultarHorariosDisponiveis"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginLeft="10dp"
@@ -327,61 +326,8 @@
                 android:onClick="alterarData"
                 android:scaleType="centerCrop"
                 android:src="@drawable/calendar_icon"
-                app:layout_constraintStart_toEndOf="@id/dataText_MenuReservarGabinete" />
+                app:layout_constraintStart_toEndOf="@id/dataText_MenuConsultarHorariosDisponiveis" />
 
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/botaoAddAlunos_MenuReservarGabinete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/round_corner_buttons"
-            android:onClick="gerirOcupantes"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="5dp"
-            android:text="@string/adicionarAluno"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@+id/botaoAddMaterial_MenuReservarGabinete"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/menuData_MenuReservarGabinete" />
-
-        <Button
-            android:id="@+id/botaoAddMaterial_MenuReservarGabinete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/round_corner_buttons"
-            android:onClick="gerirMaterial"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="5dp"
-            android:text="@string/adicionarMaterial"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@+id/botaoConcluido_MenuReservarGabinete"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/botaoAddAlunos_MenuReservarGabinete" />
-
-        <Button
-            android:id="@+id/botaoConcluido_MenuReservarGabinete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/round_corner_buttons"
-            android:onClick="concluido"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="5dp"
-            android:text="@string/concluido"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/botaoAddMaterial_MenuReservarGabinete" />
-
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
