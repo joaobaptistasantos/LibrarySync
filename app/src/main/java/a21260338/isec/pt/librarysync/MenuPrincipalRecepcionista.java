@@ -33,6 +33,15 @@ public class MenuPrincipalRecepcionista extends Activity {
         startActivity(intent);
     }
 
+    public void gerirReservas(View v){
+        // meter o codigo abaixo quando a tabela for feita
+        // Intent intent = new Intent(this, MenuGerirReservas.class);
+        Intent intent = new Intent(this, MenuReserva.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
+    }
+
     public void sobre(View v){
         // LayoutInflater é utilizado para inflar o layout numa view
         // Pegamos nessa instancia da classe

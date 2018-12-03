@@ -56,6 +56,7 @@
     <string name="estadoReserva">Estado:</string>
     <string name="alunosReserva">Alunos:</string>
     <string name="materialReserva">Material:</string>
+    <string name="responsavelReserva">Responsável:</string>
 
     <string name="menuGerirOcupantes">Gerir Ocupantes</string>
     <string name="adicionarOcupanteTitle">Adicionar Aluno:</string>
@@ -72,4 +73,10 @@
     <string name="extensao">Extensão</string>
     <string name="minCanetas">0</string>
     <string name="maxCanetas">3</string>
+
+    <string name="menuEstatisticas">Estatísticas</string>
+    <string name="numUtilizadoresRegistados">Nº Utilizadores Registados:</string>
+    <string name="numTotalReservas">Total Reservas Efetuadas:</string>
+    <string name="numReservasConcluidas">Total Reservas Concluidas:</string>
+    <string name="numReservasCanceladas">Total Reservas Canceladas:</string>
 </resources>

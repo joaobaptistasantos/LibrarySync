@@ -10,6 +10,8 @@ public class MenuReserva extends Activity {
     private Utilizadores utilizadores;
     private Utilizador ativo;
 
+    // É o mesmo menu reserva do utilizador mas tem dois campos com visibility a gone (responsavel)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

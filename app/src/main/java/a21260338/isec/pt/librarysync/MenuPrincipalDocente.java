@@ -33,6 +33,13 @@ public class MenuPrincipalDocente extends Activity {
         startActivity(intent);
     }
 
+    public void stats(View v){
+        Intent intent = new Intent(this, MenuEstatisticas.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
+    }
+
     public void sobre(View v){
         // LayoutInflater é utilizado para inflar o layout numa view
         // Pegamos nessa instancia da classe
