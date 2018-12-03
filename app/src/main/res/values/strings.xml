@@ -8,7 +8,7 @@
     <string name="enviarEmail">Enviar E-mail de Confirmação</string>
     <string name="password">Password</string>
     <string name="digitarPassword">Insira password...</string>
-    <string name="confirmaPassword">Confirma Password</string>
+    <string name="confirmaPassword">Confirmar Password</string>
     <string name="registarNovo">Registar novo utilizador</string>
     <string name="consultarHorarios">Consultar Horários Disponíveis</string>
 
@@ -34,4 +34,55 @@
     </string>
     <string name="docente">Docente Responsável: José Cunha</string>
     <string name="alunos">Alunos: Amadeus Alves, Gustavo Garcia, João Monteiro, João Santos, Miguel Pires</string>
+
+    <string name="menuAlterarPassword">Alterar Password</string>
+    <string name="passAntigaTitle">Password Antiga</string>
+    <string name="passAntigaPlaceholder">Inserir password atual...</string>
+    <string name="passNovaTitle">Password Nova</string>
+    <string name="passNovaPlaceholder">Inserir nova password...</string>
+    <string name="alterar">Alterar</string>
+
+    <string name="menuReservarGabinete">Reservar Gabinete</string>
+    <string name="dataTitle">Data:</string>
+    <string name="adicionarAluno">Adicionar Aluno</string>
+    <string name="adicionarMaterial">Adicionar Material</string>
+    <string name="concluido">Concluido</string>
+
+    <string name="menuGerirReservas">Gerir Reservas</string>
+
+    <string name="menuReserva">Reserva</string>
+    <string name="dataReserva">Data:</string>
+    <string name="horarioReserva">Horário:</string>
+    <string name="estadoReserva">Estado:</string>
+    <string name="alunosReserva">Alunos:</string>
+    <string name="materialReserva">Material:</string>
+    <string name="responsavelReserva">Responsável:</string>
+
+    <string name="menuGerirOcupantes">Gerir Ocupantes</string>
+    <string name="adicionarOcupanteTitle">Adicionar Aluno:</string>
+    <string name="adicionarOcupantePlaceholder">Inserir email aluno...</string>
+    <string name="adicionarOcupanteButton">Adicionar</string>
+    <string name="removerOcupanteTitle">Remover Aluno:</string>
+    <string name="removerOcupantePlaceholder">Inserir email aluno...</string>
+    <string name="removerOcupanteButton">Remover</string>
+    <string name="ocupantesTitle">Ocupantes:</string>
+
+    <string name="menuGerirMaterial">Gerir Material</string>
+    <string name="canetas">Canetas para Quadro:</string>
+    <string name="apagador">Apagador</string>
+    <string name="extensao">Extensão</string>
+    <string name="minCanetas">0</string>
+    <string name="maxCanetas">3</string>
+
+    <string name="menuEstatisticas">Estatísticas</string>
+    <string name="numUtilizadoresRegistados">Nº Utilizadores Registados:</string>
+    <string name="numTotalReservas">Total Reservas Efetuadas:</string>
+    <string name="numReservasConcluidas">Total Reservas Concluidas:</string>
+    <string name="numReservasCanceladas">Total Reservas Canceladas:</string>
+
+    <string name="menuConsultarHorariosDisponiveis">Horários Disponíveis</string>
+    <string name="primeiroHorario">09:00 - 12:00</string>
+    <string name="segundoHorario">12:00 - 15:00</string>
+    <string name="terceiroHorario">15:00 - 18:00</string>
+    <string name="quartoHorario">18:00 - 21:00</string>
 </resources>

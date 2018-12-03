@@ -2,21 +2,15 @@ package a21260338.isec.pt.librarysync;
 
 public class Aluno extends Utilizador {
 
-    int nrAluno;
+    private static int contadorAlunos = 1;
+    private int nrAluno;
 
-    public Aluno(String Email, String Password) {
-        super(Email, Password);
+    public Aluno(String email, String password) {
+        super(email, password);
+        nrAluno = contadorAlunos++;
     }
 
     public int getNrAluno() {
         return nrAluno;
-    }
-
-    public void setNrAluno(int nrAluno) {
-        this.nrAluno = nrAluno;
-    }
-
-    public void editaInformacao(String Email, String Password){
-
     }
 }

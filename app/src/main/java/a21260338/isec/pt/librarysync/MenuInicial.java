@@ -17,11 +17,12 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.security.InvalidParameterException;
 
+import static a21260338.isec.pt.librarysync.Globals.filename;
+
 public class MenuInicial extends Activity {
 
-    Utilizadores utilizadores;
-    Utilizador ativo;
-    TextView msgErro;
+    private Utilizadores utilizadores;
+    private Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +32,10 @@ public class MenuInicial extends Activity {
         utilizadores = new Utilizadores();
         ativo = null;
 
-        msgErro = (TextView) findViewById(R.id.erroMenuInicial);
-
         FileInputStream fIn = null;
 
         try{
-            fIn = openFileInput("logs50.txt");
+            fIn = openFileInput(filename);
             InputStreamReader isr = new InputStreamReader(fIn);
             BufferedReader br = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
@@ -49,9 +48,14 @@ public class MenuInicial extends Activity {
             }
 
             for(int i = 0; i < dados.length - 1; i+=2){
-                Log.d("Useres", "Email: " + dados[i]);
-                Log.d("Useres", "Password: " + dados[i+1]);
-                utilizadores.addUtilizador(dados[i], dados[i+1], dados[i+1]);
+                try {
+                    Log.d("TestPass", "Username: " + dados[i]);
+                    Log.d("TestPass", "Password: " + dados[i+1]);
+                    utilizadores.addUtilizador(dados[i], dados[i + 1], dados[i + 1]);
+                } catch(InvalidEmailException | InvalidDifferentPasswordsException | InvalidPasswordException | AccountAlreadyExistsException e){
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
             }
 
         }catch(FileNotFoundException e){
@@ -67,7 +71,6 @@ public class MenuInicial extends Activity {
                 }
             }
         }
-
     }
 
     public void onRegistar(View v){
@@ -79,6 +82,7 @@ public class MenuInicial extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
+
         if(requestCode == 1){
             utilizadores = (Utilizadores) data.getSerializableExtra("utilizadores");
         }
@@ -86,14 +90,18 @@ public class MenuInicial extends Activity {
 
     public void esqueceuPassword(View v){
         Intent intent = new Intent(this, MenuEsqueceuPassword.class);
-        intent.putExtra("utilizadores",(Serializable) utilizadores.getUtilizadores());
+        intent.putExtra("utilizadores",(Serializable) utilizadores);
+        startActivity(intent);
+    }
 
+    public void consultarHorariosDisponiveis(View v){
+        Intent intent = new Intent(this, MenuConsultarHorariosDisponiveis.class);
         startActivity(intent);
     }
 
     public void login(View v){
         EditText et = (EditText)findViewById(R.id.emailInput_MenuInicial);
-        String email = et.getText().toString();
+        String email = et.getText().toString().trim();
 
         et = (EditText)findViewById(R.id.passwordInput_MenuInicial);
         String password = et.getText().toString();
@@ -114,11 +122,12 @@ public class MenuInicial extends Activity {
             intent.putExtra("ativo", ativo);
             startActivity(intent);
 
-        } catch(InvalidParameterException e){
-            msgErro.setText("Falhou Login!");
+        } catch(InvalidEmailException | InvalidAuthenticationException | InvalidPasswordException e){
+            TextView msgErro = (TextView) findViewById(R.id.erroMenuInicial);
+            msgErro.setText(e.getMessage());
             msgErro.setVisibility(View.VISIBLE);
-
-            Log.d("Useres", "Falhou login");
+        } catch(Exception e){
+            e.printStackTrace();
         }
     }
 }

@@ -1,5 +1,7 @@
 package a21260338.isec.pt.librarysync;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -16,7 +18,7 @@ import java.util.Scanner;
 
 public class Utilizadores implements Serializable {
 
-    List<Utilizador> utilizadores;
+    private List<Utilizador> utilizadores;
 
     public Utilizadores() {
         utilizadores = new ArrayList<>();
@@ -28,81 +30,105 @@ public class Utilizadores implements Serializable {
         return utilizadores;
     }
 
-    public Utilizador getUtilizador(String email) {
-        for(Utilizador e : utilizadores)
-            if(e.getEmail().equals(email))
-                return e;
+    public Utilizador addUtilizador(String email, String password, String password2) throws InvalidEmailException, InvalidDifferentPasswordsException, InvalidPasswordException, AccountAlreadyExistsException {
+        emailExiste(email);
+        validaEmail(email);
+        validaPassword(password);
 
-        return null;
-    }
+        if(!password.equals(password2))
+            throw new InvalidDifferentPasswordsException("Passwords têm que ser iguais!");
 
-    public boolean addUtilizador(String email, String password, String password2) throws IOException, InvalidObjectException {
-
-        try{
-            validaDados(email, password, password2);
-
-            utilizadores.add(new Aluno(email, password));
-        } catch (InvalidParameterException e){
-            Log.d("Useres", e.toString());
-        }
-
-        return true;
+        Utilizador novo = new Aluno(email, password);
+        utilizadores.add(novo);
+        return novo;
     }
 
     public boolean removeUtilizador(Utilizador user){
         try{
+            String email = user.getEmail();
             Utilizador remover = null;
 
             for(Utilizador u : utilizadores)
-                if(u.getEmail().equals(user.email))
+                if(u.emailCorreto(email))
                     remover = u;
 
             utilizadores.remove(remover);
 
             return utilizadores.remove(remover);
         } catch(NullPointerException e){
-            Log.d("Useres", "Falhou eliminar utilizador");
             return false;
         }
     }
 
-    public boolean emailExiste(String email)
-    {
+    public void emailExiste(String email) throws AccountAlreadyExistsException {
         for(Utilizador u : utilizadores)
-            if(u.getEmail().equals(email))
-                return true;
-
-        return false;
+            if(u.emailCorreto(email))
+                throw new AccountAlreadyExistsException("Conta já existente!");
     }
 
-    public void validaDados(String email){
-        if(!email.contains("@"))
-            throw new InvalidParameterException("Email Inválido");
+    public void validaEmail(String email) throws InvalidEmailException {
+        if(!email.contains("@") || !Character.isAlphabetic(email.charAt(email.length()-1)) || !Character.isAlphabetic(email.charAt(0)))
+            throw new InvalidEmailException("Email Inválido");
     }
 
-    public void validaDados(String email, String passsword){
-        validaDados(email);
+    public void validaPassword(String password) throws InvalidPasswordException {
+        if(password.isEmpty())
+            throw new InvalidPasswordException("Password por preencher!");
 
-        // falta validar passwords e emails em termos de string inserida
+        if(!password.matches("[a-zA-Z0-9]*"))
+            throw new InvalidPasswordException("Password deve conter apenas letras e números!");
     }
 
-    public void validaDados(String email, String password, String password2){
-        validaDados(email);
-
-        if(!password.equals(password2))
-            throw new InvalidParameterException("Passwords têm que ser iguais!");
-
-        // falta validar passwords e emails em termos de string inserida
-    }
-
-    public Utilizador autentica(String email, String password) throws InvalidParameterException{
-        validaDados(email, password);
+    public Utilizador autentica(String email, String password) throws InvalidEmailException, InvalidPasswordException, InvalidAuthenticationException{
+        validaEmail(email);
+        validaPassword(password);
 
         for(Utilizador u : utilizadores)
             if(u.autentica(email, password))
                 return u;
 
-        throw new InvalidParameterException("Autenticacao falhou!");
+        throw new InvalidAuthenticationException("Conta não existe!");
+    }
+
+    public Intent recuperarConta(String email) throws InvalidEmailException, InvalidAccountRecover {
+        validaEmail(email);
+
+        String subject = "Recupera password LibrarySync";
+
+        for (Utilizador u: utilizadores) {
+            if(u.emailCorreto(email)) {
+                String password = u.getPassword();
+
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL, email);
+                intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                intent.putExtra(Intent.EXTRA_TEXT, password);
+                intent.setType("message/rfc822");
+
+                return intent;
+            }
+        }
+
+        throw new InvalidAccountRecover("Conta impossível de recuperar!");
+    }
+
+    public void mudarPassord(Utilizador user, String passwordAntiga, String passwordNova, String passwordNova2) throws InvalidDifferentPasswordsException, InvalidPasswordException {
+        if(!(user.passwordCorreta(passwordAntiga)))
+            throw new InvalidDifferentPasswordsException("Password atual errada!");
+
+        if(!passwordNova.equals(passwordNova2))
+            throw new InvalidDifferentPasswordsException("Passwords têm que ser iguais!");
+
+        validaPassword(passwordNova);
+
+        String email = user.getEmail();
+
+        for(Utilizador u : utilizadores)
+            if(u.emailCorreto(email)) {
+                u.setPassword(passwordNova);
+                user.setPassword(passwordNova);
+            }
     }
 
     public void addSpecialUsers(){

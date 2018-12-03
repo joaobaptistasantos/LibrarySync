@@ -5,11 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 public class MenuPrincipal extends Activity {
 
-    Utilizadores utilizadores;
-    Utilizador ativo;
+    private Utilizadores utilizadores;
+    private Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +20,24 @@ public class MenuPrincipal extends Activity {
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
         ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
 
-        Log.d("Useres", "Ativo: " + ativo.getEmail());
+        TextView tvEmailUser = (TextView) findViewById(R.id.emailUser_MenuPrincipal);
+        tvEmailUser.setText(ativo.getEmail());
+    }
+
+    public void reservarGabinete(View v){
+        Intent intent = new Intent(this, MenuReservarGabinete.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
+    }
+
+    public void gerirReservas(View v){
+        // meter o codigo abaixo quando a tabela for feita
+        // Intent intent = new Intent(this, MenuGerirReservas.class);
+        Intent intent = new Intent(this, MenuReserva.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
     }
 
     public void exit(View v) {

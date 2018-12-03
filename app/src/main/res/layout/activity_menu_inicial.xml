@@ -160,7 +160,7 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textAlignment="center"
-            android:textColor="#FF0000"
+            android:textColor="@color/red"
             android:textSize="12sp"
             android:visibility="gone" />
 
@@ -201,15 +201,15 @@
                 android:id="@+id/botaoConsultar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/consultarHorarios"
-                android:background="@android:color/transparent"
-                android:textColor="@color/blue"
                 android:layout_gravity="center"
-                android:textSize="12sp"/>
+                android:background="@android:color/transparent"
+                android:onClick="consultarHorariosDisponiveis"
+                android:text="@string/consultarHorarios"
+                android:textColor="@color/blue"
+                android:textSize="12sp" />
 
         </LinearLayout>
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/barraInferior_Login"

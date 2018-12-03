@@ -16,19 +16,20 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static a21260338.isec.pt.librarysync.Globals.filename;
+
 public class MenuRegistar extends Activity {
 
-    Utilizadores utilizadores;
-    TextView msgErro;
+    private Utilizadores utilizadores;
+    private Utilizador ativo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_registar);
 
-        msgErro = (TextView) findViewById(R.id.erroMenuRegistar);
-
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
+        ativo = null;
     }
 
     public void onLogin(View v){
@@ -38,7 +39,7 @@ public class MenuRegistar extends Activity {
 
     public void registar(View v) throws IOException {
         EditText et = (EditText)findViewById(R.id.emailInput_MenuRegistar);
-        String email = et.getText().toString();
+        String email = et.getText().toString().trim();
 
         et = (EditText)findViewById(R.id.passwordInput_MenuRegistar);
         String password = et.getText().toString();
@@ -46,16 +47,23 @@ public class MenuRegistar extends Activity {
         et = (EditText)findViewById(R.id.confirmPasswordInput);
         String passwordConfirmacao = et.getText().toString();
 
-        utilizadores.addUtilizador(email, password, passwordConfirmacao);
-
-        msgErro.setVisibility(View.VISIBLE);
+        try {
+            ativo = utilizadores.addUtilizador(email, password, passwordConfirmacao);
+        } catch(InvalidEmailException | InvalidDifferentPasswordsException | InvalidPasswordException | AccountAlreadyExistsException e){
+            TextView msgErro = (TextView) findViewById(R.id.erroMenuRegistar);
+            msgErro.setText(e.getMessage());
+            msgErro.setVisibility(View.VISIBLE);
+            return;
+        } catch(Exception e){
+            e.printStackTrace();
+            return;
+        }
 
         String result = email + " " + password + " ";
-
         FileOutputStream fOut = null;
 
         try {
-            fOut = openFileOutput("logs50.txt", MODE_APPEND);
+            fOut = openFileOutput(filename, MODE_APPEND);
             fOut.write(result.getBytes());
             fOut.flush();
         }
@@ -72,10 +80,9 @@ public class MenuRegistar extends Activity {
             }
         }
 
-        Intent intent = new Intent();
+        Intent intent = new Intent(this, MenuPrincipal.class);
         intent.putExtra("utilizadores", utilizadores);
-        setResult(1, intent);
-
-        finish();
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
     }
 }
