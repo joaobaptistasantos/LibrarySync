@@ -94,6 +94,11 @@ public class MenuInicial extends Activity {
         startActivity(intent);
     }
 
+    public void consultarHorariosDisponiveis(View v){
+        Intent intent = new Intent(this, MenuConsultarHorariosDisponiveis.class);
+        startActivity(intent);
+    }
+
     public void login(View v){
         EditText et = (EditText)findViewById(R.id.emailInput_MenuInicial);
         String email = et.getText().toString().trim();

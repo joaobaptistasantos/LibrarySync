@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 public class Utilizadores implements Serializable {
 
-    List<Utilizador> utilizadores;
+    private List<Utilizador> utilizadores;
 
     public Utilizadores() {
         utilizadores = new ArrayList<>();
@@ -28,14 +28,6 @@ public class Utilizadores implements Serializable {
 
     public List<Utilizador> getUtilizadores() {
         return utilizadores;
-    }
-
-    public Utilizador getUtilizador(String email) {
-        for(Utilizador e : utilizadores)
-            if(e.getEmail().equals(email))
-                return e;
-
-        return null;
     }
 
     public Utilizador addUtilizador(String email, String password, String password2) throws InvalidEmailException, InvalidDifferentPasswordsException, InvalidPasswordException, AccountAlreadyExistsException {
@@ -53,10 +45,11 @@ public class Utilizadores implements Serializable {
 
     public boolean removeUtilizador(Utilizador user){
         try{
+            String email = user.getEmail();
             Utilizador remover = null;
 
             for(Utilizador u : utilizadores)
-                if(u.getEmail().equals(user.email))
+                if(u.emailCorreto(email))
                     remover = u;
 
             utilizadores.remove(remover);
@@ -69,7 +62,7 @@ public class Utilizadores implements Serializable {
 
     public void emailExiste(String email) throws AccountAlreadyExistsException {
         for(Utilizador u : utilizadores)
-            if(u.getEmail().equals(email))
+            if(u.emailCorreto(email))
                 throw new AccountAlreadyExistsException("Conta já existente!");
     }
 
@@ -103,7 +96,7 @@ public class Utilizadores implements Serializable {
         String subject = "Recupera password LibrarySync";
 
         for (Utilizador u: utilizadores) {
-            if(email.equals(u.getEmail())) {
+            if(u.emailCorreto(email)) {
                 String password = u.getPassword();
 
                 Intent intent = new Intent(Intent.ACTION_SEND);
@@ -121,7 +114,7 @@ public class Utilizadores implements Serializable {
     }
 
     public void mudarPassord(Utilizador user, String passwordAntiga, String passwordNova, String passwordNova2) throws InvalidDifferentPasswordsException, InvalidPasswordException {
-        if(!(user.getPassword().equals(passwordAntiga)))
+        if(!(user.passwordCorreta(passwordAntiga)))
             throw new InvalidDifferentPasswordsException("Password atual errada!");
 
         if(!passwordNova.equals(passwordNova2))
@@ -129,11 +122,13 @@ public class Utilizadores implements Serializable {
 
         validaPassword(passwordNova);
 
-        for(Utilizador u : utilizadores)
-            if(u.getEmail().equals(user.email))
-                u.setPassword(passwordNova);
+        String email = user.getEmail();
 
-        user.setPassword(passwordNova);
+        for(Utilizador u : utilizadores)
+            if(u.emailCorreto(email)) {
+                u.setPassword(passwordNova);
+                user.setPassword(passwordNova);
+            }
     }
 
     public void addSpecialUsers(){

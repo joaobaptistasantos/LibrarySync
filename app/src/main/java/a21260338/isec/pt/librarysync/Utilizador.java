@@ -3,16 +3,14 @@ package a21260338.isec.pt.librarysync;
 import java.io.Serializable;
 
 public class Utilizador implements Serializable {
-    String password;
-    String email;
 
+    private String email;
+    private String password;
 
-    public Utilizador(String Email, String Password){
-
-        this.email = Email;
-        this.password = Password;
+    public Utilizador(String email, String password){
+        this.email = email;
+        this.password = password;
     }
-
 
     public String getPassword() {
         return password;
@@ -30,7 +28,11 @@ public class Utilizador implements Serializable {
         this.email = email;
     }
 
-    public boolean passwordValido(String password){
+    public boolean emailCorreto(String email){
+        return this.email.equals(email);
+    }
+
+    public boolean passwordCorreta(String password){
         return this.password.equals(password);
     }
 

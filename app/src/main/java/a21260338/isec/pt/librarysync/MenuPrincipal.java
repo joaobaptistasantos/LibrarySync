@@ -24,6 +24,22 @@ public class MenuPrincipal extends Activity {
         tvEmailUser.setText(ativo.getEmail());
     }
 
+    public void reservarGabinete(View v){
+        Intent intent = new Intent(this, MenuReservarGabinete.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
+    }
+
+    public void gerirReservas(View v){
+        // meter o codigo abaixo quando a tabela for feita
+        // Intent intent = new Intent(this, MenuGerirReservas.class);
+        Intent intent = new Intent(this, MenuReserva.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        startActivity(intent);
+    }
+
     public void exit(View v) {
         Intent intent = new Intent(getApplicationContext(), MenuInicial.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
