@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Reserva {
+public class Reserva extends Modelo {
 
     private String estadoReserva;
     private Time horaInicio;

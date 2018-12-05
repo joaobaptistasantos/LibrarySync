@@ -2,19 +2,18 @@ package a21260338.isec.pt.librarysync;
 
 public class Docente extends Utilizador {
 
-    private static int contadorDocentes = 1;
-    private int nrDocente;
+    private Integer nrDocente;
 
-    public Docente(String email, String password) {
+    public Docente(String email, String password, Integer nrDocente) {
         super(email, password);
-        nrDocente = contadorDocentes++;
+        this.nrDocente = nrDocente;
     }
 
-    public int getNrDocente() {
+    public Integer GetNrDocente() {
         return nrDocente;
     }
 
-    public String imprimeEstatisticas(){
+    public String ImprimeEstatisticas(){
         return "";
     }
 }

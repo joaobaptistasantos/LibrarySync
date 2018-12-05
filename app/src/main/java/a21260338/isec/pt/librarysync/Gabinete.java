@@ -1,6 +1,6 @@
 package a21260338.isec.pt.librarysync;
 
-public class Gabinete {
+public class Gabinete extends Modelo{
 
     private int nrGabinete;
 

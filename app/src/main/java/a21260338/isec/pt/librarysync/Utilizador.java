@@ -2,14 +2,26 @@ package a21260338.isec.pt.librarysync;
 
 import java.io.Serializable;
 
-public class Utilizador implements Serializable {
+public abstract class Utilizador extends Modelo implements Serializable{
 
     private String email;
     private String password;
 
-    public Utilizador(String email, String password){
+    protected Utilizador(String email, String password){
         this.email = email;
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    protected void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean emailCorreto(String email){
+        return this.email.equals(email);
     }
 
     public String getPassword() {
@@ -18,18 +30,6 @@ public class Utilizador implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public boolean emailCorreto(String email){
-        return this.email.equals(email);
     }
 
     public boolean passwordCorreta(String password){

@@ -56,14 +56,14 @@ public class MenuDefinicoes extends Activity {
                 .setMessage("Tem a certeza que pretende cancelar a sua conta?")
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        utilizadores.removeUtilizador(ativo);
+                        utilizadores.RemoveData(ativo);
 
                         FileOutputStream fOut = null;
 
                         try {
                             fOut = openFileOutput(filename, MODE_PRIVATE);
 
-                            for (Utilizador u : utilizadores.getUtilizadores()) {
+                            for (Utilizador u : utilizadores.GetListData()) {
                                 String result = u.getEmail() + " " + u.getPassword() + " ";
                                 fOut.write(result.getBytes());
                                 fOut.flush();

@@ -39,10 +39,10 @@ public class MenuEsqueceuPassword extends Activity {
         try {
             EditText et = findViewById(R.id.emailInput_MenuEsqueceu);
             String emailTo = et.getText().toString().trim();
-            Intent intent = utilizadores.recuperarConta(emailTo);
+            Intent intent = utilizadores.RecuperarConta(emailTo);
 
             startActivity(Intent.createChooser(intent, "Escolher cliente"));
-        }catch (InvalidEmailException | InvalidAccountRecover e){
+        }catch (InvalidAccountRecover e){
             TextView msgErro = (TextView) findViewById(R.id.erroMenuEsqueceuPassword);
             msgErro.setText(e.getMessage());
             msgErro.setVisibility(View.VISIBLE);
