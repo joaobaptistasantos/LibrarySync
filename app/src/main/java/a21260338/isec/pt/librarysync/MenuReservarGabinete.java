@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,9 +33,6 @@ public class MenuReservarGabinete extends Activity {
     private Utilizador ativo;
     private Reservas reservas;
     private DatePicker picker;
-    private FragmentTransaction transaction;
-    private Fragment newFragment;
-    private int grupoGabinetesAtual = 1;
     private String turno = null;
     private View turnoAnterior = null;
     private Time horaInicio = null;
@@ -48,7 +46,6 @@ public class MenuReservarGabinete extends Activity {
     private Gabinete g5 = null;
     private Gabinete g6 = null;
 
-    Calendar date = null;
     Date dataReserva = null;
 
     private Time primeiroTurno = new Time((9) * 60 * 60 *1000);
@@ -69,17 +66,6 @@ public class MenuReservarGabinete extends Activity {
         TextView dataTV = (TextView) findViewById(R.id.dataText_MenuReservarGabinete);
         dataTV.setText(new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime()));
 
-
-        Calendar date = Calendar.getInstance();
-        /*
-        date.set((picker.getYear() + 1900), (picker.getMonth() - 1), picker.getDayOfMonth());
-        dataReserva = date.getTime();
-        */
-        newFragment = new Gabinete_1_2();
-        transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment, newFragment);
-        transaction.commit();
-
         g1 = new Gabinete(1);
         g2 = new Gabinete(2);
         g3 = new Gabinete(3);
@@ -89,95 +75,117 @@ public class MenuReservarGabinete extends Activity {
 
         Button view;
 
-        /*
         for (Reserva r: reservas.getReservas()) {
             if(r.getGabinete().getNrGabinete() == 1){
-                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
+                if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
                     view = findViewById(R.id.primeiroTurno_MenuReservarGabinete);
-                    view.getBackground().setColorFilter(Color.parseColor("#FFFF00"), PorterDuff.Mode.DARKEN);Log.i("Useres", "ya4");
+                    view.setVisibility(View.INVISIBLE);
                 }else
-                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
+                if(segundoTurno.toString().contains(r.toString())){
                     view = findViewById(R.id.segundoTurno_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
+                if(terceiroTurno.toString().contains(r.toString())){
                     view = findViewById(R.id.terceiroTurno_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
+                if(quartoTurno.toString().contains(r.toString())){
                     view = findViewById(R.id.quartoTurno_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }
             }else
             if(r.getGabinete().getNrGabinete() == 2){
-                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
+                if(primeiroTurno.toString().contains(r.toString())){
                     view = findViewById(R.id.primeiroTurno2_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
+                if(segundoTurno.toString().contains(r.toString())){
                     view = findViewById(R.id.segundoTurno2_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
+                if(terceiroTurno.toString().contains(r.toString())){
                     view = findViewById(R.id.terceiroTurno2_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
+                if(quartoTurno.toString().contains(r.toString())){
                     view = findViewById(R.id.quartoTurno2_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }
             }else
             if(r.getGabinete().getNrGabinete() == 3){
-                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
-                    view = findViewById(R.id.primeiroTurno_MenuReservarGabinete);
+                if(primeiroTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.primeiroTurno3_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
-                    view = findViewById(R.id.segundoTurno_MenuReservarGabinete);
+                if(segundoTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.segundoTurno3_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
-                    view = findViewById(R.id.terceiroTurno_MenuReservarGabinete);
+                if(terceiroTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.terceiroTurno3_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
-                    view = findViewById(R.id.quartoTurno_MenuReservarGabinete);
+                if(quartoTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.quartoTurno3_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }
             }else
             if(r.getGabinete().getNrGabinete() == 4){
-                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
-                    view = findViewById(R.id.primeiroTurno2_MenuReservarGabinete);
+                if(primeiroTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.primeiroTurno4_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
-                    view = findViewById(R.id.segundoTurno2_MenuReservarGabinete);
+                if(segundoTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.segundoTurno4_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
-                    view = findViewById(R.id.terceiroTurno2_MenuReservarGabinete);
+                if(terceiroTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.terceiroTurno4_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
-                    view = findViewById(R.id.quartoTurno2_MenuReservarGabinete);
+                if(quartoTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.quartoTurno4_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }
             }else
             if(r.getGabinete().getNrGabinete() == 5){
-                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
-                    view = findViewById(R.id.primeiroTurno_MenuReservarGabinete);
+                if(primeiroTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.primeiroTurno5_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
-                    view = findViewById(R.id.segundoTurno_MenuReservarGabinete);
+                if(segundoTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.segundoTurno5_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
-                    view = findViewById(R.id.terceiroTurno_MenuReservarGabinete);
+                if(terceiroTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.terceiroTurno5_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
-                    view = findViewById(R.id.quartoTurno_MenuReservarGabinete);
+                if(quartoTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.quartoTurno5_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }
             }else
             if(r.getGabinete().getNrGabinete() == 6){
-                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
-                    view = findViewById(R.id.primeiroTurno2_MenuReservarGabinete);
+                if(primeiroTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.primeiroTurno6_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
-                    view = findViewById(R.id.segundoTurno2_MenuReservarGabinete);
+                if(segundoTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.segundoTurno6_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
-                    view = findViewById(R.id.terceiroTurno2_MenuReservarGabinete);
+                if(terceiroTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.terceiroTurno6_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }else
-                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
-                    view = findViewById(R.id.quartoTurno2_MenuReservarGabinete);
+                if(quartoTurno.toString().contains(r.toString())){
+                    view = findViewById(R.id.quartoTurno6_MenuReservarGabinete);
+                    view.setBackground(getResources().getDrawable(R.drawable.selected));
                 }
             }
         }
-        */
+
     }
 
     public void back(View v){
@@ -220,12 +228,9 @@ public class MenuReservarGabinete extends Activity {
         startActivity(intent);
     }
 
-    public void concluido(View v){
-/*
-        date.set((picker.getYear()), (picker.getMonth()), picker.getDayOfMonth());
-        dataReserva = date.getTime();
-        */
-        if(grupoGabinetesAtual == 1){
+    public void concluido(View v)
+    {
+
             if(turno.equals("primeiroTurno_MenuReservarGabinete") == true){
                 gabinete = 1;
                 horaInicio = new Time((9) * 60 * 60 *1000);
@@ -266,8 +271,8 @@ public class MenuReservarGabinete extends Activity {
                 horaInicio = new Time((18) * 60 * 60 *1000);
                 horaFim = new Time((21) * 60 * 60 * 1000);
             }
-        }else
-        if(grupoGabinetesAtual == 2){
+        else
+
             if(turno.equals("primeiroTurno_MenuReservarGabinete") == true){
                 gabinete = 3;
                 horaInicio = new Time((9) * 60 * 60 *1000);
@@ -308,8 +313,8 @@ public class MenuReservarGabinete extends Activity {
                 horaInicio = new Time((18) * 60 * 60 *1000);
                 horaFim = new Time((21) * 60 * 60 * 1000);
             }
-        }else
-        if(grupoGabinetesAtual == 3){
+        else
+
             if(turno.equals("primeiroTurno_MenuReservarGabinete") == true){
                 gabinete = 5;
                 horaInicio = new Time((9) * 60 * 60 *1000);
@@ -350,7 +355,8 @@ public class MenuReservarGabinete extends Activity {
                 horaInicio = new Time((18) * 60 * 60 *1000);
                 horaFim = new Time((21) * 60 * 60 * 1000);
             }
-        }
+        
+
         switch (gabinete){
             case 1:
                 reservas.getReservas().add(new Reserva(g1, ativo, horaInicio, horaFim, dataReserva));
@@ -371,44 +377,11 @@ public class MenuReservarGabinete extends Activity {
                 reservas.getReservas().add(new Reserva(g6, ativo, horaInicio, horaFim, dataReserva));
                 break;
         }
+
         Intent intent = new Intent();
         intent.putExtra("reservas", reservas);
         setResult(1, intent);
         finish();
-    }
-
-    public void gabinetesSeguintes(View view) {
-        if(grupoGabinetesAtual == 1){
-        grupoGabinetesAtual++;
-        newFragment = new Gabinete_3_4();
-        transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment, newFragment);
-        transaction.commit();
-        }else
-        if(grupoGabinetesAtual == 2){
-            grupoGabinetesAtual++;
-            newFragment = new Gabinete_5_6();
-            transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment, newFragment);
-            transaction.commit();
-        }else return;
-    }
-
-    public void gabinetesAnteriores(View view) {
-        if(grupoGabinetesAtual == 3){
-            grupoGabinetesAtual--;
-            newFragment = new Gabinete_3_4();
-            transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment, newFragment);
-            transaction.commit();
-        }else
-        if(grupoGabinetesAtual == 2){
-            grupoGabinetesAtual--;
-            newFragment = new Gabinete_1_2();
-            transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment, newFragment);
-            transaction.commit();
-        }else return;
     }
 
     public void horaReserva(View view) {
