@@ -76,6 +76,16 @@ public class MenuReserva extends Activity {
                 dataGabinete.setText(atual.getDataReserva().toString());
                 horarioGabinete.setText(atual.getHoraInicio().toString() + " : " + atual.getHoraFim().toString());
                 estadoGabinete.setText(atual.getEstadoReserva());
+
+                if(contador == 0)
+                    previous.setEnabled(false);
+                else
+                    previous.setEnabled(true);
+
+                if(contador == reservas.getReservas().size()-1)
+                    next.setEnabled(false);
+                else
+                    next.setEnabled(true);
             }
             else
                 gabineteAndArrows.setVisibility(View.GONE);
@@ -87,64 +97,62 @@ public class MenuReserva extends Activity {
     }
 
     public void previous(View v){
+        contador--;
+
         if(contador == 0)
-            previous.setVisibility(View.GONE);
-        else {
-            previous.setVisibility(View.VISIBLE);
+            previous.setEnabled(false);
+        else
+            previous.setEnabled(true);
 
-            contador--;
+        atual = reservas.getReserva(contador);
 
-            atual = reservas.getReserva(contador);
+        if(atual != null){
+            nrGabinete.setText("Gabinete nº" + atual.getGabinete().getNrGabinete());
+            hiddenResponsavelText.setText(atual.getResponsavel().getEmail());
+            dataGabinete.setText(atual.getDataReserva().toString());
+            horarioGabinete.setText(atual.getHoraInicio().toString() + " : " + atual.getHoraFim().toString());
+            estadoGabinete.setText(atual.getEstadoReserva());
+        }
+        else
+            gabineteAndArrows.setVisibility(View.GONE);
 
-            if(atual != null){
-                nrGabinete.setText("Gabinete nº" + atual.getGabinete().getNrGabinete());
-                hiddenResponsavelText.setText(atual.getResponsavel().getEmail());
-                dataGabinete.setText(atual.getDataReserva().toString());
-                horarioGabinete.setText(atual.getHoraInicio().toString() + " : " + atual.getHoraFim().toString());
-                estadoGabinete.setText(atual.getEstadoReserva());
-            }
-            else
-                gabineteAndArrows.setVisibility(View.GONE);
-
-            if(ativo.getClass() == Aluno.class){
-                hiddenResponsavelTitle.setVisibility(View.GONE);
-                hiddenResponsavelText.setVisibility(View.GONE);
-            }
-            else{
-                hiddenResponsavelTitle.setVisibility(View.VISIBLE);
-                hiddenResponsavelText.setVisibility(View.VISIBLE);
-            }
+        if(ativo.getClass() == Aluno.class){
+            hiddenResponsavelTitle.setVisibility(View.GONE);
+            hiddenResponsavelText.setVisibility(View.GONE);
+        }
+        else{
+            hiddenResponsavelTitle.setVisibility(View.VISIBLE);
+            hiddenResponsavelText.setVisibility(View.VISIBLE);
         }
     }
 
     public void next(View v){
-        if(contador == reservas.getReservas().size())
-            next.setVisibility(View.GONE);
-        else {
-            next.setVisibility(View.VISIBLE);
+        contador++;
 
-            contador++;
+        if(contador == reservas.getReservas().size()-1)
+            next.setEnabled(false);
+        else
+            next.setEnabled(true);
 
-            atual = reservas.getReserva(contador);
+        atual = reservas.getReserva(contador);
 
-            if(atual != null){
-                nrGabinete.setText("Gabinete nº" + atual.getGabinete().getNrGabinete());
-                hiddenResponsavelText.setText(atual.getResponsavel().getEmail());
-                dataGabinete.setText(atual.getDataReserva().toString());
-                horarioGabinete.setText(atual.getHoraInicio().toString() + " : " + atual.getHoraFim().toString());
-                estadoGabinete.setText(atual.getEstadoReserva());
-            }
-            else
-                gabineteAndArrows.setVisibility(View.GONE);
+        if(atual != null){
+            nrGabinete.setText("Gabinete nº" + atual.getGabinete().getNrGabinete());
+            hiddenResponsavelText.setText(atual.getResponsavel().getEmail());
+            dataGabinete.setText(atual.getDataReserva().toString());
+            horarioGabinete.setText(atual.getHoraInicio().toString() + " : " + atual.getHoraFim().toString());
+            estadoGabinete.setText(atual.getEstadoReserva());
+        }
+        else
+            gabineteAndArrows.setVisibility(View.GONE);
 
-            if(ativo.getClass() == Aluno.class){
-                hiddenResponsavelTitle.setVisibility(View.GONE);
-                hiddenResponsavelText.setVisibility(View.GONE);
-            }
-            else{
-                hiddenResponsavelTitle.setVisibility(View.VISIBLE);
-                hiddenResponsavelText.setVisibility(View.VISIBLE);
-            }
+        if(ativo.getClass() == Aluno.class){
+            hiddenResponsavelTitle.setVisibility(View.GONE);
+            hiddenResponsavelText.setVisibility(View.GONE);
+        }
+        else{
+            hiddenResponsavelTitle.setVisibility(View.VISIBLE);
+            hiddenResponsavelText.setVisibility(View.VISIBLE);
         }
     }
 
