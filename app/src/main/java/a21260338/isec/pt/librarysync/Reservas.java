@@ -25,4 +25,8 @@ public class Reservas implements Serializable {
 
         return reservas.get(index);
     }
+
+    public void adicionarReserva(Reserva reserva){
+        reservas.add(reserva);
+    }
 }

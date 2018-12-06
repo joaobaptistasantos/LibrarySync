@@ -28,6 +28,8 @@ public class MenuReserva extends Activity {
     private TextView horarioGabinete;
     private TextView estadoGabinete;
     private Reserva atual;
+    private TextView hiddenResponsavelTitle;
+    private TextView hiddenResponsavelText;
 
     // É o mesmo menu reserva do utilizador mas tem dois campos com visibility a gone (responsavel)
 
@@ -49,6 +51,17 @@ public class MenuReserva extends Activity {
         dataGabinete = (TextView) findViewById(R.id.dataText_MenuReservar);
         horarioGabinete = (TextView) findViewById(R.id.horarioText_MenuReservar);
         estadoGabinete = (TextView) findViewById(R.id.estadoText_MenuReservar);
+        hiddenResponsavelTitle = (TextView) findViewById(R.id.responsavelTitle_MenuReservar);
+        hiddenResponsavelText = (TextView) findViewById(R.id.responsavelText_MenuReservar);
+
+        if(ativo.getClass() == Aluno.class){
+            hiddenResponsavelTitle.setVisibility(View.GONE);
+            hiddenResponsavelText.setVisibility(View.GONE);
+        }
+        else{
+            hiddenResponsavelTitle.setVisibility(View.VISIBLE);
+            hiddenResponsavelText.setVisibility(View.VISIBLE);
+        }
 
         if(reservas.getReservas().isEmpty())
             gabineteAndArrows.setVisibility(View.GONE);
@@ -59,6 +72,7 @@ public class MenuReserva extends Activity {
                 gabineteAndArrows.setVisibility(View.VISIBLE);
 
                 nrGabinete.setText("Gabinete nº" + atual.getGabinete().getNrGabinete());
+                hiddenResponsavelText.setText(atual.getResponsavel().getEmail());
                 dataGabinete.setText(atual.getDataReserva().toString());
                 horarioGabinete.setText(atual.getHoraInicio().toString() + " : " + atual.getHoraFim().toString());
                 estadoGabinete.setText(atual.getEstadoReserva());
@@ -84,13 +98,23 @@ public class MenuReserva extends Activity {
 
             if(atual != null){
                 nrGabinete.setText("Gabinete nº" + atual.getGabinete().getNrGabinete());
+                hiddenResponsavelText.setText(atual.getResponsavel().getEmail());
                 dataGabinete.setText(atual.getDataReserva().toString());
                 horarioGabinete.setText(atual.getHoraInicio().toString() + " : " + atual.getHoraFim().toString());
                 estadoGabinete.setText(atual.getEstadoReserva());
             }
             else
                 gabineteAndArrows.setVisibility(View.GONE);
+
+            if(ativo.getClass() == Aluno.class){
+                hiddenResponsavelTitle.setVisibility(View.GONE);
+                hiddenResponsavelText.setVisibility(View.GONE);
             }
+            else{
+                hiddenResponsavelTitle.setVisibility(View.VISIBLE);
+                hiddenResponsavelText.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     public void next(View v){
@@ -105,6 +129,7 @@ public class MenuReserva extends Activity {
 
             if(atual != null){
                 nrGabinete.setText("Gabinete nº" + atual.getGabinete().getNrGabinete());
+                hiddenResponsavelText.setText(atual.getResponsavel().getEmail());
                 dataGabinete.setText(atual.getDataReserva().toString());
                 horarioGabinete.setText(atual.getHoraInicio().toString() + " : " + atual.getHoraFim().toString());
                 estadoGabinete.setText(atual.getEstadoReserva());
@@ -112,6 +137,14 @@ public class MenuReserva extends Activity {
             else
                 gabineteAndArrows.setVisibility(View.GONE);
 
+            if(ativo.getClass() == Aluno.class){
+                hiddenResponsavelTitle.setVisibility(View.GONE);
+                hiddenResponsavelText.setVisibility(View.GONE);
+            }
+            else{
+                hiddenResponsavelTitle.setVisibility(View.VISIBLE);
+                hiddenResponsavelText.setVisibility(View.VISIBLE);
+            }
         }
     }
 

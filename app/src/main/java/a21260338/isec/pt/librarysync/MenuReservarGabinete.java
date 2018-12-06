@@ -359,22 +359,22 @@ public class MenuReservarGabinete extends Activity {
 
         switch (gabinete){
             case 1:
-                reservas.getReservas().add(new Reserva(g1, ativo, horaInicio, horaFim, dataReserva));
+                reservas.adicionarReserva(new Reserva(g1, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 2:
-                reservas.getReservas().add(new Reserva(g2, ativo, horaInicio, horaFim, dataReserva));
+                reservas.adicionarReserva(new Reserva(g2, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 3:
-                reservas.getReservas().add(new Reserva(g3, ativo, horaInicio, horaFim, dataReserva));
+                reservas.adicionarReserva(new Reserva(g3, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 4:
-                reservas.getReservas().add(new Reserva(g4, ativo, horaInicio, horaFim, dataReserva));
+                reservas.adicionarReserva(new Reserva(g4, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 5:
-                reservas.getReservas().add(new Reserva(g5, ativo, horaInicio, horaFim, dataReserva));
+                reservas.adicionarReserva(new Reserva(g5, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 6:
-                reservas.getReservas().add(new Reserva(g6, ativo, horaInicio, horaFim, dataReserva));
+                reservas.adicionarReserva(new Reserva(g6, ativo, horaInicio, horaFim, dataReserva));
                 break;
         }
 

@@ -28,12 +28,21 @@ public class MenuPrincipal extends Activity {
         tvEmailUser.setText(ativo.getEmail());
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1 && resultCode == 1){
+            reservas = (Reservas) data.getSerializableExtra("reservas");
+        }
+    }
+
     public void reservarGabinete(View v){
         Intent intent = new Intent(this, MenuReservarGabinete.class);
         intent.putExtra("utilizadores", utilizadores);
         intent.putExtra("ativo", ativo);
         intent.putExtra("reservas", reservas);
-        startActivityForResult(intent, 3);
+        startActivityForResult(intent, 1);
     }
 
     public void gerirReservas(View v){
