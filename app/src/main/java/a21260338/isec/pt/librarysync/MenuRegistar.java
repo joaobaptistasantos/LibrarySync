@@ -51,7 +51,7 @@ public class MenuRegistar extends Activity {
         String passwordConfirmacao = et.getText().toString();
 
         try {
-            ativo = utilizadores.addUtilizador(email, password, passwordConfirmacao);
+            ativo = utilizadores.AddUtilizador(email, password, passwordConfirmacao);
         } catch(InvalidEmailException | InvalidDifferentPasswordsException | InvalidPasswordException | AccountAlreadyExistsException e){
             TextView msgErro = (TextView) findViewById(R.id.erroMenuRegistar);
             msgErro.setText(e.getMessage());

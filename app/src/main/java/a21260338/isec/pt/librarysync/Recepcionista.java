@@ -2,15 +2,14 @@ package a21260338.isec.pt.librarysync;
 
 public class Recepcionista extends Utilizador {
 
-    private static int contadorRecepcionistas = 1;
-    private int nrRecepcionista;
+    private Integer nrRecepcionista;
 
-    public Recepcionista(String email, String password) {
+    public Recepcionista(String email, String password, Integer nrRecepcionista) {
         super(email, password);
-        nrRecepcionista = contadorRecepcionistas++;
+        this.nrRecepcionista = nrRecepcionista;
     }
 
-    public int getNrRecepcionista() {
+    public Integer GetNrRecepcionista() {
         return nrRecepcionista;
     }
 }

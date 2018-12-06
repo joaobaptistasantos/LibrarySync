@@ -1,7 +1,6 @@
 package a21260338.isec.pt.librarysync;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
-import java.security.InvalidParameterException;
+import java.util.ArrayList;
 
 import static a21260338.isec.pt.librarysync.Globals.filename;
 
@@ -29,7 +28,7 @@ public class MenuInicial extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inicial);
 
-        utilizadores = new Utilizadores();
+        utilizadores = new Utilizadores(new ArrayList<Utilizador>());
         ativo = null;
 
         FileInputStream fIn = null;
@@ -51,7 +50,7 @@ public class MenuInicial extends Activity {
                 try {
                     Log.d("TestPass", "Username: " + dados[i]);
                     Log.d("TestPass", "Password: " + dados[i+1]);
-                    utilizadores.addUtilizador(dados[i], dados[i + 1], dados[i + 1]);
+                    utilizadores.AddUtilizador(dados[i], dados[i + 1], dados[i + 1]);
                 } catch(InvalidEmailException | InvalidDifferentPasswordsException | InvalidPasswordException | AccountAlreadyExistsException e){
                 } catch(Exception e){
                     e.printStackTrace();
@@ -109,14 +108,14 @@ public class MenuInicial extends Activity {
     }
 
     public void login(View v){
-        EditText et = (EditText)findViewById(R.id.emailInput_MenuInicial);
+        EditText et = findViewById(R.id.emailInput_MenuInicial);
         String email = et.getText().toString().trim();
 
-        et = (EditText)findViewById(R.id.passwordInput_MenuInicial);
+        et = findViewById(R.id.passwordInput_MenuInicial);
         String password = et.getText().toString();
 
         try{
-            ativo = utilizadores.autentica(email, password);
+            ativo = utilizadores.Autentica(email, password);
 
             Intent intent = null;
 
@@ -131,7 +130,7 @@ public class MenuInicial extends Activity {
             intent.putExtra("ativo", ativo);
             startActivity(intent);
 
-        } catch(InvalidEmailException | InvalidAuthenticationException | InvalidPasswordException e){
+        } catch(InvalidAuthenticationException e){
             TextView msgErro = (TextView) findViewById(R.id.erroMenuInicial);
             msgErro.setText(e.getMessage());
             msgErro.setVisibility(View.VISIBLE);

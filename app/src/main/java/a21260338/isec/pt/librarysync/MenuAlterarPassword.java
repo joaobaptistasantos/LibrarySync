@@ -39,7 +39,7 @@ public class MenuAlterarPassword extends Activity {
         String passNova2 = input.getText().toString();
 
         try{
-            utilizadores.mudarPassord(ativo, passAtual, passNova, passNova2);
+            utilizadores.MudarPassord(ativo, passAtual, passNova, passNova2);
         } catch(InvalidDifferentPasswordsException | InvalidPasswordException e) {
             TextView msgErro = (TextView) findViewById(R.id.erroMudarPass);
             msgErro.setText(e.getMessage());
@@ -54,7 +54,7 @@ public class MenuAlterarPassword extends Activity {
         try {
             fOut = openFileOutput(filename, MODE_PRIVATE);
 
-            for (Utilizador u : utilizadores.getUtilizadores()) {
+            for (Utilizador u : utilizadores.GetListData()) {
                 String result = u.getEmail() + " " + u.getPassword() + " ";
                 fOut.write(result.getBytes());
                 fOut.flush();
