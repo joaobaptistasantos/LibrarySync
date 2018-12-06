@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import static a21260338.isec.pt.librarysync.Globals.filename;
 
@@ -27,7 +28,7 @@ public class MenuInicial extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inicial);
 
-        utilizadores = new Utilizadores(null);
+        utilizadores = new Utilizadores(new ArrayList<Utilizador>());
         ativo = null;
 
         FileInputStream fIn = null;
