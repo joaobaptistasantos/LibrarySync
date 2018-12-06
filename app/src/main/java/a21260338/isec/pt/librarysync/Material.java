@@ -1,6 +1,8 @@
 package a21260338.isec.pt.librarysync;
 
-public class Material {
+import java.io.Serializable;
+
+public class Material implements Serializable {
 
     public Material() {}
 }

@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -47,6 +48,14 @@ public class MenuReservarGabinete extends Activity {
     private Gabinete g5 = null;
     private Gabinete g6 = null;
 
+    Calendar date = null;
+    Date dataReserva = null;
+
+    private Time primeiroTurno = new Time((9) * 60 * 60 *1000);
+    private Time segundoTurno = new Time((12) * 60 * 60 *1000);
+    private Time terceiroTurno = new Time((15) * 60 * 60 *1000);
+    private Time quartoTurno = new Time((18) * 60 * 60 *1000);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +69,12 @@ public class MenuReservarGabinete extends Activity {
         TextView dataTV = (TextView) findViewById(R.id.dataText_MenuReservarGabinete);
         dataTV.setText(new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime()));
 
+
+        Calendar date = Calendar.getInstance();
+        /*
+        date.set((picker.getYear() + 1900), (picker.getMonth() - 1), picker.getDayOfMonth());
+        dataReserva = date.getTime();
+        */
         newFragment = new Gabinete_1_2();
         transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment, newFragment);
@@ -72,45 +87,97 @@ public class MenuReservarGabinete extends Activity {
         g5 = new Gabinete(5);
         g6 = new Gabinete(6);
 
-        View view;
+        Button view;
 
+        /*
         for (Reserva r: reservas.getReservas()) {
             if(r.getGabinete().getNrGabinete() == 1){
-                if(r.getHoraInicio() == ){
+                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
                     view = findViewById(R.id.primeiroTurno_MenuReservarGabinete);
+                    view.getBackground().setColorFilter(Color.parseColor("#FFFF00"), PorterDuff.Mode.DARKEN);Log.i("Useres", "ya4");
                 }else
-                if(r.getHoraInicio() == ){
+                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
                     view = findViewById(R.id.segundoTurno_MenuReservarGabinete);
                 }else
-                if(r.getHoraInicio() == ){
+                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
                     view = findViewById(R.id.terceiroTurno_MenuReservarGabinete);
                 }else
-                if(r.getHoraInicio() == ){
+                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
                     view = findViewById(R.id.quartoTurno_MenuReservarGabinete);
                 }
-
-
-
             }else
             if(r.getGabinete().getNrGabinete() == 2){
-                view = findViewById(R.id.primeiroTurno2_MenuReservarGabinete);
-                view = findViewById(R.id.segundoTurno2_MenuReservarGabinete);
-                view = findViewById(R.id.terceiroTurno2_MenuReservarGabinete);
-                view = findViewById(R.id.quartoTurno2_MenuReservarGabinete);
+                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
+                    view = findViewById(R.id.primeiroTurno2_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
+                    view = findViewById(R.id.segundoTurno2_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
+                    view = findViewById(R.id.terceiroTurno2_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
+                    view = findViewById(R.id.quartoTurno2_MenuReservarGabinete);
+                }
             }else
             if(r.getGabinete().getNrGabinete() == 3){
-
+                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
+                    view = findViewById(R.id.primeiroTurno_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
+                    view = findViewById(R.id.segundoTurno_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
+                    view = findViewById(R.id.terceiroTurno_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
+                    view = findViewById(R.id.quartoTurno_MenuReservarGabinete);
+                }
             }else
             if(r.getGabinete().getNrGabinete() == 4){
-
+                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
+                    view = findViewById(R.id.primeiroTurno2_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
+                    view = findViewById(R.id.segundoTurno2_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
+                    view = findViewById(R.id.terceiroTurno2_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
+                    view = findViewById(R.id.quartoTurno2_MenuReservarGabinete);
+                }
             }else
             if(r.getGabinete().getNrGabinete() == 5){
-
+                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
+                    view = findViewById(R.id.primeiroTurno_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
+                    view = findViewById(R.id.segundoTurno_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
+                    view = findViewById(R.id.terceiroTurno_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
+                    view = findViewById(R.id.quartoTurno_MenuReservarGabinete);
+                }
             }else
             if(r.getGabinete().getNrGabinete() == 6){
-
+                if(r.getHoraInicio().toString().equals(primeiroTurno.toString()) == true){
+                    view = findViewById(R.id.primeiroTurno2_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(segundoTurno.toString()) == true){
+                    view = findViewById(R.id.segundoTurno2_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(terceiroTurno.toString()) == true){
+                    view = findViewById(R.id.terceiroTurno2_MenuReservarGabinete);
+                }else
+                if(r.getHoraInicio().toString().equals(quartoTurno.toString()) == true){
+                    view = findViewById(R.id.quartoTurno2_MenuReservarGabinete);
+                }
             }
         }
+        */
     }
 
     public void back(View v){
@@ -154,155 +221,159 @@ public class MenuReservarGabinete extends Activity {
     }
 
     public void concluido(View v){
+/*
+        date.set((picker.getYear()), (picker.getMonth()), picker.getDayOfMonth());
+        dataReserva = date.getTime();
+        */
         if(grupoGabinetesAtual == 1){
-            if(turno == "primeiroTurno_MenuReservarGabinete"){
+            if(turno.equals("primeiroTurno_MenuReservarGabinete") == true){
                 gabinete = 1;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((9) * 60 * 60 *1000);
+                horaFim = new Time((12) * 60 * 60 * 1000);
             }else
-            if(turno == "segundoTurno_MenuReservarGabinete"){
+            if(turno.equals("segundoTurno_MenuReservarGabinete") == true ){
                 gabinete = 1;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((12) * 60 * 60 *1000);
+                horaFim = new Time((15) * 60 * 60 * 1000);
             }else
-            if(turno == "terceiroTurno_MenuReservarGabinete"){
+            if(turno.equals("terceiroTurno_MenuReservarGabinete") == true){
                 gabinete = 1;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((15) * 60 * 60 *1000);
+                horaFim = new Time((18) * 60 * 60 * 1000);
             }else
-            if(turno == "quartoTurno_MenuReservarGabinete"){
+            if(turno.equals("quartoTurno_MenuReservarGabinete") == true){
                 gabinete = 1;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((18) * 60 * 60 *1000);
+                horaFim = new Time((21) * 60 * 60 * 1000);
             }else
-            if(turno == "primeiroTurno2_MenuReservarGabinete"){
+            if(turno.equals("primeiroTurno2_MenuReservarGabinete") == true){
                 gabinete = 2;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((9) * 60 * 60 *1000);
+                horaFim = new Time((12) * 60 * 60 * 1000);
             }else
-            if(turno == "segundoTurno2_MenuReservarGabinete"){
+            if(turno.equals("segundoTurno2_MenuReservarGabinete") == true){
                 gabinete = 2;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((12) * 60 * 60 *1000);
+                horaFim = new Time((15) * 60 * 60 * 1000);
             }else
-            if(turno == "terceiroTurno2_MenuReservarGabinete"){
+            if(turno.equals("terceiroTurno2_MenuReservarGabinete")==true){
                 gabinete = 2;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((15) * 60 * 60 *1000);
+                horaFim = new Time((18) * 60 * 60 * 1000);
             }else
-            if(turno == "quartoTurno2_MenuReservarGabinete"){
+            if(turno.equals("quartoTurno2_MenuReservarGabinete")==true){
                 gabinete = 2;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((18) * 60 * 60 *1000);
+                horaFim = new Time((21) * 60 * 60 * 1000);
             }
         }else
         if(grupoGabinetesAtual == 2){
-            if(turno == "primeiroTurno_MenuReservarGabinete"){
+            if(turno.equals("primeiroTurno_MenuReservarGabinete") == true){
                 gabinete = 3;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((9) * 60 * 60 *1000);
+                horaFim = new Time((12) * 60 * 60 * 1000);
             }else
-            if(turno == "segundoTurno_MenuReservarGabinete"){
+            if(turno.equals("segundoTurno_MenuReservarGabinete") == true ){
                 gabinete = 3;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((12) * 60 * 60 *1000);
+                horaFim = new Time((15) * 60 * 60 * 1000);
             }else
-            if(turno == "terceiroTurno_MenuReservarGabinete"){
+            if(turno.equals("terceiroTurno_MenuReservarGabinete") == true){
                 gabinete = 3;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((15) * 60 * 60 *1000);
+                horaFim = new Time((18) * 60 * 60 * 1000);
             }else
-            if(turno == "quartoTurno_MenuReservarGabinete"){
+            if(turno.equals("quartoTurno_MenuReservarGabinete") == true){
                 gabinete = 3;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((18) * 60 * 60 *1000);
+                horaFim = new Time((21) * 60 * 60 * 1000);
             }else
-            if(turno == "primeiroTurno2_MenuReservarGabinete"){
+            if(turno.equals("primeiroTurno2_MenuReservarGabinete") == true){
                 gabinete = 4;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((9) * 60 * 60 *1000);
+                horaFim = new Time((12) * 60 * 60 * 1000);
             }else
-            if(turno == "segundoTurno2_MenuReservarGabinete"){
+            if(turno.equals("segundoTurno2_MenuReservarGabinete") == true){
                 gabinete = 4;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((12) * 60 * 60 *1000);
+                horaFim = new Time((15-1) * 60 * 60 * 1000);
             }else
-            if(turno == "terceiroTurno2_MenuReservarGabinete"){
+            if(turno.equals("terceiroTurno2_MenuReservarGabinete")==true){
                 gabinete = 4;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((15) * 60 * 60 *1000);
+                horaFim = new Time((18) * 60 * 60 * 1000);
             }else
-            if(turno == "quartoTurno2_MenuReservarGabinete"){
+            if(turno.equals("quartoTurno2_MenuReservarGabinete")==true){
                 gabinete = 4;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((18) * 60 * 60 *1000);
+                horaFim = new Time((21) * 60 * 60 * 1000);
             }
         }else
         if(grupoGabinetesAtual == 3){
-            if(turno == "primeiroTurno_MenuReservarGabinete"){
+            if(turno.equals("primeiroTurno_MenuReservarGabinete") == true){
                 gabinete = 5;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((9) * 60 * 60 *1000);
+                horaFim = new Time((12) * 60 * 60 * 1000);
             }else
-            if(turno == "segundoTurno_MenuReservarGabinete"){
+            if(turno.equals("segundoTurno_MenuReservarGabinete") == true ){
                 gabinete = 5;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((12) * 60 * 60 *1000);
+                horaFim = new Time((15) * 60 * 60 * 1000);
             }else
-            if(turno == "terceiroTurno_MenuReservarGabinete"){
+            if(turno.equals("terceiroTurno_MenuReservarGabinete") == true){
                 gabinete = 5;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((15) * 60 * 60 *1000);
+                horaFim = new Time((18-1) * 60 * 60 * 1000);
             }else
-            if(turno == "quartoTurno_MenuReservarGabinete"){
+            if(turno.equals("quartoTurno_MenuReservarGabinete") == true){
                 gabinete = 5;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((18) * 60 * 60 *1000);
+                horaFim = new Time((21) * 60 * 60 * 1000);
             }else
-            if(turno == "primeiroTurno2_MenuReservarGabinete"){
+            if(turno.equals("primeiroTurno2_MenuReservarGabinete") == true){
                 gabinete = 6;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((9) * 60 * 60 *1000);
+                horaFim = new Time((12) * 60 * 60 * 1000);
             }else
-            if(turno == "segundoTurno2_MenuReservarGabinete"){
+            if(turno.equals("segundoTurno2_MenuReservarGabinete") == true){
                 gabinete = 6;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((12) * 60 * 60 *1000);
+                horaFim = new Time((15) * 60 * 60 * 1000);
             }else
-            if(turno == "terceiroTurno2_MenuReservarGabinete"){
+            if(turno.equals("terceiroTurno2_MenuReservarGabinete")==true){
                 gabinete = 6;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((15) * 60 * 60 *1000);
+                horaFim = new Time((18) * 60 * 60 * 1000);
             }else
-            if(turno == "quartoTurno2_MenuReservarGabinete"){
+            if(turno.equals("quartoTurno2_MenuReservarGabinete")==true){
                 gabinete = 6;
-                horaInicio = ;
-                horaFim = ;
+                horaInicio = new Time((18) * 60 * 60 *1000);
+                horaFim = new Time((21) * 60 * 60 * 1000);
             }
         }
-
         switch (gabinete){
             case 1:
-                reservas.getReservas().add(new Reserva(g1, ativo, horaInicio, horaFim, (data)));
+                reservas.getReservas().add(new Reserva(g1, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 2:
-                reservas.getReservas().add(new Reserva(g1, ativo, horaInicio, horaFim, (data)));
+                reservas.getReservas().add(new Reserva(g2, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 3:
-                reservas.getReservas().add(new Reserva(g1, ativo, horaInicio, horaFim, (data)));
+                reservas.getReservas().add(new Reserva(g3, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 4:
-                reservas.getReservas().add(new Reserva(g1, ativo, horaInicio, horaFim, (data)));
+                reservas.getReservas().add(new Reserva(g4, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 5:
-                reservas.getReservas().add(new Reserva(g1, ativo, horaInicio, horaFim, (data)));
+                reservas.getReservas().add(new Reserva(g5, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 6:
-                reservas.getReservas().add(new Reserva(g1, ativo, horaInicio, horaFim, (data)));
+                reservas.getReservas().add(new Reserva(g6, ativo, horaInicio, horaFim, dataReserva));
                 break;
         }
-        //reservas.getReservas().add(new Reserva(1, ativo, horaInicio, horaFim, (data)));
-
+        Intent intent = new Intent();
+        intent.putExtra("reservas", reservas);
+        setResult(1, intent);
         finish();
     }
 
@@ -346,7 +417,6 @@ public class MenuReservarGabinete extends Activity {
             turnoAnterior.getBackground().setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.DARKEN);
         }
         turno = getResources().getResourceEntryName(view.getId());
-        Log.d("Useres: ", turno);
         view.getBackground().setColorFilter(Color.parseColor("#00FF00"), PorterDuff.Mode.DARKEN);
         turnoAnterior = view;
     }

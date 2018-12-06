@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.Serializable;
+
 public class MenuPrincipal extends Activity {
 
     private Utilizadores utilizadores;
@@ -20,10 +22,19 @@ public class MenuPrincipal extends Activity {
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
         ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
-        reservas = (Reservas) getIntent().getSerializableExtra("reservas");
+        //reservas = (Reservas) getIntent().getSerializableExtra("reservas");
+        reservas = new Reservas();
 
         TextView tvEmailUser = (TextView) findViewById(R.id.emailUser_MenuPrincipal);
         tvEmailUser.setText(ativo.getEmail());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 3 && resultCode == 1){
+            reservas = (Reservas) data.getSerializableExtra("reservas");
+        }
     }
 
     public void reservarGabinete(View v){
@@ -31,7 +42,7 @@ public class MenuPrincipal extends Activity {
         intent.putExtra("utilizadores", utilizadores);
         intent.putExtra("ativo", ativo);
         intent.putExtra("reservas", reservas);
-        startActivity(intent);
+        startActivityForResult(intent, 3);
     }
 
     public void gerirReservas(View v){
