@@ -1,9 +1,10 @@
 package a21260338.isec.pt.librarysync;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Reservas {
+public class Reservas implements Serializable {
 
     private List<Reserva> reservas;
 

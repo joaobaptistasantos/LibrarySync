@@ -1,11 +1,12 @@
 package a21260338.isec.pt.librarysync;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Reserva {
+public class Reserva implements Serializable {
 
     private String estadoReserva;
     private Time horaInicio;

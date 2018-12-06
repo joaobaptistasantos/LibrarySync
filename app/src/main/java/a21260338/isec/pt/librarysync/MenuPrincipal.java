@@ -11,6 +11,7 @@ public class MenuPrincipal extends Activity {
 
     private Utilizadores utilizadores;
     private Utilizador ativo;
+    private Reservas reservas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class MenuPrincipal extends Activity {
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
         ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
+        reservas = (Reservas) getIntent().getSerializableExtra("reservas");
 
         TextView tvEmailUser = (TextView) findViewById(R.id.emailUser_MenuPrincipal);
         tvEmailUser.setText(ativo.getEmail());
@@ -28,6 +30,7 @@ public class MenuPrincipal extends Activity {
         Intent intent = new Intent(this, MenuReservarGabinete.class);
         intent.putExtra("utilizadores", utilizadores);
         intent.putExtra("ativo", ativo);
+        intent.putExtra("reservas", reservas);
         startActivity(intent);
     }
 
