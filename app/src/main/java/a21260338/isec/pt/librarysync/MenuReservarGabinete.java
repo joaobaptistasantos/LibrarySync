@@ -230,7 +230,6 @@ public class MenuReservarGabinete extends Activity {
 
     public void concluido(View v)
     {
-
             if(turno.equals("primeiroTurno_MenuReservarGabinete") == true){
                 gabinete = 1;
                 horaInicio = new Time((9) * 60 * 60 *1000);

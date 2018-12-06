@@ -34,6 +34,7 @@ public class MenuPrincipal extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 3 && resultCode == 1){
             reservas = (Reservas) data.getSerializableExtra("reservas");
+            Log.i("Useres", "Tamanho : " + reservas.getReservas().size());
         }
     }
 
@@ -48,9 +49,9 @@ public class MenuPrincipal extends Activity {
     public void gerirReservas(View v){
         // meter o codigo abaixo quando a tabela for feita
         // Intent intent = new Intent(this, MenuGerirReservas.class);
-        Intent intent = new Intent(this, MenuReserva.class);
-        intent.putExtra("utilizadores", utilizadores);
+        Intent intent = new Intent(this, MenuGerirReservas.class);
         intent.putExtra("ativo", ativo);
+        intent.putExtra("reservas", reservas);
         startActivity(intent);
     }
 
