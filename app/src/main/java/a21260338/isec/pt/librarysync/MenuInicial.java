@@ -22,6 +22,7 @@ public class MenuInicial extends Activity {
 
     private Utilizadores utilizadores;
     private Utilizador ativo;
+    private Reservas reservas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MenuInicial extends Activity {
         setContentView(R.layout.activity_menu_inicial);
 
         utilizadores = new Utilizadores(new ArrayList<Utilizador>());
+        reservas = new Reservas(new ArrayList<Reserva>());
         ativo = null;
 
         FileInputStream fIn = null;
@@ -128,6 +130,7 @@ public class MenuInicial extends Activity {
 
             intent.putExtra("utilizadores", utilizadores);
             intent.putExtra("ativo", ativo);
+            intent.putExtra("reservas", reservas);
             startActivity(intent);
 
         } catch(InvalidAuthenticationException e){
