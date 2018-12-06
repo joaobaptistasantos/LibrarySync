@@ -273,12 +273,12 @@ public class MenuReservarGabinete extends Activity {
             }
         else
 
-            if(turno.equals("primeiroTurno_MenuReservarGabinete") == true){
+            if(turno.equals("primeiroTurno3_MenuReservarGabinete") == true){
                 gabinete = 3;
                 horaInicio = new Time((9) * 60 * 60 *1000);
                 horaFim = new Time((12) * 60 * 60 * 1000);
             }else
-            if(turno.equals("segundoTurno_MenuReservarGabinete") == true ){
+            if(turno.equals("segundoTurno3_MenuReservarGabinete") == true ){
                 gabinete = 3;
                 horaInicio = new Time((12) * 60 * 60 *1000);
                 horaFim = new Time((15) * 60 * 60 * 1000);
@@ -288,69 +288,69 @@ public class MenuReservarGabinete extends Activity {
                 horaInicio = new Time((15) * 60 * 60 *1000);
                 horaFim = new Time((18) * 60 * 60 * 1000);
             }else
-            if(turno.equals("quartoTurno_MenuReservarGabinete") == true){
+            if(turno.equals("quartoTurno3_MenuReservarGabinete") == true){
                 gabinete = 3;
                 horaInicio = new Time((18) * 60 * 60 *1000);
                 horaFim = new Time((21) * 60 * 60 * 1000);
             }else
-            if(turno.equals("primeiroTurno2_MenuReservarGabinete") == true){
+            if(turno.equals("primeiroTurno4_MenuReservarGabinete") == true){
                 gabinete = 4;
                 horaInicio = new Time((9) * 60 * 60 *1000);
                 horaFim = new Time((12) * 60 * 60 * 1000);
             }else
-            if(turno.equals("segundoTurno2_MenuReservarGabinete") == true){
+            if(turno.equals("segundoTurno4_MenuReservarGabinete") == true){
                 gabinete = 4;
                 horaInicio = new Time((12) * 60 * 60 *1000);
                 horaFim = new Time((15-1) * 60 * 60 * 1000);
             }else
-            if(turno.equals("terceiroTurno2_MenuReservarGabinete")==true){
+            if(turno.equals("terceiroTurno4_MenuReservarGabinete")==true){
                 gabinete = 4;
                 horaInicio = new Time((15) * 60 * 60 *1000);
                 horaFim = new Time((18) * 60 * 60 * 1000);
             }else
-            if(turno.equals("quartoTurno2_MenuReservarGabinete")==true){
+            if(turno.equals("quartoTurno4_MenuReservarGabinete")==true){
                 gabinete = 4;
                 horaInicio = new Time((18) * 60 * 60 *1000);
                 horaFim = new Time((21) * 60 * 60 * 1000);
             }
         else
 
-            if(turno.equals("primeiroTurno_MenuReservarGabinete") == true){
+            if(turno.equals("primeiroTurno5_MenuReservarGabinete") == true){
                 gabinete = 5;
                 horaInicio = new Time((9) * 60 * 60 *1000);
                 horaFim = new Time((12) * 60 * 60 * 1000);
             }else
-            if(turno.equals("segundoTurno_MenuReservarGabinete") == true ){
+            if(turno.equals("segundoTurno5_MenuReservarGabinete") == true ){
                 gabinete = 5;
                 horaInicio = new Time((12) * 60 * 60 *1000);
                 horaFim = new Time((15) * 60 * 60 * 1000);
             }else
-            if(turno.equals("terceiroTurno_MenuReservarGabinete") == true){
+            if(turno.equals("terceiroTurno5_MenuReservarGabinete") == true){
                 gabinete = 5;
                 horaInicio = new Time((15) * 60 * 60 *1000);
                 horaFim = new Time((18-1) * 60 * 60 * 1000);
             }else
-            if(turno.equals("quartoTurno_MenuReservarGabinete") == true){
+            if(turno.equals("quartoTurno5_MenuReservarGabinete") == true){
                 gabinete = 5;
                 horaInicio = new Time((18) * 60 * 60 *1000);
                 horaFim = new Time((21) * 60 * 60 * 1000);
             }else
-            if(turno.equals("primeiroTurno2_MenuReservarGabinete") == true){
+            if(turno.equals("primeiroTurno6_MenuReservarGabinete") == true){
                 gabinete = 6;
                 horaInicio = new Time((9) * 60 * 60 *1000);
                 horaFim = new Time((12) * 60 * 60 * 1000);
             }else
-            if(turno.equals("segundoTurno2_MenuReservarGabinete") == true){
+            if(turno.equals("segundoTurno6_MenuReservarGabinete") == true){
                 gabinete = 6;
                 horaInicio = new Time((12) * 60 * 60 *1000);
                 horaFim = new Time((15) * 60 * 60 * 1000);
             }else
-            if(turno.equals("terceiroTurno2_MenuReservarGabinete")==true){
+            if(turno.equals("terceiroTurno6_MenuReservarGabinete")==true){
                 gabinete = 6;
                 horaInicio = new Time((15) * 60 * 60 *1000);
                 horaFim = new Time((18) * 60 * 60 * 1000);
             }else
-            if(turno.equals("quartoTurno2_MenuReservarGabinete")==true){
+            if(turno.equals("quartoTurno6_MenuReservarGabinete")==true){
                 gabinete = 6;
                 horaInicio = new Time((18) * 60 * 60 *1000);
                 horaFim = new Time((21) * 60 * 60 * 1000);
@@ -378,10 +378,11 @@ public class MenuReservarGabinete extends Activity {
                 break;
         }
 
-        Intent intent = new Intent();
+        Intent intent = new Intent(this, MenuPrincipal.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
         intent.putExtra("reservas", reservas);
-        setResult(1, intent);
-        finish();
+        startActivity(intent);
     }
 
     public void horaReserva(View view) {

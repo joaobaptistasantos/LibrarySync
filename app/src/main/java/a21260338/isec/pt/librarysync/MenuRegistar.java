@@ -23,6 +23,7 @@ public class MenuRegistar extends Activity {
 
     private Utilizadores utilizadores;
     private Utilizador ativo;
+    private Reservas reservas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class MenuRegistar extends Activity {
         setContentView(R.layout.activity_menu_registar);
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
+        reservas = (Reservas) getIntent().getSerializableExtra("reservas");
         ativo = null;
     }
 
@@ -86,6 +88,7 @@ public class MenuRegistar extends Activity {
         Intent intent = new Intent(this, MenuPrincipal.class);
         intent.putExtra("utilizadores", utilizadores);
         intent.putExtra("ativo", ativo);
+        intent.putExtra("reservas", reservas);
         startActivity(intent);
     }
 

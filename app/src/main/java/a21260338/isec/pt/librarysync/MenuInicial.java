@@ -31,7 +31,7 @@ public class MenuInicial extends Activity {
         setContentView(R.layout.activity_menu_inicial);
 
         utilizadores = new Utilizadores();
-        //reservas = new Reservas();
+        reservas = new Reservas();
         ativo = null;
 
         FileInputStream fIn = null;
@@ -78,6 +78,7 @@ public class MenuInicial extends Activity {
     public void onRegistar(View v){
         Intent intent = new Intent(this, MenuRegistar.class);
         intent.putExtra("utilizadores",(Serializable) utilizadores);
+        intent.putExtra("reservas", reservas);
         startActivityForResult(intent, 1);
     }
 

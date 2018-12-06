@@ -22,19 +22,10 @@ public class MenuPrincipal extends Activity {
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
         ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
-        //reservas = (Reservas) getIntent().getSerializableExtra("reservas");
-        reservas = new Reservas();
+        reservas = (Reservas) getIntent().getSerializableExtra("reservas");
 
         TextView tvEmailUser = (TextView) findViewById(R.id.emailUser_MenuPrincipal);
         tvEmailUser.setText(ativo.getEmail());
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 3 && resultCode == 1){
-            reservas = (Reservas) data.getSerializableExtra("reservas");
-        }
     }
 
     public void reservarGabinete(View v){
@@ -46,11 +37,10 @@ public class MenuPrincipal extends Activity {
     }
 
     public void gerirReservas(View v){
-        // meter o codigo abaixo quando a tabela for feita
-        // Intent intent = new Intent(this, MenuGerirReservas.class);
         Intent intent = new Intent(this, MenuReserva.class);
         intent.putExtra("utilizadores", utilizadores);
         intent.putExtra("ativo", ativo);
+        intent.putExtra("reservas", reservas);
         startActivity(intent);
     }
 

@@ -15,4 +15,14 @@ public class Reservas implements Serializable {
     public List<Reserva> getReservas() {
         return reservas;
     }
+
+    public Reserva getReserva(int index) {
+        if(reservas.isEmpty())
+            return null;
+
+        if(index < 0 || index >= reservas.size())
+            return null;
+
+        return reservas.get(index);
+    }
 }
