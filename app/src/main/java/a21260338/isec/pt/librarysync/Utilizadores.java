@@ -2,10 +2,10 @@ package a21260338.isec.pt.librarysync;
 
 import android.content.Intent;
 import android.net.Uri;
-import java.io.Serializable;
+
 import java.util.ArrayList;
 
-public class Utilizadores extends Controlador<Utilizador> implements Serializable {
+public class Utilizadores extends Controlador<Utilizador> {
 
     public Utilizadores(ArrayList<Utilizador> utilizadores) {
         super(utilizadores);
@@ -61,7 +61,7 @@ public class Utilizadores extends Controlador<Utilizador> implements Serializabl
         for(Utilizador u : GetListData())
             if(u.autentica(email, password))
                 return u;
-        throw new InvalidAuthenticationException("Conta não existe!");
+        throw new InvalidAuthenticationException("Autenticação falhada!");
     }
 
     public Intent RecuperarConta(String email) throws InvalidAccountRecover {
