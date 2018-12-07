@@ -86,13 +86,16 @@ public class MenuReservarGabinete extends Activity {
         g5 = new Gabinete(5);
         g6 = new Gabinete(6);
 
-        mostraHorarios();
-        mostraHorarios();
+        if(reservas.getReservas().size() == 0){
+            mostraHorasDisponiveis();
+        }else{
+            mostraHorarios();
+        }
     }
 
-    public void mostraHorarios(){
+    public void mostraHorasDisponiveis(){
         Button view;
-        
+
         for (Reserva r: reservas.getReservas()) {
             if(r.getGabinete().getNrGabinete() == 1){
                 if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
@@ -203,6 +206,11 @@ public class MenuReservarGabinete extends Activity {
                 }
             }
         }
+    }
+
+    public void mostraHorarios(){
+
+        mostraHorasDisponiveis();
     }
 
     public void back(View v){
