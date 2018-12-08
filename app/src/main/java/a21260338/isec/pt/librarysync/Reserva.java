@@ -1,11 +1,12 @@
 package a21260338.isec.pt.librarysync;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Reserva {
+public class Reserva implements Serializable {
 
     private String estadoReserva;
     private Time horaInicio;
@@ -17,7 +18,7 @@ public class Reserva {
     private List<Material> material;
     private List<Utilizador> utilizadoresAssociados;
 
-    public Reserva(Gabinete gabinete, Utilizador responsavel, Time horaInicio, Time horaFim, Date dataReserva){
+    public Reserva(Gabinete gabinete, Utilizador responsavel, Time horaInicio, Time horaFim, Date dataReserva, List<Material> material_req){
         estadoReserva = "Reservado";
         this.horaInicio = horaInicio;
         this.horaFim = horaFim;

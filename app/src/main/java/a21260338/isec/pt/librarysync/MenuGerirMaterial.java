@@ -1,8 +1,11 @@
 package a21260338.isec.pt.librarysync;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.SeekBar;
 
 public class MenuGerirMaterial extends Activity {
 
@@ -16,6 +19,8 @@ public class MenuGerirMaterial extends Activity {
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
         ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
+
+
     }
 
     public void back(View v){
@@ -23,6 +28,18 @@ public class MenuGerirMaterial extends Activity {
     }
 
     public void concluido(View v){
-        finish();
+        SeekBar canetas = (SeekBar) findViewById(R.id.canetasSeekBar);
+        canetas.getProgress();
+        CheckBox Apagador = (CheckBox) findViewById(R.id.checkApagador);
+        Apagador.isSelected();
+        CheckBox Extensao = (CheckBox) findViewById(R.id.checkExtensao);
+        Extensao.isSelected();
+        int[] materiais = {canetas.getProgress(),Extensao.isSelected() ? 1 : 0,Apagador.isSelected() ? 1 : 0};
+        Intent intent = new Intent(getBaseContext(), MenuReservarGabinete.class);
+        intent.putExtra("utilizadores", utilizadores);
+        intent.putExtra("ativo", ativo);
+        intent.putExtra("materiais", materiais);
+        startActivity(intent);
+        //finish();
     }
 }
