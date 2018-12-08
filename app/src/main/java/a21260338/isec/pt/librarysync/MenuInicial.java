@@ -29,8 +29,9 @@ public class MenuInicial extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inicial);
 
+
         utilizadores = new Utilizadores(new ArrayList<Utilizador>());
-        reservas = new Reservas(new ArrayList<Reserva>());
+
         ativo = null;
 
         FileInputStream fIn = null;
@@ -95,6 +96,10 @@ public class MenuInicial extends Activity {
             Intent intent = new Intent(this, MenuRegistar.class);
             intent.putExtra("utilizadores",(Serializable) utilizadores);
             startActivityForResult(intent, 2);
+        }else
+
+        if(requestCode == 3){
+            reservas = (Reservas) data.getSerializableExtra("reservas");
         }
     }
 

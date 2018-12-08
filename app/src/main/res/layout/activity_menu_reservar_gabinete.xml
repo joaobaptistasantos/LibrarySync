@@ -61,50 +61,628 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <ImageButton
-        android:id="@+id/gabineteAnterior_MenuReservarGabinete"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@null"
-        android:padding="8dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/gabinete_anterior"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="gabinetesAnteriores"/>
-
-    <FrameLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/fragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/barraInferior_MenuReservarGabinete"
-        app:layout_constraintEnd_toStartOf="@+id/gabineteSeguinte_MenuReservarGabinete"
-        app:layout_constraintStart_toEndOf="@+id/gabineteAnterior_MenuReservarGabinete"
-        app:layout_constraintTop_toBottomOf="@+id/barraSuperior_MenuReservarGabinete" />
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barraSuperior_MenuReservarGabinete">
 
-    <ImageButton
-        android:id="@+id/gabineteSeguinte_MenuReservarGabinete"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="8dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@null"
-        android:padding="8dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/gabinete_seguinte"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="gabinetesSeguintes"/>
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/round_corner"
+            android:paddingLeft="25dp"
+            android:paddingTop="12dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iconeGabinete_MenuReservarGabinete"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/door_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/gabineteNumero_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Gabinete nº1"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iconeGabinete_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/primeiroTurno_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/primeiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/gabineteNumero_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/segundoTurno_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/segundoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/primeiroTurno_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/terceiroTurno_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/terceiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/segundoTurno_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/quartoTurno_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/quartoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/terceiroTurno_MenuReservarGabinete" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/round_corner"
+            android:paddingLeft="25dp"
+            android:paddingTop="12dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iconeGabinete2_MenuReservarGabinete"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/door_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/gabineteNumero2_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Gabinete nº2"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iconeGabinete2_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/primeiroTurno2_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/primeiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/gabineteNumero2_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/segundoTurno2_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/segundoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/primeiroTurno2_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/terceiroTurno2_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/terceiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/segundoTurno2_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/quartoTurno2_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/quartoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/terceiroTurno2_MenuReservarGabinete" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/round_corner"
+            android:paddingLeft="25dp"
+            android:paddingTop="12dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iconeGabinete3_MenuReservarGabinete"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/door_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/gabineteNumero3_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Gabinete nº3"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iconeGabinete3_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/primeiroTurno3_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/primeiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/gabineteNumero3_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/segundoTurno3_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/segundoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/primeiroTurno3_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/terceiroTurno3_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/terceiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/segundoTurno3_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/quartoTurno3_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/quartoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/terceiroTurno3_MenuReservarGabinete" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/round_corner"
+            android:paddingLeft="25dp"
+            android:paddingTop="12dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout3"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iconeGabinete4_MenuReservarGabinete"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/door_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/gabineteNumero4_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Gabinete nº4"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iconeGabinete4_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/primeiroTurno4_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/primeiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/gabineteNumero4_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/segundoTurno4_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/segundoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/primeiroTurno4_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/terceiroTurno4_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/terceiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/segundoTurno4_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/quartoTurno4_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/quartoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/terceiroTurno4_MenuReservarGabinete" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/round_corner"
+            android:paddingLeft="25dp"
+            android:paddingTop="12dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iconeGabinete5_MenuReservarGabinete"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/door_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/gabineteNumero5_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Gabinete nº5"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iconeGabinete5_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/primeiroTurno5_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/primeiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/gabineteNumero5_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/segundoTurno5_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/segundoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/primeiroTurno5_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/terceiroTurno5_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/terceiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/segundoTurno5_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/quartoTurno5_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/quartoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/terceiroTurno5_MenuReservarGabinete" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/round_corner"
+            android:paddingLeft="25dp"
+            android:paddingTop="12dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iconeGabinete6_MenuReservarGabinete"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/door_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/gabineteNumero6_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Gabinete nº6"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iconeGabinete6_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/primeiroTurno6_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/primeiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/gabineteNumero6_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/segundoTurno6_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/segundoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/primeiroTurno6_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/terceiroTurno6_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/terceiroHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/segundoTurno6_MenuReservarGabinete" />
+
+            <Button
+                android:id="@+id/quartoTurno6_MenuReservarGabinete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_corner_horario"
+                android:onClick="horaReserva"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:text="@string/quartoHorario"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/terceiroTurno6_MenuReservarGabinete" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/barraInferior_MenuReservarGabinete"

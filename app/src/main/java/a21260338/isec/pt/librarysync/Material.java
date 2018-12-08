@@ -1,6 +1,8 @@
 package a21260338.isec.pt.librarysync;
 
-public class Material extends Modelo {
+import java.io.Serializable;
+
+public class Material extends Modelo implements Serializable {
 
     private int nrMaterial;
     private String estado;

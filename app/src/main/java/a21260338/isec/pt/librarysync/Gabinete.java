@@ -1,6 +1,8 @@
 package a21260338.isec.pt.librarysync;
 
-public class Gabinete extends Modelo{
+import java.io.Serializable;
+
+public class Gabinete extends Modelo implements Serializable {
 
     private int nrGabinete;
 
