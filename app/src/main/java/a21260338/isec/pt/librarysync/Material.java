@@ -1,11 +1,13 @@
 package a21260338.isec.pt.librarysync;
 
-public class Material {
+import java.io.Serializable;
+
+public class Material implements Serializable {
 
     private int nrMaterial;
-    private String estado;
+    //private String estado;
 
-    public Material() {}
-    public Material(int nrMaterial){}
-    public int Get_Material(){ return this.nrMaterial; }
+    //public Material() {}
+    public Material(int nrMaterial){this.nrMaterial = nrMaterial;}
+    public int Get_N_Material(){ return this.nrMaterial; }
 }

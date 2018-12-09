@@ -36,6 +36,11 @@ public class MenuGerirReservas extends Activity {
                 tv.append("\nHora Início: " + r.getHoraInicio().toString());
                 tv.append("\nHora Fim: " + r.getHoraFim().toString());
                 tv.append("\nData Reserva: " + r.getDataReserva().getDate() + "/" + (r.getDataReserva().getMonth()+1) + "/" + r.getDataReserva().getYear());
+                tv.append("\nMateriais: " + r.getNumMateriais());
+                tv.append(("\n->Canetas: "+ r.getNumMaterialByIndex(0)));
+                tv.append(("\n->Extensão: "+ r.getNumMaterialByIndex(1)));
+                tv.append(("\n->Apagador: "+ r.getNumMaterialByIndex(2)));
+
             }
             tv.append("\n");
         }

@@ -41,7 +41,6 @@ public class MenuReservarGabinete extends Activity {
     private Time horaInicio = null;
     private Time horaFim = null;
     private int gabinete = 0;
-    private int[] materiais = {0,0,0};
 
     private Gabinete g1 = null;
     private Gabinete g2 = null;
@@ -94,7 +93,6 @@ public class MenuReservarGabinete extends Activity {
         }else{
             mostraHorarios();
         }
-        materiais = getIntent().getIntArrayExtra("materiais");
     }
 
     public void mostraHorasDisponiveis(){
@@ -391,31 +389,24 @@ public class MenuReservarGabinete extends Activity {
                 horaInicio = new Time((18) * 60 * 60 *1000);
                 horaFim = new Time((21) * 60 * 60 * 1000);
             }
-        List<Material> material_req = new ArrayList<Material>();
-        Material canetas = new Caneta(materiais[0]);
-        Material extensao = new Extensao(materiais[1]);
-        Material apagador = new Apagador(materiais[2]);
-        material_req.add(canetas);
-        material_req.add(extensao);
-        material_req.add(apagador);
         switch (gabinete){
             case 1:
-                reservas.getReservas().add(new Reserva(g1, ativo, horaInicio, horaFim, dataReserva,material_req));
+                reservas.getReservas().add(new Reserva(g1, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 2:
-                reservas.getReservas().add(new Reserva(g2, ativo, horaInicio, horaFim, dataReserva,material_req));
+                reservas.getReservas().add(new Reserva(g2, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 3:
-                reservas.getReservas().add(new Reserva(g3, ativo, horaInicio, horaFim, dataReserva,material_req));
+                reservas.getReservas().add(new Reserva(g3, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 4:
-                reservas.getReservas().add(new Reserva(g4, ativo, horaInicio, horaFim, dataReserva,material_req));
+                reservas.getReservas().add(new Reserva(g4, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 5:
-                reservas.getReservas().add(new Reserva(g5, ativo, horaInicio, horaFim, dataReserva,material_req));
+                reservas.getReservas().add(new Reserva(g5, ativo, horaInicio, horaFim, dataReserva));
                 break;
             case 6:
-                reservas.getReservas().add(new Reserva(g6, ativo, horaInicio, horaFim, dataReserva,material_req));
+                reservas.getReservas().add(new Reserva(g6, ativo, horaInicio, horaFim, dataReserva));
                 break;
         }
 

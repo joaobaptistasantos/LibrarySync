@@ -29,17 +29,11 @@ public class MenuGerirMaterial extends Activity {
 
     public void concluido(View v){
         SeekBar canetas = (SeekBar) findViewById(R.id.canetasSeekBar);
-        canetas.getProgress();
-        CheckBox Apagador = (CheckBox) findViewById(R.id.checkApagador);
-        Apagador.isSelected();
         CheckBox Extensao = (CheckBox) findViewById(R.id.checkExtensao);
-        Extensao.isSelected();
-        int[] materiais = {canetas.getProgress(),Extensao.isSelected() ? 1 : 0,Apagador.isSelected() ? 1 : 0};
-        Intent intent = new Intent(getBaseContext(), MenuReservarGabinete.class);
-        intent.putExtra("utilizadores", utilizadores);
-        intent.putExtra("ativo", ativo);
-        intent.putExtra("materiais", materiais);
-        startActivity(intent);
-        //finish();
+        CheckBox Apagador = (CheckBox) findViewById(R.id.checkApagador);
+
+        int[] materiais_req = {canetas.getProgress(),Extensao.isChecked() ? 1 : 0 ,Apagador.isChecked() ? 1 : 0};
+        Globals.materiais = materiais_req;
+        finish();
     }
 }
