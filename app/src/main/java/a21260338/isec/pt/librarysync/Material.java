@@ -7,9 +7,6 @@ public class Material extends Modelo implements Serializable {
     private int nrMaterial;
     private String estado;
 
-    public Material() {
-    }
-
     public Material(int nrMaterial) {
         this.nrMaterial = nrMaterial;
     }
