@@ -15,6 +15,7 @@ public class MenuPrincipal extends Activity {
     private Utilizadores utilizadores;
     private Utilizador ativo;
     private Reservas reservas;
+    private String[] getData = new String[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class MenuPrincipal extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 3 && resultCode == 1){
+            getData = (String[]) data.getStringArrayExtra("data");
             reservas = (Reservas) data.getSerializableExtra("reservas");
         }
     }
@@ -52,6 +54,7 @@ public class MenuPrincipal extends Activity {
         Intent intent = new Intent(this, MenuGerirReservas.class);
         intent.putExtra("ativo", ativo);
         intent.putExtra("reservas", reservas);
+        intent.putExtra("data", getData);
         startActivity(intent);
     }
 

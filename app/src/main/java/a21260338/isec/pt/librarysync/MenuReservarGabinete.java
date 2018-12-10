@@ -57,6 +57,7 @@ public class MenuReservarGabinete extends Activity {
     private TextView dataTV = null;
 
     private String[] getData = new String[3];
+    private String[] getDataDia = new String[3];
     private Calendar cal = null;
 
     @Override
@@ -72,7 +73,7 @@ public class MenuReservarGabinete extends Activity {
         dataTV.setText(new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime()));
 
         getData = dataTV.getText().toString().split("/");
-
+        getDataDia = getData;
         int day = Integer.parseInt(getData[0]);
         int month = Integer.parseInt(getData[1]) - 1;
         int year = Integer.parseInt(getData[2]);
@@ -97,119 +98,179 @@ public class MenuReservarGabinete extends Activity {
         Button view;
 
         for (Reserva r: reservas.GetListData()) {
-            if(r.getGabinete().getNrGabinete() == 1){
-                if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.primeiroTurno_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
+            if(r.getDataReserva().equals(dataReserva)){
+                if(r.getGabinete().getNrGabinete() == 1){
+                    if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.primeiroTurno_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.segundoTurno_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.terceiroTurno_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(quartoTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.quartoTurno_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }
                 }else
-                if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.segundoTurno_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
+                if(r.getGabinete().getNrGabinete() == 2){
+                    if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.primeiroTurno2_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.segundoTurno2_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.terceiroTurno2_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(quartoTurno.toString().contains(r.toString())){
+                        view = findViewById(R.id.quartoTurno2_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }
                 }else
-                if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.terceiroTurno_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
+                if(r.getGabinete().getNrGabinete() == 3){
+                    if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.primeiroTurno3_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.segundoTurno3_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.terceiroTurno3_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(quartoTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.quartoTurno3_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }
                 }else
-                if(quartoTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.quartoTurno_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }
-            }else
-            if(r.getGabinete().getNrGabinete() == 2){
-                if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.primeiroTurno2_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
+                if(r.getGabinete().getNrGabinete() == 4){
+                    if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.primeiroTurno4_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.segundoTurno4_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.terceiroTurno4_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(quartoTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.quartoTurno4_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }
                 }else
-                if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.segundoTurno2_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
+                if(r.getGabinete().getNrGabinete() == 5){
+                    if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.primeiroTurno5_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.segundoTurno5_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.terceiroTurno5_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(quartoTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.quartoTurno5_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }
                 }else
-                if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.terceiroTurno2_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(quartoTurno.toString().contains(r.toString())){
-                    view = findViewById(R.id.quartoTurno2_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }
-            }else
-            if(r.getGabinete().getNrGabinete() == 3){
-                if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.primeiroTurno3_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.segundoTurno3_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.terceiroTurno3_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(quartoTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.quartoTurno3_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }
-            }else
-            if(r.getGabinete().getNrGabinete() == 4){
-                if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.primeiroTurno4_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.segundoTurno4_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.terceiroTurno4_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(quartoTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.quartoTurno4_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }
-            }else
-            if(r.getGabinete().getNrGabinete() == 5){
-                if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.primeiroTurno5_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.segundoTurno5_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.terceiroTurno5_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(quartoTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.quartoTurno5_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }
-            }else
-            if(r.getGabinete().getNrGabinete() == 6){
-                if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.primeiroTurno6_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.segundoTurno6_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.terceiroTurno6_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
-                }else
-                if(quartoTurno.toString().contains(r.getHoraInicio().toString())){
-                    view = findViewById(R.id.quartoTurno6_MenuReservarGabinete);
-                    view.setVisibility(View.INVISIBLE);
+                if(r.getGabinete().getNrGabinete() == 6){
+                    if(primeiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.primeiroTurno6_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(segundoTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.segundoTurno6_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(terceiroTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.terceiroTurno6_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }else
+                    if(quartoTurno.toString().contains(r.getHoraInicio().toString())){
+                        view = findViewById(R.id.quartoTurno6_MenuReservarGabinete);
+                        view.setVisibility(View.INVISIBLE);
+                    }
                 }
             }
         }
     }
 
-    public void mostraHorarios(){
+    public void meteHorasVisiveis(){
+        Button view;
 
+        view = findViewById(R.id.primeiroTurno_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.segundoTurno_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.terceiroTurno_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.quartoTurno_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+
+        view = findViewById(R.id.primeiroTurno2_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.segundoTurno2_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.terceiroTurno2_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.quartoTurno2_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+
+        view = findViewById(R.id.primeiroTurno3_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.segundoTurno3_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.terceiroTurno3_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.quartoTurno3_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+
+        view = findViewById(R.id.primeiroTurno4_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.segundoTurno4_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.terceiroTurno4_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.quartoTurno4_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+
+        view = findViewById(R.id.primeiroTurno5_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.segundoTurno5_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.terceiroTurno5_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.quartoTurno5_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+
+        view = findViewById(R.id.primeiroTurno6_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.segundoTurno6_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.terceiroTurno6_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+        view = findViewById(R.id.quartoTurno6_MenuReservarGabinete);
+        view.setVisibility(View.VISIBLE);
+    }
+
+    public void mostraHorarios(){
+        meteHorasVisiveis();
         mostraHorasDisponiveis();
     }
 
@@ -241,6 +302,8 @@ public class MenuReservarGabinete extends Activity {
                 Date novaData = new Date(year, month, day);
 
                 dataReserva = novaData;
+
+                mostraHorarios();
             }
         });
 
@@ -409,9 +472,9 @@ public class MenuReservarGabinete extends Activity {
                 reservas.GetListData().add(new Reserva(g6, ativo, horaInicio, horaFim, dataReserva));
                 break;
         }
-
         Intent intent = new Intent();
         intent.putExtra("reservas", reservas);
+        intent.putExtra("data", getDataDia);
         setResult(1, intent);
         finish();
     }
