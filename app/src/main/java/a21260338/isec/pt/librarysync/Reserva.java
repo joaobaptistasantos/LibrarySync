@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 public class Reserva extends Modelo implements Serializable {
-
     private String estadoReserva;
     private Time horaInicio;
     private Time horaFim;
@@ -15,7 +14,10 @@ public class Reserva extends Modelo implements Serializable {
 
     private Gabinete gabinete;
     private Utilizador responsavel;
-    private List<Material> material;
+    //private List<Material> material;
+    Material canetas;
+    Material extensao;
+    Material apagador;
     private List<Utilizador> utilizadoresAssociados;
 
     public Reserva(Gabinete gabinete, Utilizador responsavel, Time horaInicio, Time horaFim, Date dataReserva){
@@ -26,7 +28,16 @@ public class Reserva extends Modelo implements Serializable {
 
         this.gabinete = gabinete;
         this.responsavel = responsavel;
-        material = new ArrayList<>();
+        int n1 = Globals.materiais[0];
+        int n2 = Globals.materiais[1];
+        int n3 = Globals.materiais[2];
+        //material = new ArrayList<>();
+        canetas = new Caneta(n1);
+        extensao = new Extensao(n2);
+        apagador = new Apagador(n3);
+        //material.add(new Caneta(Globals.materiais[0]));
+        //material.add(new Extensao(Globals.materiais[1]));
+        //material.add(new Apagador(Globals.materiais[2]));
         utilizadoresAssociados = new ArrayList<>();
     }
 
@@ -45,4 +56,36 @@ public class Reserva extends Modelo implements Serializable {
     public Utilizador getResponsavel() { return responsavel; }
 
     public Gabinete getGabinete() { return gabinete; }
+
+    public int getNumMateriais(){
+        int num_mat = 0;
+        //for (int i = 0; i < material.size(); i++) {
+        //    num_mat += material.get(i).Get_N_Material();
+        //}
+        num_mat += canetas.Get_Material();
+        num_mat += extensao.Get_Material();
+        num_mat += apagador.Get_Material();
+        return num_mat;
+    }
+
+    public int getNumMaterialByIndex(int index)
+    {
+        int ret_st=0;
+        //return material.get(index).Get_N_Material();
+        switch (index)
+        {
+            case 0:
+                ret_st = canetas.Get_Material();
+                break;
+            case 1:
+                ret_st = extensao.Get_Material();
+                break;
+            case 2:
+                ret_st = apagador.Get_Material();
+                break;
+            default:
+                break;
+        }
+        return ret_st;
+    }
 }

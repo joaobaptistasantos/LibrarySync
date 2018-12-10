@@ -25,8 +25,10 @@ import org.w3c.dom.Text;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class MenuReservarGabinete extends Activity {
 
@@ -450,7 +452,6 @@ public class MenuReservarGabinete extends Activity {
                 horaInicio = new Time((18) * 60 * 60 *1000);
                 horaFim = new Time((21) * 60 * 60 * 1000);
             }
-
 
         switch (gabinete){
             case 1:

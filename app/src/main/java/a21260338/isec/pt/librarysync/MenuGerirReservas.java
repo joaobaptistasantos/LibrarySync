@@ -6,7 +6,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
 import java.util.Date;
 
 public class MenuGerirReservas extends Activity {
@@ -16,7 +15,6 @@ public class MenuGerirReservas extends Activity {
     private String[] getData = new String[3];
     private Date dataReserva = null;
     TextView tv;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +38,20 @@ public class MenuGerirReservas extends Activity {
                 tv.setMaxLines(0);
                 tv.setText("");
             }
-            if(r.getDataReserva().before(dataReserva) == false){
-                tv.setMaxLines(tv.getMaxLines() + 7);
-                if(r.getResponsavel().getEmail().equals(ativo.getEmail())){
-                    tv.append("\nGabinete: " + r.getGabinete().getNrGabinete());
-                    tv.append("\nResponsável: " + r.getResponsavel().getEmail());
-                    tv.append("\nHora Início: " + r.getHoraInicio().toString());
-                    tv.append("\nHora Fim: " + r.getHoraFim().toString());
-                    tv.append("\nData Reserva: " + r.getDataReserva().getDate() + "/" + (r.getDataReserva().getMonth()+1) + "/" + r.getDataReserva().getYear());
-                }
-                tv.append("\n");
+            tv.setMaxLines(tv.getMaxLines() + 7);
+            if(r.getResponsavel().getEmail().equals(ativo.getEmail())){
+                tv.append("\nGabinete: " + r.getGabinete().getNrGabinete());
+                tv.append("\nResponsável: " + r.getResponsavel().getEmail());
+                tv.append("\nHora Início: " + r.getHoraInicio().toString());
+                tv.append("\nHora Fim: " + r.getHoraFim().toString());
+                tv.append("\nData Reserva: " + r.getDataReserva().getDate() + "/" + (r.getDataReserva().getMonth()+1) + "/" + r.getDataReserva().getYear());
+                tv.append("\nMateriais: " + r.getNumMateriais());
+                tv.append(("\n->Canetas: "+ r.getNumMaterialByIndex(0)));
+                tv.append(("\n->Extensão: "+ r.getNumMaterialByIndex(1)));
+                tv.append(("\n->Apagador: "+ r.getNumMaterialByIndex(2)));
+
             }
+            tv.append("\n");
         }
         tv.setMovementMethod(new ScrollingMovementMethod());
     }

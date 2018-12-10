@@ -24,6 +24,7 @@ public class MenuPrincipal extends Activity {
 
         utilizadores = (Utilizadores) getIntent().getSerializableExtra("utilizadores");
         ativo = (Utilizador) getIntent().getSerializableExtra("ativo");
+        //reservas = (Reservas) getIntent().getSerializableExtra("reservas");
 
         reservas = new Reservas(new ArrayList<Reserva>());
 

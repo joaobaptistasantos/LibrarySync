@@ -29,7 +29,6 @@ public class MenuInicial extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inicial);
 
-
         utilizadores = new Utilizadores(new ArrayList<Utilizador>());
 
         ativo = null;
