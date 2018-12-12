@@ -12,4 +12,12 @@ public class Aluno extends Utilizador {
     public Integer GetNrAluno() {
         return nrAluno;
     }
+
+    public boolean equals(Aluno o){
+        if(this.nrAluno == o.nrAluno &&
+           this.getPassword() == o.getPassword() &&
+           this.getEmail() == this.getEmail())
+            return true;
+        return false;
+    }
 }
