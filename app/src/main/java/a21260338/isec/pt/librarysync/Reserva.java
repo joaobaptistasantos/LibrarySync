@@ -28,13 +28,13 @@ public class Reserva extends Modelo implements Serializable {
 
         this.gabinete = gabinete;
         this.responsavel = responsavel;
-        int n1 = Globals.materiais[0];
-        int n2 = Globals.materiais[1];
-        int n3 = Globals.materiais[2];
         //material = new ArrayList<>();
-        canetas = new Caneta(n1);
-        extensao = new Extensao(n2);
-        apagador = new Apagador(n3);
+        canetas = new Caneta(Globals.materiais[0]);
+        extensao = new Extensao(Globals.materiais[1]);
+        apagador = new Apagador(Globals.materiais[2]);
+        Globals.materiais[0]=0;
+        Globals.materiais[1]=0;
+        Globals.materiais[2]=0;
         //material.add(new Caneta(Globals.materiais[0]));
         //material.add(new Extensao(Globals.materiais[1]));
         //material.add(new Apagador(Globals.materiais[2]));
