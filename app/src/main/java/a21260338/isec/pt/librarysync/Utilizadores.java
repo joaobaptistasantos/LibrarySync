@@ -13,12 +13,12 @@ public class Utilizadores extends Controlador<Utilizador> {
     }
 
 
-    public Utilizador AddUtilizador(String email, String password, String password2) throws InvalidEmailException, InvalidDifferentPasswordsException, InvalidPasswordException, AccountAlreadyExistsException {
+    public Aluno AddUtilizador(String email, String password, String password2) throws InvalidEmailException, InvalidDifferentPasswordsException, InvalidPasswordException, AccountAlreadyExistsException {
         Integer nrAluno = 5;    //TODO: METER COMO PARAMETRO (Adicionar campo às views primeiro)
         ValidaEmailRegisto(email);
         ValidaPasswords(password, password2);
 
-        Utilizador novo = new Aluno(email, password, nrAluno);
+        Aluno novo = new Aluno(email, password, nrAluno);
         InsereData(novo);
         return novo;
     }
@@ -85,7 +85,7 @@ public class Utilizadores extends Controlador<Utilizador> {
         throw new InvalidAccountRecover("Conta impossível de recuperar!");
     }
 
-    public void MudarPassord(Utilizador user, String passwordAntiga, String passwordNova, String passwordNova2) throws InvalidDifferentPasswordsException, InvalidPasswordException {
+    public boolean MudarPassord(Utilizador user, String passwordAntiga, String passwordNova, String passwordNova2) throws InvalidDifferentPasswordsException, InvalidPasswordException {
         if(!(user.passwordCorreta(passwordAntiga)))
             throw new InvalidDifferentPasswordsException("Password atual errada!");
 
@@ -94,8 +94,11 @@ public class Utilizadores extends Controlador<Utilizador> {
         String email = user.getEmail();
 
         for(Utilizador u : GetListData())
-            if(u.emailCorreto(email))
+            if(u.emailCorreto(email)) {
                 u.setPassword(passwordNova);
+                return true;
+            }
+        return false;
     }
 
     private void AdcicionaUtilizadoresDeTeste(){
