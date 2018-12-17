@@ -27,12 +27,13 @@ public class MenuGerirReservas extends Activity {
 
         tv = (TextView) findViewById(R.id.TVgerirReservas);
 
+        /*
         int day = Integer.parseInt(getData[0]);
         int month = Integer.parseInt(getData[1]) - 1;
         int year = Integer.parseInt(getData[2]);
 
         dataReserva = new Date(year, month, day);
-
+*/
         for (Reserva r: reservas.GetListData()) {
             if(tv.getText().equals("Sem reservas em seu nome")==true){
                 tv.setMaxLines(0);
