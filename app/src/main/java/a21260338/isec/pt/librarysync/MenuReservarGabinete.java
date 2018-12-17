@@ -452,6 +452,10 @@ public class MenuReservarGabinete extends Activity {
                 horaInicio = new Time((18) * 60 * 60 *1000);
                 horaFim = new Time((21) * 60 * 60 * 1000);
             }
+        if(Globals.materiais == null){
+            int[] materiais_req = {0,0,0};
+            Globals.materiais = materiais_req;
+        }
 
         switch (gabinete){
             case 1:
